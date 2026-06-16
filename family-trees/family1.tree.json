@@ -1,0 +1,29 @@
+{
+  "id": "family1",
+  "name": "Family One",
+  "description": "Example family tree",
+  "members": [
+    {
+      "id": "m1",
+      "firstName": "John",
+      "lastName": "Smith",
+      "gender": "male",
+      "dateOfBirth": "1950-03-15",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "m2",
+      "notes": null
+    },
+    {
+      "id": "m2",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "gender": "female",
+      "dateOfBirth": "1952-07-20",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "m1",
+      "notes": null
+    }
+  ]
+}
