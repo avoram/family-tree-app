@@ -33,6 +33,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*.tree.json",
+                "input": "../family-trees",
+                "output": "/family-trees"
               }
             ],
             "styles": [
@@ -93,6 +98,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*.tree.json",
+                "input": "../family-trees",
+                "output": "/family-trees"
               }
             ],
             "styles": [

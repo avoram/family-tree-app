@@ -1,0 +1,62 @@
+{
+  "id": "family2",
+  "name": "Patel Family",
+  "description": "Three-generation example family tree",
+  "members": [
+    {
+      "id": "g1",
+      "firstName": "Ramesh",
+      "lastName": "Patel",
+      "gender": "male",
+      "dateOfBirth": "1940-01-10",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "g2",
+      "notes": null
+    },
+    {
+      "id": "g2",
+      "firstName": "Lakshmi",
+      "lastName": "Patel",
+      "gender": "female",
+      "dateOfBirth": "1945-06-22",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "g1",
+      "notes": null
+    },
+    {
+      "id": "p1",
+      "firstName": "Arun",
+      "lastName": "Patel",
+      "gender": "male",
+      "dateOfBirth": "1970-04-05",
+      "fatherId": "g1",
+      "motherId": "g2",
+      "spouseId": "p2",
+      "notes": null
+    },
+    {
+      "id": "p2",
+      "firstName": "Priya",
+      "lastName": "Patel",
+      "gender": "female",
+      "dateOfBirth": "1972-09-18",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "p1",
+      "notes": "Married into the Patel family"
+    },
+    {
+      "id": "c1",
+      "firstName": "Anika",
+      "lastName": "Patel",
+      "gender": "female",
+      "dateOfBirth": "2000-12-01",
+      "fatherId": "p1",
+      "motherId": "p2",
+      "spouseId": null,
+      "notes": null
+    }
+  ]
+}

@@ -14,6 +14,12 @@ Tracks Milestone 1 from [developmentplan.md](developmentplan.md).
 - [x] Default route to main view (no login)
 - [x] `MainViewComponent` with header and dropdown placeholder
 
+### Phase 2: Sample data
+
+- [x] Create `family-trees/family1.tree.json`
+- [x] Create `family-trees/family2.tree.json`
+- [x] Configure `angular.json` asset copy from `../family-trees`
+
 ---
 
 ## In Progress
@@ -23,12 +29,6 @@ Tracks Milestone 1 from [developmentplan.md](developmentplan.md).
 ---
 
 ## Pending
-
-### Phase 2: Sample data
-
-- [ ] Create `family-trees/family1.tree.json`
-- [ ] Create `family-trees/family2.tree.json`
-- [ ] Configure `angular.json` asset copy from `../family-trees`
 
 ### Phase 3: Testing
 

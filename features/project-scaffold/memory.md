@@ -6,7 +6,7 @@ Session handoff log for Milestone 1.
 
 ## Status
 
-**Phase 1 complete.** Angular 18 app scaffolded in `frontend/` with Material, main view shell, and default routing. Next: Phase 2 (sample JSON data).
+**Phase 2 complete.** Sample JSON trees at repo root; bundled to `dist/.../family-trees/` via `angular.json`. Next: Phase 3 (testing harness).
 
 ---
 
@@ -36,5 +36,5 @@ Session handoff log for Milestone 1.
 
 ## Next Steps
 
-1. Phase 2: create `family-trees/` sample JSON files and configure `angular.json` asset copy.
-2. Phase 3: expand `MainViewComponent` unit tests and add Playwright E2E harness.
+1. Phase 3: expand `MainViewComponent` unit tests and add Playwright E2E harness.
+2. Phase 4: `vercel.json` and first deployment.
