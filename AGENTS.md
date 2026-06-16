@@ -24,6 +24,7 @@ Read in this order:
 ## V1 scope (summary)
 
 - **Frontend-only** — Angular 18 app deployed to Vercel; no backend or database
+- **Deploy early** — first Vercel deployment in Milestone 1 (free public URL); redeploy as features land
 - **Public read-only** — no login screen; all bundled trees viewable via dropdown from local JSON files
 
 Full product details are in `plan.md`. Full framework is in `AI_bootstarp.md`.

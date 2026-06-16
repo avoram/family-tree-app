@@ -100,13 +100,25 @@ File naming convention: `*.tree.json`. Each file contains one complete family tr
 
 ---
 
+## Development and Deployment Strategy
+
+**Deploy early.** The first milestone includes a live deployment to Vercel so the app runs on a free public URL from the start. Each subsequent milestone redeploys to the same Vercel project as features land.
+
+- Milestone 1: scaffold the app **and** deploy to Vercel (first public URL)
+- Milestones 2–5: develop features locally; redeploy to Vercel when each milestone completes
+- Milestone 6: final hardening and production-ready deployment
+
+No backend or paid hosting is required — Vercel free tier hosts the static Angular build.
+
+---
+
 ## Implementation Milestones
 
 Development proceeds one milestone at a time. Each milestone is a small vertical slice sized for a single AI session. Milestone status is tracked in [progress.md](progress.md).
 
 | # | Milestone | Outcome |
 |---|-----------|---------|
-| 1 | Project scaffold | Angular 18 app; Vercel-ready build; `family-trees/` folder with sample JSON tree files |
+| 1 | Project scaffold + first deploy | Angular 18 app; `family-trees/` sample JSON; Vercel config; **live deployment on free Vercel URL** |
 | 2 | Family tree service abstraction | Service interfaces shaped like a future REST API; JSON file loader and tree discovery |
 | 3 | Family tree dropdown + selection | Auto-discover trees; dropdown lists available trees; load and hold selected tree |
 | 4 | Read-only tree visualization | Expandable generation-based tree view |
@@ -117,6 +129,7 @@ Development proceeds one milestone at a time. Each milestone is a small vertical
 
 ## Success Criteria (V1)
 
+- Application is hosted on Vercel with a public URL (deployed from Milestone 1 onward)
 - Application opens directly to the main view with a tree dropdown (no login screen)
 - All bundled family trees appear in the dropdown (discovered from JSON files)
 - Visitor can select any family tree and see it rendered in the visualization

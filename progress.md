@@ -20,13 +20,14 @@ Move items between sections as work completes. Only one milestone should be **In
 
 ## Pending
 
-### Milestone 1: Project scaffold
+### Milestone 1: Project scaffold + first deploy
 
 - Angular 18 application scaffold (standalone components, Angular Material)
-- Vercel-ready frontend build configuration
 - `family-trees/` folder with sample `*.tree.json` files
 - Main view shell with tree dropdown (no login screen)
 - Unit tests and E2E test harness (Playwright)
+- Vercel configuration (`vercel.json`, build output settings)
+- **First deployment to Vercel** — app live on free public URL
 
 ### Milestone 2: Family tree service abstraction
 

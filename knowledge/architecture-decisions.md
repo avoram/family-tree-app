@@ -71,12 +71,13 @@ family-trees/
 
 **Status:** Approved
 
-**Context:** V1 requires zero-cost hosting with no backend infrastructure.
+**Context:** V1 requires zero-cost hosting with no backend infrastructure. The team wants a live public URL as early as possible to run the app on a server while features are still being built.
 
-**Decision:** Deploy the Angular frontend to **Vercel**. No backend deployment is required for V1.
+**Decision:** Deploy the Angular frontend to **Vercel** on the free tier. Deploy as soon as Milestone 1 (project scaffold) is complete; redeploy after each subsequent milestone. No backend deployment is required for V1.
 
 **Consequences:**
 
 - Build output is a static/hosted Angular application.
 - `family-trees/` JSON files are included in the frontend build as assets.
 - No API base URL or secrets configuration is needed for V1.
+- A public Vercel URL is available from the first milestone onward; later milestones update the same deployment.

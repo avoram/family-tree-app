@@ -29,7 +29,8 @@ All development activities should follow these standards.
 
 ### Deployment
 
-- Vercel (frontend only)
+- Vercel (frontend only, free tier)
+- Deploy to Vercel as part of **Milestone 1** to obtain a live public URL; redeploy after each milestone
 
 > **V1 note:** Frontend-only application. No backend or database. Data is loaded from `family-trees/*.tree.json` via a service abstraction layer.
 
