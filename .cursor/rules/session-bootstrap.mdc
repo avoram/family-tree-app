@@ -1,0 +1,60 @@
+---
+description: Session bootstrap — onboard from project artifacts before any work
+alwaysApply: true
+---
+
+# Session Bootstrap
+
+Every new session is a fresh onboarding. Do not rely on conversational memory.
+
+## Step 1 — Read AI rules (required)
+
+Before any implementation, read these files in order:
+
+1. `.ai/rules/context-management.md`
+2. `.ai/rules/development-workflow.md`
+
+## Step 2 — Read program context (required)
+
+3. `plan.md` — product scope, roles, milestones
+4. `progress.md` — current milestone status (Completed / In Progress / Pending)
+
+## Step 3 — Read feature context (when applicable)
+
+If working on a feature, read only that feature's folder under `features/<feature>/`:
+
+- `plan.md`
+- `developmentplan.md`
+- `progress.md`
+- `memory.md`
+
+## Step 4 — Read knowledge layer (on demand only)
+
+Read `knowledge/*` files only when relevant to the current task. Skip empty or unrelated files.
+
+Relevant examples:
+
+- `knowledge/coding-standards.md` — when writing code
+- `knowledge/api-standards.md` — when building APIs
+- `knowledge/architecture-decisions.md` — when making design choices
+- `knowledge/domain-rules.md` — when modeling family tree logic
+
+## Context budget
+
+Use at most ~70% of context for onboarding. Defer deep reads until the task requires them.
+
+## Before implementing
+
+- Explain understanding and assumptions
+- Identify the active milestone from `progress.md`
+- Only one milestone should be In Progress at a time
+
+## Before ending a session
+
+- Update `progress.md` (move milestones between sections)
+- Update feature `progress.md` and `memory.md` if applicable
+- Update relevant `knowledge/*` docs if standards or architecture changed
+
+## Reference
+
+Full framework: `AI_bootstarp.md`
