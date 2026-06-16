@@ -16,8 +16,7 @@ Tracked in [features/project-scaffold/progress.md](features/project-scaffold/pro
 - `family-trees/` folder with sample `*.tree.json` files
 - Main view shell with tree dropdown (no login screen)
 - Unit tests and E2E test harness (Playwright)
-- GitHub Pages deployment configuration (`build:gh-pages`, `deploy` scripts)
-- Live GitHub Pages URL pending user deploy (steps in [features/project-scaffold/memory.md](features/project-scaffold/memory.md))
+- GitHub Pages deployment configured and live at https://avoram.github.io/family-tree-app/
 
 ---
 

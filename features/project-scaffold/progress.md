@@ -30,7 +30,7 @@ Tracks Milestone 1 from [developmentplan.md](developmentplan.md).
 
 - [x] `build:gh-pages` and `deploy` scripts configured
 - [x] `npm run build` passes
-- [ ] First deployment to GitHub Pages; URL in [memory.md](memory.md) _(run deploy steps in memory)_
+- [x] First deployment to GitHub Pages; URL in [memory.md](memory.md)
 
 ---
 
@@ -42,4 +42,4 @@ Tracks Milestone 1 from [developmentplan.md](developmentplan.md).
 
 ## Pending
 
-- None (Milestone 1 complete pending live GitHub Pages URL from user deploy)
+- None
