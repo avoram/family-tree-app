@@ -26,9 +26,12 @@ Move items between sections as work completes. Only one milestone should be **In
 - Vercel-ready frontend application shell
 - Express API application shell
 - Username/password login for Super Admin and User roles
-- Role-based routing after login
+- JWT issued on successful login (24-hour expiration)
+- Frontend attaches JWT to protected API calls
+- Backend JWT validation and role-based authorization middleware
+- Role-based routing after login (from JWT role claim)
 - Seed accounts for development
-- Unit tests and E2E tests for login flow
+- Unit tests and E2E tests for login flow (including protected API access and expired-token handling)
 
 ### Milestone 2: Super Admin family tree management + dropdown selection
 
