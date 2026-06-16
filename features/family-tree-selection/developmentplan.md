@@ -2,7 +2,7 @@
 
 Implementation plan for Milestones 2 and 3. See [plan.md](plan.md) for product requirements.
 
-**Prerequisite:** Milestone 1 complete (`frontend/` scaffold, sample JSON, main view shell, Vercel URL).
+**Prerequisite:** Milestone 1 complete (`frontend/` scaffold, sample JSON, main view shell, GitHub Pages URL).
 
 ---
 
@@ -94,7 +94,7 @@ In `frontend/src/app/app.config.ts`:
 ## Phase C: Deploy
 
 - Verify `npm run build` succeeds
-- Redeploy to Vercel (same project as Milestone 1)
+- Redeploy to GitHub Pages (`npm run build:gh-pages` && `npm run deploy` in `frontend/`)
 - Record deployment URL in [memory.md](memory.md)
 
 ---

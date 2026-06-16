@@ -14,6 +14,21 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+Production browser output for this app is `dist/frontend/browser`.
+
+## GitHub Pages Deployment
+
+Build with the GitHub Pages base href, then publish `dist/frontend/browser` to the `gh-pages` branch:
+
+```bash
+npm run build:gh-pages
+npm run deploy
+```
+
+The app is configured for `https://<username>.github.io/family-tree-app/`.
+
+Ensure GitHub Pages is enabled for this repository (Settings → Pages → deploy from the `gh-pages` branch).
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).

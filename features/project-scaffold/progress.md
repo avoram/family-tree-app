@@ -20,6 +20,18 @@ Tracks Milestone 1 from [developmentplan.md](developmentplan.md).
 - [x] Create `family-trees/family2.tree.json`
 - [x] Configure `angular.json` asset copy from `../family-trees`
 
+### Phase 3: Testing
+
+- [x] Unit test for `MainViewComponent`
+- [x] Playwright installed and configured
+- [x] E2E smoke test: app loads, main view visible
+
+### Phase 4: GitHub Pages deployment
+
+- [x] `build:gh-pages` and `deploy` scripts configured
+- [x] `npm run build` passes
+- [ ] First deployment to GitHub Pages; URL in [memory.md](memory.md) _(run deploy steps in memory)_
+
 ---
 
 ## In Progress
@@ -30,14 +42,4 @@ Tracks Milestone 1 from [developmentplan.md](developmentplan.md).
 
 ## Pending
 
-### Phase 3: Testing
-
-- [ ] Unit test for `MainViewComponent`
-- [ ] Playwright installed and configured
-- [ ] E2E smoke test: app loads, main view visible
-
-### Phase 4: Vercel deployment
-
-- [ ] Root `vercel.json` configured
-- [ ] `npm run build` passes
-- [ ] First deployment to Vercel; URL in [memory.md](memory.md)
+- None (Milestone 1 complete pending live GitHub Pages URL from user deploy)

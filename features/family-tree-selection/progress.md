@@ -40,5 +40,5 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 
 ### Phase C: Deploy
 
-- [ ] Build passes; redeploy to Vercel
+- [ ] Build passes; redeploy to GitHub Pages
 - [ ] Update [memory.md](memory.md) with deployment URL

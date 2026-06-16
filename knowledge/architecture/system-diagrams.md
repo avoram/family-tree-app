@@ -24,7 +24,7 @@ flowchart LR
 
 ## Container diagram
 
-Frontend-only deployment. The Angular application is hosted on Vercel. Family tree data is bundled as JSON files loaded through a service abstraction layer.
+Frontend-only deployment. The Angular application is hosted on GitHub Pages. Family tree data is bundled as JSON files loaded through a service abstraction layer.
 
 ```mermaid
 flowchart TB
@@ -32,7 +32,7 @@ flowchart TB
         Browser[WebBrowser]
     end
 
-    subgraph vercel [Vercel]
+    subgraph githubPages [GitHubPages]
         Frontend["frontend/\nAngular 18 + Material"]
         Services[FamilyTreeServiceLayer]
         JsonAssets["family-trees/\n*.tree.json"]

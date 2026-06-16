@@ -93,27 +93,27 @@ In `frontend/angular.json`, add asset copy from repo root:
 
 ---
 
-## Phase 4: Vercel deployment
+## Phase 4: GitHub Pages deployment
 
-### Root `vercel.json`
+### `frontend/package.json` scripts
 
 ```json
-{
-  "buildCommand": "cd frontend && npm ci && npm run build",
-  "outputDirectory": "frontend/dist/frontend/browser",
-  "framework": null,
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}
+"build:gh-pages": "ng build --configuration=production --base-href=/family-tree-app/",
+"deploy": "angular-cli-ghpages --dir=dist/frontend/browser"
 ```
 
-Adjust `outputDirectory` to match Angular 18 build output path.
+Uses `angular-cli-ghpages` to publish `dist/frontend/browser` to the `gh-pages` branch.
 
 ### Deploy steps
 
-1. Push repository to GitHub (if not already)
-2. Import project in Vercel dashboard; root directory = repository root
-3. Or: `npx vercel --prod` from repo root (requires Vercel CLI + login)
-4. Record URL in [memory.md](memory.md)
+1. Push repository to GitHub (if not already).
+2. From `frontend/`:
+   ```bash
+   npm run build:gh-pages
+   npm run deploy
+   ```
+3. Enable GitHub Pages in repository settings (source: `gh-pages` branch).
+4. Record URL in [memory.md](memory.md).
 
 ---
 
@@ -121,6 +121,6 @@ Adjust `outputDirectory` to match Angular 18 build output path.
 
 - All tasks in [progress.md](progress.md) complete
 - Build and tests pass
-- Vercel URL recorded (or deploy steps documented if CLI login unavailable)
+- GitHub Pages URL recorded (or deploy steps documented if deploy not yet run)
 - Program [progress.md](../../progress.md) Milestone 1 moved to Completed
 - [family-tree-selection/memory.md](../family-tree-selection/memory.md) updated — unblocked

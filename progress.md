@@ -8,12 +8,6 @@ Move items between sections as work completes. Only one milestone should be **In
 
 ## Completed
 
-- None
-
----
-
-## In Progress
-
 ### Milestone 1: Project scaffold + first deploy
 
 Tracked in [features/project-scaffold/progress.md](features/project-scaffold/progress.md).
@@ -22,8 +16,18 @@ Tracked in [features/project-scaffold/progress.md](features/project-scaffold/pro
 - `family-trees/` folder with sample `*.tree.json` files
 - Main view shell with tree dropdown (no login screen)
 - Unit tests and E2E test harness (Playwright)
-- Vercel configuration (`vercel.json`, build output settings)
-- **First deployment to Vercel** — app live on free public URL
+- GitHub Pages deployment configuration (`build:gh-pages`, `deploy` scripts)
+- Live GitHub Pages URL pending user deploy (steps in [features/project-scaffold/memory.md](features/project-scaffold/memory.md))
+
+---
+
+## In Progress
+
+- None
+
+---
+
+## Pending
 
 ### Milestone 2: Family tree service abstraction
 

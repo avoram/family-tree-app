@@ -2,7 +2,7 @@
 
 ## Summary
 
-Infrastructure milestone (Milestone 1). Establishes the Angular 18 application, sample family tree JSON data, test harness, Vercel deployment configuration, and a main view shell with a dropdown placeholder. Delivers the first live public URL on Vercel.
+Infrastructure milestone (Milestone 1). Establishes the Angular 18 application, sample family tree JSON data, test harness, GitHub Pages deployment configuration, and a main view shell with a dropdown placeholder. Delivers the first live public URL on GitHub Pages.
 
 This is not a user-facing product feature — it enables all subsequent features.
 
@@ -18,8 +18,8 @@ This is not a user-facing product feature — it enables all subsequent features
 - [ ] Main view shell — no login screen; tree dropdown placeholder
 - [ ] Unit test harness with at least one passing component test
 - [ ] Playwright E2E harness with smoke test (app loads)
-- [ ] `vercel.json` — build and output configuration
-- [ ] First deployment to Vercel (free public URL)
+- [ ] GitHub Pages deploy scripts (`build:gh-pages`, `deploy`)
+- [ ] First deployment to GitHub Pages (free public URL)
 
 ---
 
@@ -32,7 +32,7 @@ This is not a user-facing product feature — it enables all subsequent features
 - [ ] Dropdown placeholder visible on main view
 - [ ] Sample JSON conforms to [api-contracts.md](../../knowledge/architecture/api-contracts.md)
 - [ ] `family-trees/` bundled as static assets in build
-- [ ] App deployed to Vercel with recorded URL in [memory.md](memory.md)
+- [ ] App deployed to GitHub Pages with recorded URL in [memory.md](memory.md)
 
 ---
 

@@ -5,7 +5,7 @@
 First user-facing V1 feature. Visitors discover all bundled family trees via a dropdown and select one to load. Includes the JSON-backed service abstraction layer (Milestone 2) and dropdown UI (Milestone 3).
 
 **Program milestones:** 2, 3  
-**Prerequisite:** [Milestone 1](../../progress.md) (project scaffold + first Vercel deploy) must be complete.
+**Prerequisite:** [Milestone 1](../../progress.md) (project scaffold + first GitHub Pages deploy) must be complete.
 
 ---
 
@@ -27,7 +27,7 @@ First user-facing V1 feature. Visitors discover all bundled family trees via a d
 - [ ] Components do not import or parse JSON files directly
 - [ ] Unit tests cover service layer, JSON parsing/validation, and dropdown component
 - [ ] E2E test covers: app loads → dropdown lists trees → selection loads tree metadata
-- [ ] Feature redeployed to Vercel when complete
+- [ ] Feature redeployed to GitHub Pages when complete
 
 ---
 

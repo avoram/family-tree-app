@@ -111,7 +111,7 @@ All trees in the dropdown are publicly viewable. Selection is a UI state change 
 
 | Component | Target | Notes |
 |-----------|--------|-------|
-| Frontend | Vercel | Static/hosted Angular build |
+| Frontend | GitHub Pages | Static Angular build on `gh-pages` branch |
 | Family tree JSON | Bundled with frontend | `family-trees/` included as build assets |
 
 No backend, API base URL, or secrets configuration is needed for V1.

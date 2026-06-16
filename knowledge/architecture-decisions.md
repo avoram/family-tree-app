@@ -10,7 +10,7 @@ Records significant technical decisions that affect implementation across the pr
 
 **Context:** Version 1 should deliver a public, read-only family tree viewer with minimal infrastructure cost and complexity. A backend and database are not required for the initial release.
 
-**Decision:** V1 is a **frontend-only Angular 18 application** deployed to **Vercel**. There is no backend server and no database in V1. The application opens directly to tree selection with no login screen.
+**Decision:** V1 is a **frontend-only Angular 18 application** deployed to **GitHub Pages**. There is no backend server and no database in V1. The application opens directly to tree selection with no login screen.
 
 **Consequences:**
 
@@ -67,17 +67,17 @@ family-trees/
 
 ---
 
-## ADR-004: Vercel frontend deployment (V1)
+## ADR-004: GitHub Pages frontend deployment (V1)
 
 **Status:** Approved
 
 **Context:** V1 requires zero-cost hosting with no backend infrastructure. The team wants a live public URL as early as possible to run the app on a server while features are still being built.
 
-**Decision:** Deploy the Angular frontend to **Vercel** on the free tier. Deploy as soon as Milestone 1 (project scaffold) is complete; redeploy after each subsequent milestone. No backend deployment is required for V1.
+**Decision:** Deploy the Angular frontend to **GitHub Pages**. Deploy as soon as Milestone 1 (project scaffold) is complete; redeploy after each subsequent milestone using `npm run build:gh-pages` and `npm run deploy` in `frontend/`. No backend deployment is required for V1.
 
 **Consequences:**
 
-- Build output is a static/hosted Angular application.
+- Build output is a static Angular application published to the `gh-pages` branch.
 - `family-trees/` JSON files are included in the frontend build as assets.
 - No API base URL or secrets configuration is needed for V1.
-- A public Vercel URL is available from the first milestone onward; later milestones update the same deployment.
+- A public GitHub Pages URL is available from the first milestone onward; later milestones update the same deployment.

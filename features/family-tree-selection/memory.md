@@ -6,7 +6,7 @@ Session handoff log for implementation context.
 
 ## Status
 
-**Not started.** Waiting for Milestone 1 (project scaffold + first Vercel deploy).
+**Unblocked.** Milestone 1 scaffold complete; begin Phase A (service abstraction).
 
 ---
 
@@ -25,6 +25,5 @@ Session handoff log for implementation context.
 
 ## Next Steps
 
-1. Complete [Milestone 1](../../progress.md).
-2. Mark Phase A as In Progress in [progress.md](progress.md).
-3. Implement models, service interface, and `JsonFamilyTreeService` per [developmentplan.md](developmentplan.md).
+1. Mark Phase A as In Progress in [progress.md](progress.md).
+2. Implement models, service interface, and `JsonFamilyTreeService` per [developmentplan.md](developmentplan.md).
