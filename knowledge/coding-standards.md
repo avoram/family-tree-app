@@ -17,16 +17,10 @@ All development activities should follow these standards.
 - TypeScript
 - Angular Material
 
-### Backend
+### Data (V1)
 
-- Node.js
-- Express.js
-- TypeScript
-
-### Authentication
-
-- Username and password login
-- JWT (24-hour expiration; no refresh tokens in V1)
+- Family tree definitions stored as JSON files in `family-trees/`
+- Service abstraction layer for data access (JSON-backed; API-ready for future backend)
 
 ### Testing
 
@@ -35,7 +29,9 @@ All development activities should follow these standards.
 
 ### Deployment
 
-- Vercel (frontend)
+- Vercel (frontend only)
+
+> **V1 note:** Frontend-only application. No backend or database. Data is loaded from `family-trees/*.tree.json` via a service abstraction layer.
 
 ---
 
@@ -46,44 +42,38 @@ All development activities should follow these standards.
 - Use Angular Standalone Components.
 - Use Angular Signals for local state management.
 - Avoid external state management libraries unless complexity justifies their use.
-- Follow feature-based organization within `frontend/`.
+- Follow feature-based organization within the Angular application.
 - Keep components focused on a single responsibility.
 - Prefer reusable components over duplicated implementations.
-- Store the JWT after login and include `Authorization: Bearer <token>` on protected API requests.
-- Handle expired or invalid tokens (401) by redirecting the user to login.
 
-### Backend
+### Service Abstraction Layer
 
-- Expose a REST API via Express.js.
-- Organize code by concern (routes, controllers/handlers, services, models) within `backend/`.
-- Keep route handlers thin; place business logic in services.
-- Keep API contracts aligned with `knowledge/api-standards.md` and `knowledge/architecture/api-contracts.md`.
-- Issue JWTs on successful login with a 24-hour expiration and role claim (`SuperAdmin` or `User`).
-- Use middleware to verify JWTs and enforce role-based authorization on protected routes.
+- Components and feature modules must **not** read JSON files directly.
+- All family tree data access goes through injectable services with **API-shaped interfaces** (see `knowledge/architecture/api-contracts.md`).
+- V1 services load data from bundled `family-trees/*.tree.json` files.
+- A future `HttpFamilyTreeService` (or similar) should implement the same interfaces against a REST API with minimal UI changes.
+- Return types should use RxJS `Observable` or Angular signals/async patterns consistent with how HTTP calls will behave later.
+
+### Data Files
+
+- Store tree definitions under `family-trees/` at the repository root.
+- Use the `*.tree.json` naming convention (e.g., `family1.tree.json`).
+- Each file contains one complete family tree (metadata + members).
+- JSON schema and DTO shapes are defined in `knowledge/architecture/api-contracts.md`.
 
 ---
 
 ## Development Standards
 
-### Shared
+### Frontend
 
 - Use strongly typed interfaces and models.
 - Avoid use of `any`.
 - Prefer composition over duplication.
-
-### Frontend
-
 - Keep business logic outside UI components whenever possible.
 - Use services for reusable business logic.
 - Keep components small and maintainable.
 - Follow Angular recommended practices.
-
-### Backend
-
-- Use strongly typed request/response models and DTOs.
-- Validate input at API boundaries.
-- Use services for reusable business logic shared across routes.
-- Follow Node.js and Express.js recommended practices.
 
 ---
 
@@ -92,7 +82,6 @@ All development activities should follow these standards.
 Every feature must include:
 
 - Unit Tests
-- Integration Tests where applicable
 - End-to-End Tests
 
 Testing is considered part of feature completion.
@@ -113,12 +102,12 @@ A feature is not complete until required tests are implemented and passing.
 
 ## Repository and Folder Structure Standards
 
-The project uses a **single repository** containing both the frontend and backend applications:
+Version 1 is a **frontend-only** single repository:
 
 ```
 project/
-├── frontend/              # Angular application
-├── backend/               # Node.js + Express application
+├── frontend/              # Angular 18 application
+├── family-trees/          # Family tree JSON definitions (*.tree.json)
 ├── AGENTS.md
 ├── plan.md
 ├── progress.md
@@ -131,7 +120,16 @@ project/
 ### Application layout
 
 - **`frontend/`** — Angular app (components, services, routes, assets, and frontend tests).
-- **`backend/`** — Express app (routes, handlers, services, models, and backend tests).
+- **`family-trees/`** — Read-only family tree JSON files consumed by the service layer.
+
+Example tree files:
+
+```
+family-trees/
+├── family1.tree.json
+├── family2.tree.json
+└── family3.tree.json
+```
 
 ### Documentation and features
 
@@ -142,7 +140,7 @@ project/
   - `progress.md`
   - `memory.md`
 - Shared frontend functionality belongs in reusable modules, services, or components within `frontend/`.
-- Shared backend functionality belongs in reusable services or modules within `backend/`.
+- Data access belongs in the service abstraction layer under `frontend/` (e.g., `frontend/src/app/core/services/` or feature-scoped services).
 
 ---
 
@@ -150,4 +148,4 @@ project/
 
 This project favors simple solutions.
 
-Before introducing new libraries, frameworks, or architectural patterns, verify that the problem cannot be solved using existing Angular or Express capabilities.
+Before introducing new libraries, frameworks, or architectural patterns, verify that the problem cannot be solved using existing Angular capabilities.

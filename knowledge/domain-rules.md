@@ -3,9 +3,17 @@
 
 ## Purpose
 
-Define the business rules and constraints that govern family tree management.
+Define the business rules and constraints that govern family tree data and relationships.
 
 All implementation should comply with these rules.
+
+---
+
+## Version 1 Scope
+
+Version 1 is **read-only and public**. The application loads pre-defined family trees from local JSON files. Visitors can view any bundled tree and member details but cannot create, update, or delete data through the UI.
+
+Rules about mutations (deletion, relationship changes) remain documented for data integrity in JSON files and for a potential future backend.
 
 ---
 
@@ -14,7 +22,9 @@ All implementation should comply with these rules.
 - A family tree contains multiple family members.
 - A family member belongs to exactly one family tree.
 - Family members cannot be shared across family trees.
-- Family trees are managed by the Super Admin.
+- In V1, family trees are defined in static JSON files under `family-trees/`.
+- Each JSON file (`*.tree.json`) represents one family tree.
+- All bundled family trees are publicly viewable in the application.
 
 ---
 
@@ -56,27 +66,18 @@ If A is spouse of B, then B must also be spouse of A.
 
 ---
 
-## User Access Rules
+## Public Viewing (V1)
 
-- Users have read-only access.
-- Users cannot create family trees.
-- Users cannot modify family members.
-- Users cannot modify relationships.
-
----
-
-## Super Admin Rules
-
-- A single Super Admin manages all family trees.
-- The Super Admin can create family trees.
-- The Super Admin can update family trees.
-- The Super Admin can add family members.
-- The Super Admin can update family members.
-- The Super Admin can manage relationships.
+- All bundled family trees are listed in the dropdown and are viewable by any visitor.
+- The application has no login screen and no access restrictions.
+- All interactions are read-only.
+- No create, update, or delete operations are available in the UI.
 
 ---
 
-## Deletion Rules
+## Deletion Rules (Data Integrity)
+
+These rules apply to JSON authoring and a potential future write API. They are not enforced interactively in V1.
 
 - Deleting a family member must not leave invalid relationships.
 - Related parent-child relationships must be updated when a member is deleted.
@@ -87,6 +88,7 @@ If A is spouse of B, then B must also be spouse of A.
 
 ## Data Integrity Rules
 
-- Relationship references must point to existing family members.
+- Relationship references must point to existing family members within the same tree.
 - Orphaned relationship references are not allowed.
-- All relationship changes must maintain a valid family tree structure.
+- JSON tree files should be validated at load time; invalid files should be skipped or reported without breaking the application.
+- All relationship data must maintain a valid family tree structure.

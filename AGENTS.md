@@ -21,9 +21,9 @@ Read in this order:
 - Update `progress.md` and feature docs before ending the session
 - Use at most ~70% of context for onboarding
 
-## Roles (summary)
+## V1 scope (summary)
 
-- **Super Admin** — single global admin; can modify all family trees via dropdown
-- **User** — view-only; can select and view any family tree via dropdown
+- **Frontend-only** — Angular 18 app deployed to Vercel; no backend or database
+- **Public read-only** — no login screen; all bundled trees viewable via dropdown from local JSON files
 
 Full product details are in `plan.md`. Full framework is in `AI_bootstarp.md`.

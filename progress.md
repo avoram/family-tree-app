@@ -20,32 +20,28 @@ Move items between sections as work completes. Only one milestone should be **In
 
 ## Pending
 
-### Milestone 1: Project scaffold + Auth (SuperAdmin/User)
+### Milestone 1: Project scaffold
 
-- Monorepo scaffold with `frontend/` (Angular) and `backend/` (Node.js + Express)
-- Vercel-ready frontend application shell
-- Express API application shell
-- Username/password login for Super Admin and User roles
-- JWT issued on successful login (24-hour expiration)
-- Frontend attaches JWT to protected API calls
-- Backend JWT validation and role-based authorization middleware
-- Role-based routing after login (from JWT role claim)
-- Seed accounts for development
-- Unit tests and E2E tests for login flow (including protected API access and expired-token handling)
+- Angular 18 application scaffold (standalone components, Angular Material)
+- Vercel-ready frontend build configuration
+- `family-trees/` folder with sample `*.tree.json` files
+- Main view shell with tree dropdown (no login screen)
+- Unit tests and E2E test harness (Playwright)
 
-### Milestone 2: Super Admin family tree management + dropdown selection
+### Milestone 2: Family tree service abstraction
 
-- Super Admin can create family trees
-- Super Admin can update family tree details
-- Family dropdown to select the active tree
-- Unit tests and E2E tests for tree management
+- Service interfaces shaped like a future REST API (see `knowledge/architecture/api-contracts.md`)
+- JSON file loader that reads from `family-trees/`
+- Auto-discovery of available `*.tree.json` files
+- Components consume services only — no direct JSON access from UI
+- Unit tests for service layer and JSON parsing
 
-### Milestone 3: User family selection + read-only access guard
+### Milestone 3: Family tree dropdown + selection
 
-- User can select any family tree from dropdown
-- User can view selected tree in read-only mode
-- All write operations blocked for Users across all trees
-- Unit tests and E2E tests for access enforcement
+- Dropdown populated with all discovered family trees (publicly viewable)
+- Visitor selects a tree; application loads that tree's data via the service layer
+- Selected tree held in application state (signals)
+- Unit tests and E2E tests for tree selection flow
 
 ### Milestone 4: Read-only tree visualization
 
@@ -58,41 +54,10 @@ Move items between sections as work completes. Only one milestone should be **In
 
 - Click a tree node to view member details
 - Show name, gender, date of birth, notes, and relationship summary
-- Available to both Super Admin and User (read-only)
 - Unit tests and E2E tests for detail panel
 
-### Milestone 6: Super Admin add member
-
-- Add a new family member to the selected tree
-- New member appears in tree visualization
-- Unit tests and E2E tests for add member flow
-
-### Milestone 7: Super Admin edit member
-
-- Update existing member fields
-- Changes reflected in tree visualization
-- Unit tests and E2E tests for edit member flow
-
-### Milestone 8: Parent-child relationship management
-
-- Assign and change father, mother, and child links
-- Basic validation (e.g., no self-parent loops)
-- Unit tests and E2E tests for parent-child relationships
-
-### Milestone 9: Spouse relationship management
-
-- Assign and remove spouse relationships
-- Bidirectional consistency between spouses
-- Unit tests and E2E tests for spouse relationships
-
-### Milestone 10: Admin management workspace
-
-- Consolidated Super Admin screen for tree, member, and relationship operations
-- Unit tests and E2E tests for admin workspace
-
-### Milestone 11: V1 release hardening
+### Milestone 6: V1 release hardening
 
 - Mobile-friendly layout verification
-- Security and access review
 - Full test suite passing
 - Knowledge docs and feature documentation synced

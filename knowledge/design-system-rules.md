@@ -54,15 +54,6 @@ All user interfaces should follow these standards.
 
 ---
 
-## Accessibility Standards
-
-- Support keyboard navigation.
-- Use semantic HTML where possible.
-- Ensure sufficient color contrast.
-- Provide accessible labels for interactive elements.
-
----
-
 ## Simplicity Principle
 
 - Prefer clarity over visual complexity.

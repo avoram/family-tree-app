@@ -2,35 +2,29 @@
 
 ## Purpose
 
-Define conventions for REST API design and authentication across the Family Tree application.
+Define conventions for data access in the Family Tree application (V1).
 
 ---
 
-## Authentication
+## Version 1 (Current)
 
-- Users authenticate with username and password via a login endpoint.
-- On success, the backend returns a **JWT** with a **24-hour expiration**.
-- Protected endpoints require the header: `Authorization: Bearer <JWT>`.
-- Missing, invalid, or expired tokens must return **401 Unauthorized**.
-- Insufficient role for the requested operation must return **403 Forbidden**.
-- **No refresh tokens** in Version 1; clients must re-authenticate after token expiration.
+V1 has **no backend API**. Data is served from local JSON files via a frontend **service abstraction layer**.
 
-### Roles
+- The application opens directly to the main view — there is no login screen.
+- All bundled family trees are publicly viewable.
+- Components call injectable services, not HTTP endpoints or JSON paths directly.
+- Service interfaces and DTO shapes are defined in [architecture/api-contracts.md](architecture/api-contracts.md).
+- The V1 implementation loads bundled `family-trees/*.tree.json` files.
+- All access is read-only.
 
-JWT claims must include the user's role. Supported values:
-
-| Role | Access |
-|------|--------|
-| `SuperAdmin` | Full create/update access to all family trees |
-| `User` | Read-only access to all family trees |
-
-Authorization is enforced on the backend for every protected endpoint. See [security-standards.md](security-standards.md).
+See [architecture-decisions.md](architecture-decisions.md) (ADR-001, ADR-002, ADR-003).
 
 ---
 
 ## General Conventions
 
-- Use RESTful resource-oriented endpoints.
-- Validate input at API boundaries.
-- Return only required data in responses.
-- Full endpoint contracts will be documented in [architecture/api-contracts.md](architecture/api-contracts.md).
+- Service methods return strongly typed DTOs defined in [architecture/api-contracts.md](architecture/api-contracts.md).
+- Invalid or missing JSON is handled gracefully at the service layer.
+- UI components must not parse JSON or access file paths directly.
+
+A future backend, if introduced, should implement the same read-only service interface with matching DTO shapes. Details will be documented when that work begins.
