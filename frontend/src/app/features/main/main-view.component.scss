@@ -1,0 +1,33 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.controls-card {
+  width: 100%;
+}
+
+.tree-select {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.tree-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 16rem;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.placeholder-text {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}

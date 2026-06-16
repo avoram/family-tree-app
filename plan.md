@@ -98,6 +98,19 @@ File naming convention: `*.tree.json`. Each file contains one complete family tr
 3. Family member detail view (read-only)
 4. Service abstraction layer for data access (JSON-backed, API-ready)
 
+## Feature index
+
+Product features are documented under `features/`. Service abstraction (item 4 above) is implemented inside the first feature, not as a separate folder.
+
+| Feature | Folder | Milestones | Status |
+|---------|--------|------------|--------|
+| Project scaffold | [features/project-scaffold/](features/project-scaffold/) | 1 | Planned |
+| Family tree selection | [features/family-tree-selection/](features/family-tree-selection/) | 2, 3 | Planned |
+| Tree visualization | `features/tree-visualization/` | 4 | Pending |
+| Member detail | `features/member-detail/` | 5 | Pending |
+
+Milestone 6 (release hardening) is tracked in [progress.md](progress.md) only.
+
 ---
 
 ## Development and Deployment Strategy

@@ -14,13 +14,9 @@ Move items between sections as work completes. Only one milestone should be **In
 
 ## In Progress
 
-- None
-
----
-
-## Pending
-
 ### Milestone 1: Project scaffold + first deploy
+
+Tracked in [features/project-scaffold/progress.md](features/project-scaffold/progress.md).
 
 - Angular 18 application scaffold (standalone components, Angular Material)
 - `family-trees/` folder with sample `*.tree.json` files
@@ -31,6 +27,8 @@ Move items between sections as work completes. Only one milestone should be **In
 
 ### Milestone 2: Family tree service abstraction
 
+Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phase A).
+
 - Service interfaces shaped like a future REST API (see `knowledge/architecture/api-contracts.md`)
 - JSON file loader that reads from `family-trees/`
 - Auto-discovery of available `*.tree.json` files
@@ -38,6 +36,8 @@ Move items between sections as work completes. Only one milestone should be **In
 - Unit tests for service layer and JSON parsing
 
 ### Milestone 3: Family tree dropdown + selection
+
+Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phase B).
 
 - Dropdown populated with all discovered family trees (publicly viewable)
 - Visitor selects a tree; application loads that tree's data via the service layer

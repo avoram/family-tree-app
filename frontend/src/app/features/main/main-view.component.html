@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>Family Tree</span>
+</mat-toolbar>
+
+<main class="main-content">
+  <mat-card class="controls-card">
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="tree-select">
+        <mat-label>Family tree</mat-label>
+        <mat-select placeholder="Select a family tree" disabled>
+          @for (tree of placeholderTrees; track tree.id) {
+            <mat-option [value]="tree.id">{{ tree.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <section class="tree-area" aria-label="Family tree visualization">
+    <p class="placeholder-text">Tree visualization will appear here.</p>
+  </section>
+</main>
