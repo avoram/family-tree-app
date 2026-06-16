@@ -28,8 +28,7 @@ That rule directs the agent to read `.ai/rules/` first, then program context, th
 
 ```
 project/
-├── frontend/              # Angular application
-├── backend/               # Node.js + Express application
+├── frontend/              # Angular application (frontend-only V1)
 │
 ├── AGENTS.md
 ├── AI_bootstarp.md

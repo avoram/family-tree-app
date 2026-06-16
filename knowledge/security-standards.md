@@ -1,4 +1,3 @@
-
 # Security Standards
 
 ## Purpose
@@ -6,31 +5,6 @@
 Define the security requirements and guardrails that must be followed during development.
 
 All implementation should comply with these standards.
-
----
-
-## Authentication
-
-- Users must authenticate using username and password.
-- Passwords must never be stored in plain text.
-- Passwords must be hashed before storage.
-- Authentication logic must be implemented on the backend.
-- The backend issues a **JWT** on successful login.
-- JWT tokens expire after **24 hours**.
-- **No refresh tokens** in Version 1; users must log in again after token expiration.
-- JWT signing secrets must be stored in environment variables, not in source code.
-- The frontend must include the JWT when calling protected APIs.
-
----
-
-## Authorization
-
-- Authorization is **role-based** using JWT claims.
-- Supported roles: `SuperAdmin`, `User`.
-- `SuperAdmin` has full access to all family trees.
-- `User` has read-only access.
-- The backend must validate the JWT on every protected API endpoint and enforce role permissions.
-- Frontend route guards and UI restrictions are supplementary only; backend enforcement is required.
 
 ---
 
@@ -87,12 +61,9 @@ Restricted:
 
 Every feature should be reviewed for:
 
-- Authentication requirements
-- Authorization requirements
-- JWT validation and expiration handling
-- Role-claim verification (`SuperAdmin`, `User`)
 - Input validation
+- Sensitive data handling
 - Secret handling
-- API access control
+- Client-side data protection
 
 Security validation is part of feature completion.
