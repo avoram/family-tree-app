@@ -11,9 +11,7 @@
 
   <section class="tree-area" aria-label="Family tree visualization">
     @if (selectedTree(); as tree) {
-      <p class="placeholder-text">
-        Selected: {{ tree.name }}@if (tree.description) { — {{ tree.description }} }
-      </p>
+      <app-tree-visualization [tree]="tree" />
     } @else {
       <p class="placeholder-text">Tree visualization will appear here.</p>
     }

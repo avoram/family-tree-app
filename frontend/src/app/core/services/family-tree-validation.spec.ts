@@ -201,4 +201,13 @@ describe('family-tree-validation', () => {
     expect(result.valid).toBeFalse();
     expect(result.errors.some((error) => error.includes('circular parent-child'))).toBeTrue();
   });
+
+  it('accepts the bundled Vora family tree file', async () => {
+    const response = await fetch('family-trees/vorafamiliy.tree.json');
+    const tree = await response.json();
+    const result = validateFamilyTreeJson(tree, 'vorafamiliy.tree.json');
+
+    expect(result.valid).withContext(result.errors.join('; ')).toBeTrue();
+    expect((tree as FamilyTreeJson).name).toBe('Vora Family');
+  });
 });

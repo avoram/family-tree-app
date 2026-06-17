@@ -106,7 +106,7 @@ Product features are documented under `features/`. Service abstraction (item 4 a
 |---------|--------|------------|--------|
 | Project scaffold | [features/project-scaffold/](features/project-scaffold/) | 1 | Planned |
 | Family tree selection | [features/family-tree-selection/](features/family-tree-selection/) | 2, 3 | Planned |
-| Tree visualization | `features/tree-visualization/` | 4 | Pending |
+| Tree visualization | [features/tree-visualization/](features/tree-visualization/) | 4 | Complete |
 | Member detail | `features/member-detail/` | 5 | Pending |
 
 Milestone 6 (release hardening) is tracked in [progress.md](progress.md) only.

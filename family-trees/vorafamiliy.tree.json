@@ -1,0 +1,429 @@
+{
+    "id": "family3",
+    "name": "Vora Family",
+    "description": "Five-generation family tree with multiple siblings",
+    "members": [
+      {
+        "id": "g1",
+        "firstName": "Dwarka",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "1920-03-14",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "g2",
+        "notes": "Patriarch"
+      },
+      {
+        "id": "g2",
+        "firstName": "Savitri",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "1925-07-20",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "g1",
+        "notes": "Matriarch"
+      },
+  
+      {
+        "id": "p1",
+        "firstName": "Suresh",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "1948-05-10",
+        "fatherId": "g1",
+        "motherId": "g2",
+        "spouseId": "p2",
+        "notes": null
+      },
+      {
+        "id": "p2",
+        "firstName": "Kamla",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "1950-11-03",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "p1",
+        "notes": "Married into Vora family"
+      },
+      {
+        "id": "p3",
+        "firstName": "Mahesh",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "1951-02-17",
+        "fatherId": "g1",
+        "motherId": "g2",
+        "spouseId": "p4",
+        "notes": null
+      },
+      {
+        "id": "p4",
+        "firstName": "Geeta",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "1953-08-29",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "p3",
+        "notes": "Married into Vora family"
+      },
+      {
+        "id": "p5",
+        "firstName": "Rekha",
+        "lastName": "Verma",
+        "gender": "female",
+        "dateOfBirth": "1955-04-12",
+        "fatherId": "g1",
+        "motherId": "g2",
+        "spouseId": "p6",
+        "notes": "Married into Verma family"
+      },
+      {
+        "id": "p6",
+        "firstName": "Rajesh",
+        "lastName": "Verma",
+        "gender": "male",
+        "dateOfBirth": "1952-09-25",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "p5",
+        "notes": "Married into family"
+      },
+  
+      {
+        "id": "c1",
+        "firstName": "Amit",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "1975-06-15",
+        "fatherId": "p1",
+        "motherId": "p2",
+        "spouseId": "c2",
+        "notes": null
+      },
+      {
+        "id": "c2",
+        "firstName": "Neha",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "1977-03-22",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "c1",
+        "notes": "Married into Vora family"
+      },
+      {
+        "id": "c3",
+        "firstName": "Sunita",
+        "lastName": "Gupta",
+        "gender": "female",
+        "dateOfBirth": "1978-11-08",
+        "fatherId": "p1",
+        "motherId": "p2",
+        "spouseId": "c4",
+        "notes": null
+      },
+      {
+        "id": "c4",
+        "firstName": "Vikram",
+        "lastName": "Gupta",
+        "gender": "male",
+        "dateOfBirth": "1975-04-30",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "c3",
+        "notes": "Married into family"
+      },
+      {
+        "id": "c5",
+        "firstName": "Rohit",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "1980-08-19",
+        "fatherId": "p1",
+        "motherId": "p2",
+        "spouseId": null,
+        "notes": "Unmarried"
+      },
+      {
+        "id": "c6",
+        "firstName": "Pooja",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "1976-01-14",
+        "fatherId": "p3",
+        "motherId": "p4",
+        "spouseId": "c7",
+        "notes": null
+      },
+      {
+        "id": "c7",
+        "firstName": "Deepak",
+        "lastName": "Joshi",
+        "gender": "male",
+        "dateOfBirth": "1974-07-27",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "c6",
+        "notes": "Married into family"
+      },
+      {
+        "id": "c8",
+        "firstName": "Nikhil",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "1979-05-03",
+        "fatherId": "p3",
+        "motherId": "p4",
+        "spouseId": "c9",
+        "notes": null
+      },
+      {
+        "id": "c9",
+        "firstName": "Divya",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "1981-12-16",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "c8",
+        "notes": "Married into Vora family"
+      },
+      {
+        "id": "c10",
+        "firstName": "Karan",
+        "lastName": "Verma",
+        "gender": "male",
+        "dateOfBirth": "1977-09-11",
+        "fatherId": "p6",
+        "motherId": "p5",
+        "spouseId": "c11",
+        "notes": null
+      },
+      {
+        "id": "c11",
+        "firstName": "Shruti",
+        "lastName": "Verma",
+        "gender": "female",
+        "dateOfBirth": "1979-02-28",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "c10",
+        "notes": "Married into Verma family"
+      },
+      {
+        "id": "c12",
+        "firstName": "Meera",
+        "lastName": "Verma",
+        "gender": "female",
+        "dateOfBirth": "1982-06-04",
+        "fatherId": "p6",
+        "motherId": "p5",
+        "spouseId": null,
+        "notes": "Unmarried"
+      },
+  
+      {
+        "id": "gc1",
+        "firstName": "Arjun",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "2000-03-10",
+        "fatherId": "c1",
+        "motherId": "c2",
+        "spouseId": "ggc1_mom",
+        "notes": null
+      },
+      {
+        "id": "gc2",
+        "firstName": "Ishaan",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "2003-07-25",
+        "fatherId": "c1",
+        "motherId": "c2",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc3",
+        "firstName": "Ananya",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "2006-11-30",
+        "fatherId": "c1",
+        "motherId": "c2",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc4",
+        "firstName": "Riya",
+        "lastName": "Gupta",
+        "gender": "female",
+        "dateOfBirth": "2001-05-18",
+        "fatherId": "c4",
+        "motherId": "c3",
+        "spouseId": "gc4_husband",
+        "notes": null
+      },
+      {
+        "id": "gc5",
+        "firstName": "Dev",
+        "lastName": "Gupta",
+        "gender": "male",
+        "dateOfBirth": "2004-08-22",
+        "fatherId": "c4",
+        "motherId": "c3",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc6",
+        "firstName": "Kabir",
+        "lastName": "Joshi",
+        "gender": "male",
+        "dateOfBirth": "2002-01-09",
+        "fatherId": "c7",
+        "motherId": "c6",
+        "spouseId": "ggc4_mom",
+        "notes": null
+      },
+      {
+        "id": "gc7",
+        "firstName": "Tara",
+        "lastName": "Joshi",
+        "gender": "female",
+        "dateOfBirth": "2005-04-14",
+        "fatherId": "c7",
+        "motherId": "c6",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc8",
+        "firstName": "Vivaan",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "2003-10-01",
+        "fatherId": "c8",
+        "motherId": "c9",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc9",
+        "firstName": "Naina",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "2007-02-20",
+        "fatherId": "c8",
+        "motherId": "c9",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc10",
+        "firstName": "Zara",
+        "lastName": "Verma",
+        "gender": "female",
+        "dateOfBirth": "2002-09-13",
+        "fatherId": "c10",
+        "motherId": "c11",
+        "spouseId": null,
+        "notes": null
+      },
+      {
+        "id": "gc11",
+        "firstName": "Veer",
+        "lastName": "Verma",
+        "gender": "male",
+        "dateOfBirth": "2005-12-05",
+        "fatherId": "c10",
+        "motherId": "c11",
+        "spouseId": null,
+        "notes": null
+      },
+  
+      {
+        "id": "ggc1",
+        "firstName": "Siya",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "2022-04-17",
+        "fatherId": "gc1",
+        "motherId": "ggc1_mom",
+        "spouseId": null,
+        "notes": "Generation 5"
+      },
+      {
+        "id": "ggc1_mom",
+        "firstName": "Tanvi",
+        "lastName": "Vora",
+        "gender": "female",
+        "dateOfBirth": "2001-08-11",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "gc1",
+        "notes": "Married into Vora family"
+      },
+      {
+        "id": "ggc2",
+        "firstName": "Krish",
+        "lastName": "Vora",
+        "gender": "male",
+        "dateOfBirth": "2024-01-29",
+        "fatherId": "gc1",
+        "motherId": "ggc1_mom",
+        "spouseId": null,
+        "notes": "Generation 5"
+      },
+      {
+        "id": "ggc3",
+        "firstName": "Myra",
+        "lastName": "Gupta",
+        "gender": "female",
+        "dateOfBirth": "2023-06-08",
+        "fatherId": "gc4_husband",
+        "motherId": "gc4",
+        "spouseId": null,
+        "notes": "Generation 5"
+      },
+      {
+        "id": "gc4_husband",
+        "firstName": "Harsh",
+        "lastName": "Mehta",
+        "gender": "male",
+        "dateOfBirth": "2000-03-25",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "gc4",
+        "notes": "Married into family"
+      },
+      {
+        "id": "ggc4",
+        "firstName": "Aarav",
+        "lastName": "Joshi",
+        "gender": "male",
+        "dateOfBirth": "2025-09-12",
+        "fatherId": "gc6",
+        "motherId": "ggc4_mom",
+        "spouseId": null,
+        "notes": "Generation 5 — youngest"
+      },
+      {
+        "id": "ggc4_mom",
+        "firstName": "Sonal",
+        "lastName": "Joshi",
+        "gender": "female",
+        "dateOfBirth": "2002-11-19",
+        "fatherId": null,
+        "motherId": null,
+        "spouseId": "gc6",
+        "notes": "Married into Joshi family"
+      }
+    ]
+  }

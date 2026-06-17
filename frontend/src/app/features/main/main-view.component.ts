@@ -4,11 +4,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { FamilyTree } from '../../core/models/family-tree.model';
 import { TreeSelectionComponent } from '../tree-selection/tree-selection.component';
+import { TreeVisualizationComponent } from '../tree-visualization/tree-visualization.component';
 
 @Component({
   selector: 'app-main-view',
   standalone: true,
-  imports: [MatToolbarModule, MatCardModule, TreeSelectionComponent],
+  imports: [MatToolbarModule, MatCardModule, TreeSelectionComponent, TreeVisualizationComponent],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss',
 })

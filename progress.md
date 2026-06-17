@@ -38,6 +38,16 @@ Tracked in [features/family-tree-selection/progress.md](features/family-tree-sel
 - Unit tests and E2E tests for tree selection flow
 - Redeployed to GitHub Pages at https://avoram.github.io/family-tree-app/
 
+### Milestone 4: Read-only tree visualization
+
+Tracked in [features/tree-visualization/progress.md](features/tree-visualization/progress.md).
+
+- `buildFamilyTreeLayout()` — generation-based hierarchy from flat member list
+- `TreeVisualizationComponent` with expand/collapse, generation navigation, spouse grouping
+- Wired into main view; loads members via `getMembers()`
+- Unit tests and E2E tests for tree visualization
+- Redeployed to GitHub Pages at https://avoram.github.io/family-tree-app/
+
 ---
 
 ## In Progress
@@ -47,13 +57,6 @@ Tracked in [features/family-tree-selection/progress.md](features/family-tree-sel
 ---
 
 ## Pending
-
-### Milestone 4: Read-only tree visualization
-
-- Display family members in a generation-based tree
-- Expand and collapse branches
-- Navigate between generations
-- Unit tests and E2E tests for tree visualization
 
 ### Milestone 5: Member detail panel (read-only)
 

@@ -13,12 +13,14 @@
 
 .tree-area {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: stretch;
   min-height: 16rem;
+  max-height: 75vh;
+  overflow-y: auto;
   border: 1px dashed rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .placeholder-text {

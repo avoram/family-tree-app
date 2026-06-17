@@ -1,0 +1,117 @@
+@if (loading()) {
+  <p class="status-message" role="status">Loading family tree…</p>
+} @else if (loadError()) {
+  <p class="status-message error" role="alert">Unable to load family members.</p>
+} @else if (layout()) {
+  @if (layout()!.roots.length === 0) {
+    <p class="status-message">No family members to display.</p>
+  } @else {
+    <div class="tree-visualization">
+      <div class="tree-toolbar">
+        <mat-form-field appearance="outline" class="generation-select">
+          <mat-label>Jump to generation</mat-label>
+          <mat-select
+            [value]="focusedGeneration()"
+            (selectionChange)="onGenerationChange($event.value)"
+            aria-label="Jump to generation"
+          >
+            <mat-option [value]="null">All generations</mat-option>
+            @for (generation of layout()!.membersByGeneration; track $index) {
+              <mat-option [value]="$index">{{ generationLabel($index) }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <div class="toolbar-actions">
+          <button mat-stroked-button type="button" (click)="expandAll()">Expand all</button>
+          <button mat-stroked-button type="button" (click)="collapseAll()">Collapse all</button>
+        </div>
+      </div>
+
+      <div class="tree-content">
+        @for (generation of layout()!.membersByGeneration; track $index) {
+          <section
+            class="generation-section"
+            [id]="generationSectionId($index)"
+            [attr.aria-label]="generationLabel($index)"
+          >
+            <h3 class="generation-heading">{{ generationLabel($index) }}</h3>
+            <div class="generation-members">
+              @for (member of generation; track trackMember($index, member)) {
+                <button
+                  type="button"
+                  class="member-chip"
+                  [attr.aria-label]="'View details for ' + getMemberDisplayName(member)"
+                  (click)="onMemberClick(member)"
+                >
+                  {{ getMemberDisplayName(member) }}
+                </button>
+              }
+            </div>
+          </section>
+        }
+
+        <section class="tree-branches" aria-label="Family tree branches">
+          <h3 class="generation-heading">Family branches</h3>
+          <ul class="branch-list" role="tree">
+            @for (node of layout()!.roots; track trackNode($index, node)) {
+              <ng-container
+                *ngTemplateOutlet="branchNode; context: { $implicit: node }"
+              />
+            }
+          </ul>
+        </section>
+      </div>
+    </div>
+  }
+}
+
+<ng-template #branchNode let-node>
+  <li class="branch-item" role="treeitem" [attr.aria-expanded]="hasChildren(node) ? isExpanded(node.couple.primary.id) : null">
+    <div class="couple-row">
+      @if (hasChildren(node)) {
+        <button
+          type="button"
+          class="expand-button"
+          [attr.aria-label]="(isExpanded(node.couple.primary.id) ? 'Collapse' : 'Expand') + ' branch for ' + getMemberDisplayName(node.couple.primary)"
+          (click)="toggleExpanded(node.couple.primary.id)"
+        >
+          <mat-icon>{{ isExpanded(node.couple.primary.id) ? 'expand_more' : 'chevron_right' }}</mat-icon>
+        </button>
+      } @else {
+        <span class="expand-spacer" aria-hidden="true"></span>
+      }
+
+      <div class="couple-members">
+        <button
+          type="button"
+          class="member-node"
+          [attr.aria-label]="'View details for ' + getMemberDisplayName(node.couple.primary)"
+          (click)="onMemberClick(node.couple.primary)"
+        >
+          {{ getMemberDisplayName(node.couple.primary) }}
+        </button>
+
+        @if (node.couple.spouse; as spouse) {
+          <span class="spouse-connector" aria-hidden="true">&amp;</span>
+          <button
+            type="button"
+            class="member-node spouse"
+            [attr.aria-label]="'View details for ' + getMemberDisplayName(spouse)"
+            (click)="onMemberClick(spouse)"
+          >
+            {{ getMemberDisplayName(spouse) }}
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (hasChildren(node) && isExpanded(node.couple.primary.id)) {
+      <ul class="branch-list nested" role="group">
+        @for (child of node.children; track trackNode($index, child)) {
+          <ng-container *ngTemplateOutlet="branchNode; context: { $implicit: child }" />
+        }
+      </ul>
+    }
+  </li>
+</ng-template>
