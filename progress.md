@@ -28,19 +28,21 @@ Tracked in [features/family-tree-selection/progress.md](features/family-tree-sel
 - Provider registered in `app.config.ts`
 - Unit tests for validation and service layer
 
----
-
-## In Progress
-
 ### Milestone 3: Family tree dropdown + selection
 
 Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phases B–C).
 
-- [x] `TreeSelectionComponent` with Angular Material dropdown wired to `listFamilyTrees()`
-- [x] Visitor selects a tree; app loads tree data via `getFamilyTree()` and holds `selectedTree` in signals
-- [x] Main view placeholder dropdown replaced; selected tree shown in UI
-- [x] Unit tests and E2E tests for tree selection flow
-- [ ] Redeploy to GitHub Pages (Phase C)
+- `TreeSelectionComponent` with Angular Material dropdown wired to `listFamilyTrees()`
+- Visitor selects a tree; app loads tree data via `getFamilyTree()` and holds `selectedTree` in signals
+- Main view placeholder dropdown replaced; selected tree shown in UI
+- Unit tests and E2E tests for tree selection flow
+- Redeployed to GitHub Pages at https://avoram.github.io/family-tree-app/
+
+---
+
+## In Progress
+
+- None
 
 ---
 

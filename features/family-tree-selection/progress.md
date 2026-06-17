@@ -1,6 +1,6 @@
 # Family Tree Selection — Progress
 
-Tracks Phase A (Milestone 2) and Phase B (Milestone 3) from [developmentplan.md](developmentplan.md).
+Tracks Phases A–C (Milestones 2–3) from [developmentplan.md](developmentplan.md).
 
 Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](../../progress.md) complete.
 
@@ -26,14 +26,16 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 - [x] Unit tests for selection component
 - [x] E2E test: dropdown lists trees and selection works
 
+### Phase C: Deploy
+
+- [x] Build passes; redeploy to GitHub Pages
+- [x] Update [memory.md](memory.md) with deployment URL
+
 ---
 
 ## In Progress
 
-### Phase C: Deploy
-
-- [ ] Build passes; redeploy to GitHub Pages
-- [ ] Update [memory.md](memory.md) with deployment URL
+- None
 
 ---
 

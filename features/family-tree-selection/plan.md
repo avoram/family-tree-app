@@ -27,7 +27,7 @@ First user-facing V1 feature. Visitors discover all bundled family trees via a d
 - [x] Components do not import or parse JSON files directly
 - [x] Unit tests cover service layer, JSON parsing/validation, and dropdown component
 - [x] E2E test covers: app loads → dropdown lists trees → selection loads tree metadata
-- [ ] Feature redeployed to GitHub Pages when complete
+- [x] Feature redeployed to GitHub Pages when complete
 
 ---
 
