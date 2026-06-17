@@ -10,7 +10,7 @@ The purpose of this application is to provide a simple way to visualize and expl
 
 ## How It Works
 
-### Step 1: Open the Application
+### Step 1: Open the Application - https://avoram.github.io/family-tree-app/
 
 Launch the Family Tree App in your browser.
 

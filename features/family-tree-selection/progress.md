@@ -8,7 +8,14 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 
 ## Completed
 
-- None
+### Phase A: Service abstraction (Milestone 2)
+
+- [x] DTO model interfaces in `frontend/src/app/core/models/`
+- [x] `IFamilyTreeService` interface and `FAMILY_TREE_SERVICE` injection token
+- [x] `JsonFamilyTreeService` — discover, load, parse `family-trees/*.tree.json`
+- [x] Domain validation at load time
+- [x] Provider registration in `app.config.ts`
+- [x] Unit tests for service layer and JSON parsing
 
 ---
 
@@ -19,15 +26,6 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 ---
 
 ## Pending
-
-### Phase A: Service abstraction (Milestone 2)
-
-- [ ] DTO model interfaces in `frontend/src/app/core/models/`
-- [ ] `IFamilyTreeService` interface and `FAMILY_TREE_SERVICE` injection token
-- [ ] `JsonFamilyTreeService` — discover, load, parse `family-trees/*.tree.json`
-- [ ] Domain validation at load time
-- [ ] Provider registration in `app.config.ts`
-- [ ] Unit tests for service layer and JSON parsing
 
 ### Phase B: Dropdown + selection (Milestone 3)
 

@@ -35,7 +35,7 @@
                 "input": "public"
               },
               {
-                "glob": "**/*.tree.json",
+                "glob": "*.json",
                 "input": "../family-trees",
                 "output": "/family-trees"
               }
@@ -100,7 +100,7 @@
                 "input": "public"
               },
               {
-                "glob": "**/*.tree.json",
+                "glob": "*.json",
                 "input": "../family-trees",
                 "output": "/family-trees"
               }

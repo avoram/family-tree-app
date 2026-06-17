@@ -18,6 +18,16 @@ Tracked in [features/project-scaffold/progress.md](features/project-scaffold/pro
 - Unit tests and E2E test harness (Playwright)
 - GitHub Pages deployment configured and live at https://avoram.github.io/family-tree-app/
 
+### Milestone 2: Family tree service abstraction
+
+Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phase A).
+
+- DTO models and `IFamilyTreeService` interface with injection token
+- `JsonFamilyTreeService` loads trees via `family-trees/index.json` manifest
+- Domain validation at load time; invalid files skipped
+- Provider registered in `app.config.ts`
+- Unit tests for validation and service layer
+
 ---
 
 ## In Progress
@@ -27,16 +37,6 @@ Tracked in [features/project-scaffold/progress.md](features/project-scaffold/pro
 ---
 
 ## Pending
-
-### Milestone 2: Family tree service abstraction
-
-Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phase A).
-
-- Service interfaces shaped like a future REST API (see `knowledge/architecture/api-contracts.md`)
-- JSON file loader that reads from `family-trees/`
-- Auto-discovery of available `*.tree.json` files
-- Components consume services only — no direct JSON access from UI
-- Unit tests for service layer and JSON parsing
 
 ### Milestone 3: Family tree dropdown + selection
 
