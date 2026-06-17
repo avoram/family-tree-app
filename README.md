@@ -41,3 +41,22 @@ Explore parent-child relationships, family branches, and generational links thro
 The goal of this project is to make family history easy to understand, preserve, and share through a simple visual experience.
 
 This project is also being developed using an AI-assisted development approach to demonstrate how modern AI tools can help plan, build, test, document, and maintain software projects.
+
+---
+
+## Deploying to GitHub Pages
+
+The live app is hosted at **https://avoram.github.io/family-tree-app/**.
+
+Local development (`npm start`) does **not** update the public site. After you change the app or add family tree JSON files under `family-trees/`, redeploy from the `frontend/` folder:
+
+```bash
+cd frontend
+npm run build:gh-pages
+npm run deploy
+```
+
+- `build:gh-pages` — production build with the correct `/family-tree-app/` base path
+- `deploy` — publishes `dist/frontend/browser` to the `gh-pages` branch
+
+**One-time setup** (already done for this repo): GitHub Pages enabled, source branch `gh-pages`, public repository. See [frontend/README.md](frontend/README.md) for more detail.
