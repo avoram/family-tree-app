@@ -6,7 +6,7 @@ Session handoff log for implementation context.
 
 ## Status
 
-**Phase A complete.** Service abstraction (Milestone 2) implemented and tested. Begin Phase B (dropdown + selection).
+**Phase B complete.** Dropdown + selection (Milestone 3) implemented and tested. Begin Phase C (redeploy to GitHub Pages).
 
 ---
 
@@ -15,6 +15,7 @@ Session handoff log for implementation context.
 - Service abstraction is part of this feature (not a separate feature folder).
 - `getMember()` implemented on service in Phase A; first UI consumer is the member-detail feature (Milestone 5).
 - **Tree discovery:** static manifest at `family-trees/index.json` listing `*.tree.json` filenames. New trees require adding the file and updating the manifest entry.
+- **Selection state:** `selectedTree` signal owned by `MainViewComponent` for Milestone 4 tree visualization to consume.
 
 ---
 
@@ -22,8 +23,9 @@ Session handoff log for implementation context.
 
 - Models: `frontend/src/app/core/models/` (DTOs + raw JSON shapes).
 - Validation: `frontend/src/app/core/services/family-tree-validation.ts` — skips invalid files at load time with `console.warn`.
-- Service: `JsonFamilyTreeService` caches loaded trees in memory; `provideHttpClient()` added to `app.config.ts`.
-- `angular.json` asset glob changed to `*.json` so `index.json` is bundled alongside tree files.
+- Service: `JsonFamilyTreeService` caches loaded trees in memory; `provideHttpClient()` in `app.config.ts`.
+- **Tree selection UI:** `frontend/src/app/features/tree-selection/` — `TreeSelectionComponent` loads trees via `toSignal(listFamilyTrees())`, emits `treeSelected` on `getFamilyTree()` success.
+- **Main view:** `selectedTree` signal; tree-area shows `Selected: {name} — {description}` when a tree is chosen.
 
 ---
 
@@ -35,6 +37,6 @@ Session handoff log for implementation context.
 
 ## Next Steps
 
-1. Mark Phase B as In Progress in [progress.md](progress.md).
-2. Implement `TreeSelectionComponent` and wire main view per [developmentplan.md](developmentplan.md).
-3. Redeploy to GitHub Pages after Phase B (Phase C).
+1. Phase C: `npm run build:gh-pages` && `npm run deploy` in `frontend/`.
+2. Move program Milestone 3 to Completed in [progress.md](../../progress.md) after deploy.
+3. Start Milestone 4 — tree visualization feature.

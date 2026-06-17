@@ -17,6 +17,15 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 - [x] Provider registration in `app.config.ts`
 - [x] Unit tests for service layer and JSON parsing
 
+### Phase B: Dropdown + selection (Milestone 3)
+
+- [x] `TreeSelectionComponent` with Angular Material dropdown
+- [x] Wire dropdown to `listFamilyTrees()`
+- [x] Selection calls `getFamilyTree()`; state via signals
+- [x] Replace main view dropdown placeholder
+- [x] Unit tests for selection component
+- [x] E2E test: dropdown lists trees and selection works
+
 ---
 
 ## In Progress
@@ -26,15 +35,6 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 ---
 
 ## Pending
-
-### Phase B: Dropdown + selection (Milestone 3)
-
-- [ ] `TreeSelectionComponent` with Angular Material dropdown
-- [ ] Wire dropdown to `listFamilyTrees()`
-- [ ] Selection calls `getFamilyTree()`; state via signals
-- [ ] Replace main view dropdown placeholder
-- [ ] Unit tests for selection component
-- [ ] E2E test: dropdown lists trees and selection works
 
 ### Phase C: Deploy
 

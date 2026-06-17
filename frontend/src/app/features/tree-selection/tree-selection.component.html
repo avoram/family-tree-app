@@ -1,0 +1,16 @@
+<mat-form-field appearance="outline" class="tree-select">
+  <mat-label>Family tree</mat-label>
+  <mat-select
+    placeholder="Select a family tree"
+    [disabled]="isLoading()"
+    [value]="selectedTreeId()"
+    (selectionChange)="onSelectionChange($event.value)"
+  >
+    @if (trees().length === 0 && !isLoading()) {
+      <mat-option disabled>No family trees available</mat-option>
+    }
+    @for (tree of trees(); track tree.id) {
+      <mat-option [value]="tree.id">{{ tree.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

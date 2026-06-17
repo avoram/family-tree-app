@@ -46,6 +46,7 @@ Tracked in [features/family-tree-selection/progress.md](features/family-tree-sel
 - Visitor selects a tree; application loads that tree's data via the service layer
 - Selected tree held in application state (signals)
 - Unit tests and E2E tests for tree selection flow
+- **Pending:** GitHub Pages redeploy (Phase C)
 
 ### Milestone 4: Read-only tree visualization
 

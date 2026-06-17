@@ -19,14 +19,14 @@ First user-facing V1 feature. Visitors discover all bundled family trees via a d
 
 ## Acceptance Criteria
 
-- [ ] Dropdown is populated from `listFamilyTrees()` — no hardcoded tree list in components
-- [ ] All valid `family-trees/*.tree.json` files appear in the dropdown
-- [ ] Selecting a tree calls `getFamilyTree(treeId)` and holds selection in application state (signals)
-- [ ] Invalid JSON files are skipped without breaking the app
-- [ ] No login screen; all bundled trees are publicly viewable
-- [ ] Components do not import or parse JSON files directly
-- [ ] Unit tests cover service layer, JSON parsing/validation, and dropdown component
-- [ ] E2E test covers: app loads → dropdown lists trees → selection loads tree metadata
+- [x] Dropdown is populated from `listFamilyTrees()` — no hardcoded tree list in components
+- [x] All valid `family-trees/*.tree.json` files appear in the dropdown
+- [x] Selecting a tree calls `getFamilyTree(treeId)` and holds selection in application state (signals)
+- [x] Invalid JSON files are skipped without breaking the app
+- [x] No login screen; all bundled trees are publicly viewable
+- [x] Components do not import or parse JSON files directly
+- [x] Unit tests cover service layer, JSON parsing/validation, and dropdown component
+- [x] E2E test covers: app loads → dropdown lists trees → selection loads tree metadata
 - [ ] Feature redeployed to GitHub Pages when complete
 
 ---
