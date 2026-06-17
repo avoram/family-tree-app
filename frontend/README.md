@@ -18,16 +18,28 @@ Production browser output for this app is `dist/frontend/browser`.
 
 ## GitHub Pages Deployment
 
-Build with the GitHub Pages base href, then publish `dist/frontend/browser` to the `gh-pages` branch:
+**Live URL:** https://avoram.github.io/family-tree-app/
+
+Running `ng serve` only updates your local machine. To publish changes to GitHub Pages (new features, family tree JSON files, fixes), run these two commands from `frontend/`:
 
 ```bash
 npm run build:gh-pages
 npm run deploy
 ```
 
-The app is configured for `https://<username>.github.io/family-tree-app/`.
+| Script | What it does |
+|--------|----------------|
+| `build:gh-pages` | Production build with base href `/family-tree-app/` |
+| `deploy` | Pushes `dist/frontend/browser` to the `gh-pages` branch via `angular-cli-ghpages` |
 
-Ensure GitHub Pages is enabled for this repository (Settings → Pages → deploy from the `gh-pages` branch).
+**Before deploying (recommended):** commit and push source changes to `main`, then run `npm test` and `npm run e2e`.
+
+**One-time repository setup** (already configured):
+
+- Repository is **public** (required for free GitHub Pages)
+- **Settings → Pages → Deploy from branch:** `gh-pages` / root
+
+If deploy fails, ensure you are authenticated with GitHub (`git` / `gh` CLI) and have push access to the repository.
 
 ## Running unit tests
 
