@@ -160,3 +160,43 @@ A feature is considered complete only when:
 - Feature `memory.md` is updated
 - Program progress is updated where applicable
 - Knowledge documents are updated where applicable
+
+---
+
+# Future MCP and AI Agent Integration
+
+As the project matures, AI should not rely solely on documentation. Instead, it should integrate with external engineering tools through MCP servers and AI agents to automatically gather context and keep project documentation synchronized.
+
+The typical flow is:
+
+**Jira → Design → Planning → Development → Review → Delivery**
+
+## 1. Requirement Understanding
+
+- AI reads Jira Epics, Stories, Tasks, and Bugs.
+- AI creates or updates feature-level documentation such as:
+  - `features/<feature>/plan.md`
+  - `features/<feature>/developmentplan.md`
+  - `features/<feature>/progress.md`
+
+## 2. Design Understanding
+
+- AI reads Figma designs and design-system assets.
+- AI documents implementation understanding, component requirements, and UI considerations.
+
+## 3. Development
+
+- AI assists with implementation using project knowledge, architecture standards, and feature documentation.
+- Progress and context are continuously updated at the feature level.
+
+## 4. Code Review & Bug Review
+
+- AI agents review pull requests for coding standards, architecture compliance, quality issues, and potential defects.
+- AI assists in identifying bugs, regressions, and improvement opportunities.
+
+## 5. CI/CD & Delivery
+
+- AI integrates with GitHub/GitLab and CI/CD pipelines.
+- AI assists with pull requests, pipeline analysis, release notes, deployment readiness checks, and delivery tracking.
+
+Throughout the lifecycle, AI should continuously synchronize feature documentation so that project context remains accurate, reusable, and available across future sessions.
