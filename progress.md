@@ -32,21 +32,19 @@ Tracked in [features/family-tree-selection/progress.md](features/family-tree-sel
 
 ## In Progress
 
-- None
+### Milestone 3: Family tree dropdown + selection
+
+Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phases B–C).
+
+- [x] `TreeSelectionComponent` with Angular Material dropdown wired to `listFamilyTrees()`
+- [x] Visitor selects a tree; app loads tree data via `getFamilyTree()` and holds `selectedTree` in signals
+- [x] Main view placeholder dropdown replaced; selected tree shown in UI
+- [x] Unit tests and E2E tests for tree selection flow
+- [ ] Redeploy to GitHub Pages (Phase C)
 
 ---
 
 ## Pending
-
-### Milestone 3: Family tree dropdown + selection
-
-Tracked in [features/family-tree-selection/progress.md](features/family-tree-selection/progress.md) (Phase B).
-
-- Dropdown populated with all discovered family trees (publicly viewable)
-- Visitor selects a tree; application loads that tree's data via the service layer
-- Selected tree held in application state (signals)
-- Unit tests and E2E tests for tree selection flow
-- **Pending:** GitHub Pages redeploy (Phase C)
 
 ### Milestone 4: Read-only tree visualization
 

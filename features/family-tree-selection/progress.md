@@ -30,13 +30,13 @@ Only one phase should be **In Progress** at a time. Prerequisite: [Milestone 1](
 
 ## In Progress
 
-- None
+### Phase C: Deploy
+
+- [ ] Build passes; redeploy to GitHub Pages
+- [ ] Update [memory.md](memory.md) with deployment URL
 
 ---
 
 ## Pending
 
-### Phase C: Deploy
-
-- [ ] Build passes; redeploy to GitHub Pages
-- [ ] Update [memory.md](memory.md) with deployment URL
+- None
