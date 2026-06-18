@@ -14,10 +14,19 @@ Before any implementation, read these files in order:
 1. `.ai/rules/context-management.md`
 2. `.ai/rules/development-workflow.md`
 
+## Step 1b — Migration and modernization projects (required before plan.md)
+
+If the project involves migrating from a legacy frontend to Angular 18:
+
+3. `knowledge/application-landscape.md` — current state, inventory, migration dashboards, technical debt
+4. `knowledge/migration-strategy.md` — migration approach, target architecture, module mapping
+
+Read application landscape first (what exists today), then migration strategy (how to migrate). Greenfield projects may skip this step.
+
 ## Step 2 — Read program context (required)
 
-3. `plan.md` — product scope, roles, milestones
-4. `progress.md` — current milestone status (Completed / In Progress / Pending)
+5. `plan.md` — product scope, roles, milestones
+6. `progress.md` — current milestone status (Completed / In Progress / Pending)
 
 ## Step 3 — Read feature context (when applicable)
 
@@ -34,6 +43,8 @@ Read `knowledge/*` files only when relevant to the current task. Skip empty or u
 
 Relevant examples:
 
+- `knowledge/application-landscape.md` — mandatory for migration projects (read first in Step 1b)
+- `knowledge/migration-strategy.md` — mandatory for migration projects (read second in Step 1b)
 - `knowledge/coding-standards.md` — when writing code
 - `knowledge/api-standards.md` — when building APIs
 - `knowledge/architecture-decisions.md` — when making design choices

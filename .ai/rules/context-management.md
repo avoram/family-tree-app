@@ -27,12 +27,16 @@ Before implementation begins, read in this order:
 
 **Knowledge layer (on demand only — skip empty or unrelated files):**
 
+- `knowledge/application-landscape.md` — **mandatory for migration projects; read first (before `migration-strategy.md`)**
+- `knowledge/migration-strategy.md` — **mandatory for migration projects; read second (before `plan.md`)**
 - `knowledge/coding-standards.md`
 - `knowledge/architecture-decisions.md`
 - `knowledge/api-standards.md`
 - `knowledge/design-system-rules.md`
 - `knowledge/domain-rules.md`
 - `knowledge/security-standards.md`
+
+**Migration and modernization projects** follow the extended startup sequence in `AI_bootstarp.md` (Application Landscape → Migration Strategy → program context → feature context).
 
 Explain understanding before implementation starts.
 
@@ -76,6 +80,7 @@ Update:
 
 Recommend updates to relevant `knowledge/*` files when applicable:
 
+- `application-landscape.md` (migration dashboards and inventory, when applicable)
 - `architecture-decisions.md`
 - `domain-rules.md`
 - `api-standards.md`

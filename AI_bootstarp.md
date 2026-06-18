@@ -36,6 +36,8 @@ project/
 ├── progress.md
 │
 ├── knowledge/
+│   ├── application-landscape.md  # Mandatory for migration/modernization projects (read first)
+│   ├── migration-strategy.md     # Mandatory for migration/modernization projects (read second)
 │   ├── coding-standards.md
 │   ├── architecture-decisions.md
 │   ├── api-standards.md
@@ -96,22 +98,71 @@ Whenever a new task or feature begins:
 
 5. Explain understanding before implementation.
 
-6. Update `developmentplan.md` if implementation details change.
+---
 
-7. Implement incrementally — one milestone from `progress.md` at a time.
+# Migration and Modernization Projects
 
-8. Generate:
+For projects migrating from a legacy frontend (AngularJS, ExtJS, jQuery, etc.) to Angular 18, follow this **extended startup sequence** instead of the default workflow above.
+
+| Document | Source of truth for |
+|----------|---------------------|
+| `knowledge/application-landscape.md` | **Current state** — inventory, technology distribution, migration progress |
+| `knowledge/migration-strategy.md` | **Migration approach** — Strangler Fig pattern, constraints, module mapping |
+
+Both documents are part of the Knowledge Layer and are **mandatory reading** before program or feature documentation.
+
+## Startup sequence
+
+1. **Read application landscape** (required — first)
+   - `knowledge/application-landscape.md`
+   - Understand module inventory, technology distribution, migration dashboards, and technical debt hotspots
+
+2. **Read migration strategy** (required — second)
+   - `knowledge/migration-strategy.md`
+   - Understand target architecture, Strangler Fig approach, constraints, and module mapping
+
+3. **Review program context** (required)
+   - `plan.md`
+   - `progress.md`
+
+4. **Review feature context** (when applicable)
+   - `features/<feature>/plan.md`
+   - `features/<feature>/developmentplan.md`
+   - `features/<feature>/progress.md`
+   - `features/<feature>/memory.md`
+
+5. **Review additional knowledge layer** (on demand — skip empty or unrelated files)
+   - `knowledge/coding-standards.md`
+   - `knowledge/architecture-decisions.md`
+   - `knowledge/architecture/api-contracts.md`
+   - Other `knowledge/*` files as relevant to the task
+
+6. Begin implementation planning — explain understanding and assumptions before writing code.
+
+Greenfield projects (no legacy frontend) may skip steps 1–2 and follow the default AI Workflow above.
+
+---
+
+# Implementation Workflow
+
+After onboarding (default or migration startup sequence):
+
+1. Update `developmentplan.md` if implementation details change.
+
+2. Implement incrementally — one milestone from `progress.md` at a time.
+
+3. Generate:
    - Unit tests
    - Integration tests
    - Implementation code
    - End-to-end tests
 
-9. Validate:
+4. Validate:
    - Test execution
    - Architecture compliance
    - Coding standards compliance
 
-10. Update documentation before ending the session.
+5. Update documentation before ending the session.
 
 ---
 
@@ -159,7 +210,7 @@ A feature is considered complete only when:
 - `progress.md` is updated
 - Feature `memory.md` is updated
 - Program progress is updated where applicable
-- Knowledge documents are updated where applicable
+- Knowledge documents are updated where applicable (including `application-landscape.md` migration dashboards when applicable)
 
 ---
 

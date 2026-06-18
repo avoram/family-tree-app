@@ -13,6 +13,15 @@ Read in this order:
 5. `features/<feature>/` docs — only when working on that feature
 6. `knowledge/*` — only when relevant to the current task (skip empty files)
 
+### Migration and modernization projects
+
+For legacy-to-Angular 18 migrations, read in order:
+
+1. `knowledge/application-landscape.md` — current state and migration progress
+2. `knowledge/migration-strategy.md` — migration approach and module mapping
+
+Then read `plan.md` and `progress.md`. See the full startup sequence in `AI_bootstarp.md`.
+
 ## Key rules
 
 - Explain understanding before writing code
