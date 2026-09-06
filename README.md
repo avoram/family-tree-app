@@ -48,7 +48,7 @@ This project is also being developed using an AI-assisted development approach t
 
 The live app is hosted at **https://avoram.github.io/family-tree-app/**.
 
-Local development (`npm start`) does **not** update the public site. After you change the app or add family tree JSON files under `family-trees/`, redeploy from the `frontend/` folder:
+Local development (`npm start`) does **not** update the public site. After you change the app, add family tree JSON files under `family-trees/`, or add member photos under `frontend/public/photos/<treeId>/`, redeploy from the `frontend/` folder:
 
 ```bash
 cd frontend
@@ -58,5 +58,11 @@ npm run deploy
 
 - `build:gh-pages` — production build with the correct `/family-tree-app/` base path
 - `deploy` — publishes `dist/frontend/browser` to the `gh-pages` branch
+
+### Member photos
+
+Add photos under `frontend/public/photos/<treeId>/<memberId>.jpg` (or `.png`, `.jpeg`, `.webp`). The file name must match the member's `id` in the tree JSON. See [frontend/public/photos/README.md](frontend/public/photos/README.md).
+
+After adding or changing photos locally, **restart** `npm start` so the dev server picks up new files.
 
 **One-time setup** (already done for this repo): GitHub Pages enabled, source branch `gh-pages`, public repository. See [frontend/README.md](frontend/README.md) for more detail.

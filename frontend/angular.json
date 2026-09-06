@@ -35,6 +35,11 @@
                 "input": "public"
               },
               {
+                "glob": "**/*",
+                "input": "public/photos",
+                "output": "/photos"
+              },
+              {
                 "glob": "*.json",
                 "input": "../family-trees",
                 "output": "/family-trees"
@@ -98,6 +103,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "public/photos",
+                "output": "/photos"
               },
               {
                 "glob": "*.json",

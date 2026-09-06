@@ -48,6 +48,15 @@ Tracked in [features/tree-visualization/progress.md](features/tree-visualization
 - Unit tests and E2E tests for tree visualization
 - Redeployed to GitHub Pages at https://avoram.github.io/family-tree-app/
 
+### Milestone 5: Member detail panel (read-only)
+
+Tracked in [features/member-detail/](features/member-detail/).
+
+- Click a tree node to open member details (side panel on desktop, stacked on mobile)
+- Show name, gender, date of birth, notes, and relationship summary
+- Convention-based photos under `frontend/public/photos/<treeId>/<memberId>.<ext>` (no JSON field)
+- Empty placeholder when no matching photo file exists
+
 ---
 
 ## In Progress
@@ -57,12 +66,6 @@ Tracked in [features/tree-visualization/progress.md](features/tree-visualization
 ---
 
 ## Pending
-
-### Milestone 5: Member detail panel (read-only)
-
-- Click a tree node to view member details
-- Show name, gender, date of birth, notes, and relationship summary
-- Unit tests and E2E tests for detail panel
 
 ### Milestone 6: V1 release hardening
 

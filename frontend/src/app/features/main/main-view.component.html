@@ -9,11 +9,25 @@
     </mat-card-content>
   </mat-card>
 
-  <section class="tree-area" aria-label="Family tree visualization">
-    @if (selectedTree(); as tree) {
-      <app-tree-visualization [tree]="tree" />
-    } @else {
+  @if (selectedTree(); as tree) {
+    <div class="content-grid" [class.has-detail]="selectedMemberId()">
+      <section class="tree-area" aria-label="Family tree visualization">
+        <app-tree-visualization [tree]="tree" (memberSelected)="onMemberSelected($event)" />
+      </section>
+
+      @if (selectedMemberId(); as memberId) {
+        <aside class="detail-area" aria-label="Member details">
+          <app-member-detail
+            [treeId]="tree.id"
+            [memberId]="memberId"
+            (closed)="onMemberDetailClosed()"
+          />
+        </aside>
+      }
+    </div>
+  } @else {
+    <section class="tree-area tree-area--empty" aria-label="Family tree visualization">
       <p class="placeholder-text">Tree visualization will appear here.</p>
-    }
-  </section>
+    </section>
+  }
 </main>
