@@ -6,21 +6,23 @@ Every family has a story. Over time, it becomes difficult to remember how differ
 
 The purpose of this application is to provide a simple way to visualize and explore a family hierarchy. It helps family members understand their roots, discover relationships across generations, and preserve family history in a structured and easy-to-understand format.
 
+**Live app:** https://avoram.github.io/family-tree-app/
+
 ---
 
 ## How It Works
 
-### Step 1: Open the Application - https://avoram.github.io/family-tree-app/
+### Step 1: Open the Application
 
-Launch the Family Tree App in your browser.
+Launch the Family Tree App: https://avoram.github.io/family-tree-app/
 
 ### Step 2: Select a Family
 
-Choose a family from the available list.
+Choose a family from the dropdown (**Ojha Family**, **Jani Family**, or **Vora Family**).
 
 ### Step 3: View the Family Tree
 
-The application displays the family hierarchy in a visual tree format.
+The application displays the family hierarchy in a visual tree format (expand / collapse branches).
 
 ### Step 4: Explore Generations
 
@@ -28,15 +30,29 @@ Navigate through different generations and understand how family members are con
 
 ### Step 5: Search for a Member
 
-Use the search box above the tree to find someone by first name, last name, or full name. Matches are highlighted and listed; click a result to open their details.
+Use the **Search members** box above the tree to find someone by first name, last name, or full name (case-insensitive). Matching people are listed as chips and highlighted in the tree; branches expand automatically so matches are visible. Click a match to open details.
 
 ### Step 6: View Family Member Details
 
-Select a family member to see additional information, relationships, and photo (when configured in JSON).
+Select a family member (from the tree or search results) to see name, gender, date of birth, notes, relationships, and photo (when `photoUrl` is set in JSON).
 
 ### Step 7: Understand Family Connections
 
 Explore parent-child relationships, family branches, and generational links through the visual tree.
+
+---
+
+## Current features (V1)
+
+| Feature | Status |
+|---------|--------|
+| Public read-only app (no login) | Done |
+| Family tree dropdown (Ojha, Jani, Vora) | Done |
+| Interactive tree (expand / collapse) | Done |
+| Member search by name | Done |
+| Member detail panel (responsive) | Done |
+| Photos linked via JSON `photoUrl` | Done |
+| GitHub Pages hosting | Done |
 
 ---
 
@@ -63,8 +79,9 @@ Flow:
 1. App reads `family-trees/index.json`
 2. Loads each listed `*.tree.json` file
 3. Shows families in the dropdown
-4. Detail panel reads member fields from that JSON
-5. If the member has `"photoUrl"`, the app loads that image from the photos folder
+4. Tree view and search use the loaded members
+5. Detail panel reads member fields from that JSON
+6. If the member has `"photoUrl"`, the app loads that image from the photos folder
 
 ### Current trees
 
@@ -85,7 +102,7 @@ JSON is the **single place** to configure member data and photo links.
 | Field | Purpose |
 |-------|---------|
 | `id` | Unique id within the tree |
-| `firstName`, `lastName` | Display name |
+| `firstName`, `lastName` | Display name (also used by search) |
 | `gender` | `"male"` / `"female"` or `null` |
 | `dateOfBirth` | `"YYYY-MM-DD"` or `null` |
 | `fatherId`, `motherId`, `spouseId` | Other member `id`s, or `null` |
@@ -206,3 +223,12 @@ npm run deploy
 - `deploy` — publishes `dist/frontend/browser` to the `gh-pages` branch
 
 **One-time setup** (already done for this repo): GitHub Pages enabled, source branch `gh-pages`, public repository. See [frontend/README.md](frontend/README.md) for more detail.
+
+---
+
+## Project status
+
+Implementation progress is tracked in [progress.md](progress.md). Feature notes:
+
+- [Member detail](features/member-detail/progress.md)
+- [Member search](features/member-search/progress.md)

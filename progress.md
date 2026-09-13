@@ -4,6 +4,8 @@ Tracks implementation milestones defined in [plan.md](plan.md).
 
 Move items between sections as work completes. Only one milestone should be **In Progress** at a time.
 
+**Live URL:** https://avoram.github.io/family-tree-app/
+
 ---
 
 ## Completed
@@ -36,33 +38,45 @@ Tracked in [features/family-tree-selection/progress.md](features/family-tree-sel
 - Visitor selects a tree; app loads tree data via `getFamilyTree()` and holds `selectedTree` in signals
 - Main view placeholder dropdown replaced; selected tree shown in UI
 - Unit tests and E2E tests for tree selection flow
-- Redeployed to GitHub Pages at https://avoram.github.io/family-tree-app/
+- Redeployed to GitHub Pages
 
 ### Milestone 4: Read-only tree visualization
 
 Tracked in [features/tree-visualization/progress.md](features/tree-visualization/progress.md).
 
 - `buildFamilyTreeLayout()` — generation-based hierarchy from flat member list
-- `TreeVisualizationComponent` with expand/collapse, generation navigation, spouse grouping
+- `TreeVisualizationComponent` with expand/collapse and spouse grouping
 - Wired into main view; loads members via `getMembers()`
 - Unit tests and E2E tests for tree visualization
-- Redeployed to GitHub Pages at https://avoram.github.io/family-tree-app/
+- Redeployed to GitHub Pages
 
 ### Milestone 5: Member detail panel (read-only)
 
-Tracked in [features/member-detail/](features/member-detail/).
+Tracked in [features/member-detail/progress.md](features/member-detail/progress.md).
 
 - Click a tree node to open member details (side panel on desktop, stacked on mobile)
 - Show name, gender, date of birth, notes, and relationship summary
-- Convention-based photos under `frontend/public/photos/<treeId>/<memberId>.<ext>` (no JSON field)
-- Empty placeholder when no matching photo file exists
+- Photos linked via JSON `photoUrl` (e.g. `"photos/vora/mayank.jpg"`)
+- Empty placeholder when `photoUrl` is missing or the image file is not found
+- Redeployed to GitHub Pages
 
 ### Member search (within selected tree)
 
+Tracked in [features/member-search/progress.md](features/member-search/progress.md).
+
 - Search box on the tree view filters by first name, last name, or full name
-- Matching members are listed and highlighted in the tree
+- Matching members are listed as chips and highlighted in the tree
 - Branches auto-expand so matches are visible
 - Click a match to open the member detail panel
+- Redeployed to GitHub Pages
+
+### Sample family data (current)
+
+- **Ojha Family** — `family-trees/ojha.tree.json` / `frontend/public/photos/ojha/`
+- **Jani Family** — `family-trees/jani.tree.json` / `frontend/public/photos/jani/`
+- **Vora Family** — `family-trees/vora.tree.json` / `frontend/public/photos/vora/`
+- Old sample trees (Family One / Patel / typo `vorafamiliy`) removed
+- Asset serving fixed so `*.tree.json` files are included in the build
 
 ---
 
@@ -76,6 +90,6 @@ Tracked in [features/member-detail/](features/member-detail/).
 
 ### Milestone 6: V1 release hardening
 
-- Mobile-friendly layout verification
-- Full test suite passing
-- Knowledge docs and feature documentation synced
+- Full test suite passing (unit + E2E coverage for search / detail gaps)
+- Final knowledge / feature documentation sync pass
+- Optional: further mobile polish verification

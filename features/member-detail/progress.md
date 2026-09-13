@@ -7,10 +7,11 @@ Tracks Milestone 5 from [plan.md](../../plan.md).
 ## Completed
 
 - `MemberDetailComponent` — loads member via `getMember()`, shows profile and relationships
-- Convention-based photos: `frontend/public/photos/<treeId>/<memberId>.<ext>`
-- Photo placeholder when no file exists; tries jpg, jpeg, png, webp in order
+- Photos via JSON `photoUrl` (e.g. `photos/vora/mayank.jpg`)
+- Photo placeholder when `photoUrl` is missing or the file cannot be loaded
 - Wired `memberSelected` from tree visualization into responsive main view layout
-- Sample photo: `frontend/public/photos/family1/m1.png`
+- Sample photo: `frontend/public/photos/vora/mayank.jpg` (linked from Vora JSON)
+- Redeployed to GitHub Pages
 
 ---
 
@@ -22,5 +23,4 @@ Tracks Milestone 5 from [plan.md](../../plan.md).
 
 ## Pending
 
-- Unit tests and E2E tests (deferred)
-- Redeploy to GitHub Pages
+- Unit tests and E2E tests for detail panel (deferred)

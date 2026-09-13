@@ -97,6 +97,7 @@ File naming convention: `*.tree.json`. Each file contains one complete family tr
 2. Family tree visualization (read-only)
 3. Family member detail view (read-only)
 4. Service abstraction layer for data access (JSON-backed, API-ready)
+5. Member search by name within the selected tree
 
 ## Feature index
 
@@ -104,10 +105,11 @@ Product features are documented under `features/`. Service abstraction (item 4 a
 
 | Feature | Folder | Milestones | Status |
 |---------|--------|------------|--------|
-| Project scaffold | [features/project-scaffold/](features/project-scaffold/) | 1 | Planned |
-| Family tree selection | [features/family-tree-selection/](features/family-tree-selection/) | 2, 3 | Planned |
+| Project scaffold | [features/project-scaffold/](features/project-scaffold/) | 1 | Complete |
+| Family tree selection | [features/family-tree-selection/](features/family-tree-selection/) | 2, 3 | Complete |
 | Tree visualization | [features/tree-visualization/](features/tree-visualization/) | 4 | Complete |
-| Member detail | `features/member-detail/` | 5 | Pending |
+| Member detail | [features/member-detail/](features/member-detail/) | 5 | Complete |
+| Member search | [features/member-search/](features/member-search/) | — | Complete |
 
 Milestone 6 (release hardening) is tracked in [progress.md](progress.md) only.
 
