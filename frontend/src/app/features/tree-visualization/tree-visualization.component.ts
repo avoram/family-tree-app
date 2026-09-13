@@ -1,6 +1,7 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
+  computed,
   effect,
   inject,
   input,
@@ -8,7 +9,9 @@ import {
   signal,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { catchError, of } from 'rxjs';
 
 import { FamilyMemberSummary } from '../../core/models/family-member-summary.model';
@@ -18,14 +21,22 @@ import {
   collectNodeIds,
   FamilyTreeLayout,
   FamilyTreeLayoutNode,
+  findExpandIdsForMember,
   getMemberDisplayName,
+  memberMatchesQuery,
 } from '../../core/services/family-tree-layout';
 import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 
 @Component({
   selector: 'app-tree-visualization',
   standalone: true,
-  imports: [NgTemplateOutlet, MatButtonModule, MatIconModule],
+  imports: [
+    NgTemplateOutlet,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+  ],
   templateUrl: './tree-visualization.component.html',
   styleUrl: './tree-visualization.component.scss',
 })
@@ -36,9 +47,26 @@ export class TreeVisualizationComponent {
   readonly memberSelected = output<FamilyMemberSummary>();
 
   readonly layout = signal<FamilyTreeLayout | null>(null);
+  readonly members = signal<FamilyMemberSummary[]>([]);
   readonly loading = signal(false);
   readonly loadError = signal(false);
   readonly expandedNodeIds = signal<Set<string>>(new Set());
+  readonly searchQuery = signal('');
+
+  readonly matchedMembers = computed(() => {
+    const query = this.searchQuery();
+    const allMembers = this.members();
+
+    if (!query.trim()) {
+      return [] as FamilyMemberSummary[];
+    }
+
+    return allMembers.filter((member) => memberMatchesQuery(member, query));
+  });
+
+  readonly matchedMemberIds = computed(() => new Set(this.matchedMembers().map((member) => member.id)));
+
+  readonly hasActiveSearch = computed(() => this.searchQuery().trim().length > 0);
 
   protected readonly getMemberDisplayName = getMemberDisplayName;
 
@@ -49,6 +77,8 @@ export class TreeVisualizationComponent {
         this.loading.set(true);
         this.loadError.set(false);
         this.layout.set(null);
+        this.members.set([]);
+        this.searchQuery.set('');
 
         const subscription = this.familyTreeService
           .getMembers(tree.id)
@@ -59,9 +89,10 @@ export class TreeVisualizationComponent {
               return of([] as FamilyMemberSummary[]);
             }),
           )
-          .subscribe((members) => {
-            const builtLayout = buildFamilyTreeLayout(members);
+          .subscribe((loadedMembers) => {
+            const builtLayout = buildFamilyTreeLayout(loadedMembers);
             this.layout.set(builtLayout);
+            this.members.set(loadedMembers);
             // Start collapsed: only the founding couples are visible until expanded.
             this.expandedNodeIds.set(new Set());
             this.loading.set(false);
@@ -71,10 +102,43 @@ export class TreeVisualizationComponent {
       },
       { allowSignalWrites: true },
     );
+
+    effect(() => {
+      const layout = this.layout();
+      const matches = this.matchedMembers();
+
+      if (!layout || matches.length === 0) {
+        return;
+      }
+
+      const expandIds = new Set<string>();
+
+      for (const member of matches) {
+        for (const id of findExpandIdsForMember(layout.roots, member.id)) {
+          expandIds.add(id);
+        }
+      }
+
+      if (expandIds.size > 0) {
+        this.expandedNodeIds.update((current) => new Set([...current, ...expandIds]));
+      }
+    }, { allowSignalWrites: true });
   }
 
   isExpanded(nodeId: string): boolean {
     return this.expandedNodeIds().has(nodeId);
+  }
+
+  isSearchMatch(memberId: string): boolean {
+    return this.matchedMemberIds().has(memberId);
+  }
+
+  onSearchInput(value: string): void {
+    this.searchQuery.set(value);
+  }
+
+  clearSearch(): void {
+    this.searchQuery.set('');
   }
 
   toggleExpanded(nodeId: string): void {
@@ -140,5 +204,9 @@ export class TreeVisualizationComponent {
 
   trackNode(_index: number, node: FamilyTreeLayoutNode): string {
     return node.couple.primary.id;
+  }
+
+  trackMember(_index: number, member: FamilyMemberSummary): string {
+    return member.id;
   }
 }

@@ -166,3 +166,61 @@ export function collectNodeIds(nodes: FamilyTreeLayoutNode[]): string[] {
 
   return ids;
 }
+
+/**
+ * Returns primary-node ids that must be expanded so `memberId` becomes visible
+ * under the tree (ancestors along the path from a root to that member).
+ */
+export function findExpandIdsForMember(
+  roots: FamilyTreeLayoutNode[],
+  memberId: string,
+): string[] {
+  const path: string[] = [];
+
+  const visit = (node: FamilyTreeLayoutNode, ancestors: string[]): boolean => {
+    const primaryId = node.couple.primary.id;
+    const spouseId = node.couple.spouse?.id;
+    const matches = primaryId === memberId || spouseId === memberId;
+
+    if (matches) {
+      path.push(...ancestors);
+      return true;
+    }
+
+    const nextAncestors = [...ancestors, primaryId];
+
+    for (const child of node.children) {
+      if (visit(child, nextAncestors)) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  for (const root of roots) {
+    if (visit(root, [])) {
+      break;
+    }
+  }
+
+  return path;
+}
+
+export function memberMatchesQuery(member: FamilyMemberSummary, query: string): boolean {
+  const normalized = query.trim().toLowerCase();
+
+  if (!normalized) {
+    return false;
+  }
+
+  const fullName = getMemberDisplayName(member).toLowerCase();
+  const firstName = member.firstName.toLowerCase();
+  const lastName = member.lastName.toLowerCase();
+
+  return (
+    fullName.includes(normalized) ||
+    firstName.includes(normalized) ||
+    lastName.includes(normalized)
+  );
+}

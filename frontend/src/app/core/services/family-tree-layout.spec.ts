@@ -2,7 +2,9 @@ import { FamilyMemberSummary } from '../models/family-member-summary.model';
 import {
   buildFamilyTreeLayout,
   collectNodeIds,
+  findExpandIdsForMember,
   getMemberDisplayName,
+  memberMatchesQuery,
 } from './family-tree-layout';
 
 const family1Members: FamilyMemberSummary[] = [
@@ -85,6 +87,26 @@ describe('family-tree-layout', () => {
   describe('getMemberDisplayName', () => {
     it('formats first and last name', () => {
       expect(getMemberDisplayName(family1Members[0])).toBe('John Smith');
+    });
+  });
+
+  describe('memberMatchesQuery', () => {
+    it('matches first name, last name, or full name (case-insensitive)', () => {
+      expect(memberMatchesQuery(family1Members[0], 'john')).toBe(true);
+      expect(memberMatchesQuery(family1Members[0], 'SMITH')).toBe(true);
+      expect(memberMatchesQuery(family1Members[0], 'John Smith')).toBe(true);
+      expect(memberMatchesQuery(family1Members[0], 'jane')).toBe(false);
+      expect(memberMatchesQuery(family1Members[0], '   ')).toBe(false);
+    });
+  });
+
+  describe('findExpandIdsForMember', () => {
+    it('returns ancestor primary ids needed to reveal a nested member', () => {
+      const layout = buildFamilyTreeLayout(family2Members);
+
+      expect(findExpandIdsForMember(layout.roots, 'c1')).toEqual(['g1', 'p1']);
+      expect(findExpandIdsForMember(layout.roots, 'g1')).toEqual([]);
+      expect(findExpandIdsForMember(layout.roots, 'g2')).toEqual([]);
     });
   });
 

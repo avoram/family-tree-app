@@ -26,11 +26,15 @@ The application displays the family hierarchy in a visual tree format.
 
 Navigate through different generations and understand how family members are connected.
 
-### Step 5: View Family Member Details
+### Step 5: Search for a Member
+
+Use the search box above the tree to find someone by first name, last name, or full name. Matches are highlighted and listed; click a result to open their details.
+
+### Step 6: View Family Member Details
 
 Select a family member to see additional information, relationships, and photo (when configured in JSON).
 
-### Step 6: Understand Family Connections
+### Step 7: Understand Family Connections
 
 Explore parent-child relationships, family branches, and generational links through the visual tree.
 

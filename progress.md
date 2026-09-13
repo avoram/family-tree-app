@@ -57,6 +57,13 @@ Tracked in [features/member-detail/](features/member-detail/).
 - Convention-based photos under `frontend/public/photos/<treeId>/<memberId>.<ext>` (no JSON field)
 - Empty placeholder when no matching photo file exists
 
+### Member search (within selected tree)
+
+- Search box on the tree view filters by first name, last name, or full name
+- Matching members are listed and highlighted in the tree
+- Branches auto-expand so matches are visible
+- Click a match to open the member detail panel
+
 ---
 
 ## In Progress

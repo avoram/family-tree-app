@@ -8,6 +8,30 @@
   } @else {
     <div class="tree-visualization">
       <div class="tree-toolbar">
+        <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+          <mat-label>Search members</mat-label>
+          <mat-icon matPrefix>search</mat-icon>
+          <input
+            matInput
+            type="search"
+            [value]="searchQuery()"
+            (input)="onSearchInput($any($event.target).value)"
+            placeholder="Type a name…"
+            aria-label="Search members in this family tree"
+          />
+          @if (hasActiveSearch()) {
+            <button
+              matSuffix
+              mat-icon-button
+              type="button"
+              aria-label="Clear search"
+              (click)="clearSearch()"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          }
+        </mat-form-field>
+
         <div class="toolbar-actions">
           <button mat-stroked-button type="button" (click)="expandAll()">
             <mat-icon>unfold_more</mat-icon>
@@ -19,6 +43,31 @@
           </button>
         </div>
       </div>
+
+      @if (hasActiveSearch()) {
+        <div class="search-results" role="status">
+          @if (matchedMembers().length === 0) {
+            <p class="search-status">No members match “{{ searchQuery().trim() }}”.</p>
+          } @else {
+            <p class="search-status">
+              {{ matchedMembers().length }}
+              {{ matchedMembers().length === 1 ? 'match' : 'matches' }}
+            </p>
+            <div class="search-chips">
+              @for (member of matchedMembers(); track trackMember($index, member)) {
+                <button
+                  type="button"
+                  class="search-chip"
+                  [attr.aria-label]="'View details for ' + getMemberDisplayName(member)"
+                  (click)="onMemberClick(member)"
+                >
+                  {{ getMemberDisplayName(member) }}
+                </button>
+              }
+            </div>
+          }
+        </div>
+      }
 
       <div class="tree-scroll">
         <div class="org-tree">
@@ -88,6 +137,7 @@
     type="button"
     class="person"
     [class.spouse]="isSpouse"
+    [class.search-match]="isSearchMatch(member.id)"
     [attr.data-gender]="genderClass(member)"
     [attr.aria-label]="'View details for ' + getMemberDisplayName(member)"
     (click)="onMemberClick(member)"
