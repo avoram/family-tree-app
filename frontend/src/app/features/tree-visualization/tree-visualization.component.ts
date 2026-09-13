@@ -8,9 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
 import { catchError, of } from 'rxjs';
 
 import { FamilyMemberSummary } from '../../core/models/family-member-summary.model';
@@ -27,7 +25,7 @@ import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 @Component({
   selector: 'app-tree-visualization',
   standalone: true,
-  imports: [NgTemplateOutlet, MatButtonModule, MatFormFieldModule, MatIconModule, MatSelectModule],
+  imports: [NgTemplateOutlet, MatButtonModule, MatIconModule],
   templateUrl: './tree-visualization.component.html',
   styleUrl: './tree-visualization.component.scss',
 })
@@ -41,7 +39,6 @@ export class TreeVisualizationComponent {
   readonly loading = signal(false);
   readonly loadError = signal(false);
   readonly expandedNodeIds = signal<Set<string>>(new Set());
-  readonly focusedGeneration = signal<number | null>(null);
 
   protected readonly getMemberDisplayName = getMemberDisplayName;
 
@@ -65,7 +62,8 @@ export class TreeVisualizationComponent {
           .subscribe((members) => {
             const builtLayout = buildFamilyTreeLayout(members);
             this.layout.set(builtLayout);
-            this.expandedNodeIds.set(new Set(collectNodeIds(builtLayout.roots)));
+            // Start collapsed: only the founding couples are visible until expanded.
+            this.expandedNodeIds.set(new Set());
             this.loading.set(false);
           });
 
@@ -109,35 +107,38 @@ export class TreeVisualizationComponent {
     this.memberSelected.emit(member);
   }
 
-  onGenerationChange(generation: number | null): void {
-    this.focusedGeneration.set(generation);
-
-    if (generation === null) {
-      return;
-    }
-
-    const section = document.getElementById(this.generationSectionId(generation));
-
-    section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  generationSectionId(generation: number): string {
-    return `generation-section-${this.tree().id}-${generation}`;
-  }
-
-  generationLabel(generation: number): string {
-    return `Generation ${generation + 1}`;
-  }
-
   hasChildren(node: FamilyTreeLayoutNode): boolean {
     return node.children.length > 0;
   }
 
-  trackNode(_index: number, node: FamilyTreeLayoutNode): string {
-    return node.couple.primary.id;
+  /** Count of direct child couples, shown on the expand toggle. */
+  childCount(node: FamilyTreeLayoutNode): number {
+    return node.children.length;
   }
 
-  trackMember(_index: number, member: FamilyMemberSummary): string {
-    return member.id;
+  birthYear(member: FamilyMemberSummary): string | null {
+    return member.dateOfBirth ? member.dateOfBirth.slice(0, 4) : null;
+  }
+
+  initial(member: FamilyMemberSummary): string {
+    return (member.firstName?.trim()?.[0] ?? '?').toUpperCase();
+  }
+
+  genderClass(member: FamilyMemberSummary): 'male' | 'female' | 'unknown' {
+    const gender = member.gender?.toLowerCase();
+
+    if (gender === 'male') {
+      return 'male';
+    }
+
+    if (gender === 'female') {
+      return 'female';
+    }
+
+    return 'unknown';
+  }
+
+  trackNode(_index: number, node: FamilyTreeLayoutNode): string {
+    return node.couple.primary.id;
   }
 }

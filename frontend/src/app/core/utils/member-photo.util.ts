@@ -1,15 +1,16 @@
-/** Supported photo file extensions (checked in order). */
+/**
+ * Helper for documenting the photos folder layout.
+ * Runtime photo paths come from each member's `photoUrl` field in the tree JSON.
+ */
 export const MEMBER_PHOTO_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'] as const;
 
 export type MemberPhotoExtension = (typeof MEMBER_PHOTO_EXTENSIONS)[number];
 
 /**
- * Convention-based member photo path (no JSON field required).
+ * Suggested path when adding a photo file + JSON link.
  *
- * Place files under `frontend/public/photos/<treeId>/<memberId>.<ext>`
- * e.g. `photos/family1/m1.jpg`
- *
- * Relative URL — resolves against the document `<base href>` (local `/` or GitHub Pages `/family-tree-app/`).
+ * 1. Save file under `frontend/public/photos/<treeId>/<memberId>.<ext>`
+ * 2. Set member `"photoUrl": "photos/<treeId>/<memberId>.<ext>"` in the tree JSON
  */
 export function getMemberPhotoUrl(
   treeId: string,

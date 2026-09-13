@@ -7,17 +7,17 @@ import { FamilyTree } from '../../core/models/family-tree.model';
 import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 import { TreeVisualizationComponent } from './tree-visualization.component';
 
-const patelTree: FamilyTree = {
-  id: 'family2',
-  name: 'Patel Family',
+const janiTree: FamilyTree = {
+  id: 'jani',
+  name: 'Jani Family',
   description: 'Three-generation example family tree',
 };
 
-const patelMembers = [
+const janiMembers = [
   {
     id: 'g1',
     firstName: 'Ramesh',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'male',
     dateOfBirth: '1940-01-10',
     fatherId: null,
@@ -27,7 +27,7 @@ const patelMembers = [
   {
     id: 'g2',
     firstName: 'Lakshmi',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'female',
     dateOfBirth: '1945-06-22',
     fatherId: null,
@@ -37,7 +37,7 @@ const patelMembers = [
   {
     id: 'p1',
     firstName: 'Arun',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'male',
     dateOfBirth: '1970-04-05',
     fatherId: 'g1',
@@ -47,7 +47,7 @@ const patelMembers = [
   {
     id: 'p2',
     firstName: 'Priya',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'female',
     dateOfBirth: '1972-09-18',
     fatherId: null,
@@ -57,7 +57,7 @@ const patelMembers = [
   {
     id: 'c1',
     firstName: 'Anika',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'female',
     dateOfBirth: '2000-12-01',
     fatherId: 'p1',
@@ -69,8 +69,8 @@ const patelMembers = [
 function createMockService(overrides: Partial<Record<string, unknown>> = {}) {
   return {
     listFamilyTrees: () => of([]),
-    getFamilyTree: () => of(patelTree),
-    getMembers: () => of(patelMembers),
+    getFamilyTree: () => of(janiTree),
+    getMembers: () => of(janiMembers),
     getMember: () => throwError(() => new Error('not used')),
     ...overrides,
   };
@@ -91,7 +91,7 @@ describe('TreeVisualizationComponent', () => {
 
     fixture = TestBed.createComponent(TreeVisualizationComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('tree', patelTree);
+    fixture.componentRef.setInput('tree', janiTree);
     fixture.detectChanges();
   });
 
@@ -105,10 +105,11 @@ describe('TreeVisualizationComponent', () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.textContent).toContain('Ramesh Patel');
-    expect(compiled.textContent).toContain('Anika Patel');
-    expect(compiled.textContent).toContain('Generation 1');
-    expect(compiled.textContent).toContain('Generation 3');
+    expect(compiled.textContent).toContain('Pravin Jani');
+    expect(compiled.textContent).toContain('Vivaan Jani');
+    // Spouses render as their own cards, and birth years appear on each person.
+    expect(compiled.textContent).toContain('Nayanaben Jani');
+    expect(compiled.textContent).toContain('b. 2000');
   });
 
   it('should collapse and expand branches', () => {
@@ -143,10 +144,10 @@ describe('TreeVisualizationComponent', () => {
     const emitted: FamilyMemberSummary[] = [];
     component.memberSelected.subscribe((member) => emitted.push(member));
 
-    component.onMemberClick(patelMembers[4]);
+    component.onMemberClick(janiMembers[4]);
     fixture.detectChanges();
 
-    expect(emitted).toEqual([patelMembers[4]]);
+    expect(emitted).toEqual([janiMembers[4]]);
   });
 
   it('should show an error message when member loading fails', async () => {
@@ -167,7 +168,7 @@ describe('TreeVisualizationComponent', () => {
 
     fixture = TestBed.createComponent(TreeVisualizationComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('tree', patelTree);
+    fixture.componentRef.setInput('tree', janiTree);
     fixture.detectChanges();
     await fixture.whenStable();
     fixture.detectChanges();

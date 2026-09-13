@@ -1,7 +1,16 @@
+$leg-color: #c7cdd6;
+$leg-width: 2px;
+$leg-height: 1.5rem;
+$radius: 0.5rem;
+
+$male: #3f7cc4;
+$female: #c45c8a;
+$unknown: #7a8699;
+
 .tree-visualization {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   width: 100%;
 }
 
@@ -15,153 +24,376 @@
   }
 }
 
+/* ---- Toolbar ---- */
 .tree-toolbar {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
-}
-
-.generation-select {
-  min-width: 14rem;
+  justify-content: flex-end;
 }
 
 .toolbar-actions {
   display: flex;
   gap: 0.5rem;
-}
 
-.tree-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.generation-section {
-  scroll-margin-top: 1rem;
-}
-
-.generation-heading {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.generation-members {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.member-chip {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 1rem;
-  padding: 0.35rem 0.75rem;
-  background: #f5f5f5;
-  cursor: pointer;
-  font: inherit;
-
-  &:hover,
-  &:focus-visible {
-    background: #e8eaf6;
-    outline: 2px solid #3f51b5;
-    outline-offset: 2px;
+  button mat-icon {
+    margin-right: 0.25rem;
   }
 }
 
-.branch-list {
+/* ---- Scroll surface ---- */
+.tree-scroll {
+  overflow: auto;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+  background-color: #fafbfc;
+}
+
+.org-tree {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0.75rem 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ---- Tree connectors (classic top-down chart legs) ---- */
+.tree-level {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
+}
 
-  &.nested {
-    margin-left: 1.75rem;
-    padding-left: 1rem;
-    border-left: 2px solid rgba(0, 0, 0, 0.12);
+/* vertical drop line from a parent card into its children row */
+.tree-level .tree-level::before {
+  content: '';
+  position: absolute;
+  top: -#{$leg-height};
+  left: 50%;
+  width: 0;
+  height: $leg-height;
+  border-left: $leg-width solid $leg-color;
+}
+
+.tree-node {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  padding: $leg-height 0.6rem 0;
+}
+
+/* horizontal bus + vertical stub above each child node */
+.tree-node::before,
+.tree-node::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: $leg-height;
+  border-top: $leg-width solid $leg-color;
+}
+
+.tree-node::after {
+  right: auto;
+  left: 50%;
+  border-left: $leg-width solid $leg-color;
+}
+
+/* an only child needs just a straight line, no horizontal bus */
+.tree-node:only-child {
+  padding-top: $leg-height;
+}
+
+.tree-node:only-child::before,
+.tree-node:only-child::after {
+  display: none;
+}
+
+.tree-node:only-child {
+  &::after {
+    display: block;
+    right: auto;
+    left: 50%;
+    width: 0;
+    border-top: 0;
+    border-left: $leg-width solid $leg-color;
   }
 }
 
-.branch-item {
-  margin-bottom: 0.5rem;
+/* trim the outer half-lines so the bus starts/ends at the outer siblings */
+.tree-node:first-child::before,
+.tree-node:last-child::after {
+  border: 0 none;
 }
 
-.couple-row {
+.tree-node:last-child::before {
+  border-right: $leg-width solid $leg-color;
+  border-radius: 0 6px 0 0;
+}
+
+.tree-node:first-child::after {
+  border-radius: 6px 0 0 0;
+}
+
+/* root row: no legs above the founding couples */
+.org-tree > .tree-level > .tree-node {
+  padding-top: 0;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+/* ---- Couple card ---- */
+.node-card {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: $radius;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.couple {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.4rem;
 }
 
-.expand-button {
+.union {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.6);
+  color: $female;
 
-  &:focus-visible {
-    outline: 2px solid #3f51b5;
-    outline-offset: 2px;
-    border-radius: 50%;
+  mat-icon {
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
   }
 }
 
-.expand-spacer {
-  display: inline-block;
-  width: 1.5rem;
-}
-
-.couple-members {
-  display: flex;
-  flex-wrap: wrap;
+/* ---- Person chip ---- */
+.person {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.member-node {
-  border: 1px solid rgba(63, 81, 181, 0.4);
-  border-radius: 0.375rem;
-  padding: 0.5rem 0.75rem;
+  min-width: 8.5rem;
+  max-width: 12rem;
+  padding: 0.4rem 0.6rem 0.4rem 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
   background: #fff;
   cursor: pointer;
   font: inherit;
+  text-align: left;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
 
-  &:hover,
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  }
+
   &:focus-visible {
-    background: #e8eaf6;
     outline: 2px solid #3f51b5;
     outline-offset: 2px;
   }
 
-  &.spouse {
-    border-style: dashed;
+  &[data-gender='male'] {
+    border-left: 3px solid $male;
+  }
+
+  &[data-gender='female'] {
+    border-left: 3px solid $female;
+  }
+
+  &[data-gender='unknown'] {
+    border-left: 3px solid $unknown;
   }
 }
 
-.spouse-connector {
-  color: rgba(0, 0, 0, 0.5);
+.avatar {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: #fff;
   font-weight: 600;
+  font-size: 0.9rem;
+
+  &[data-gender='male'] {
+    background: $male;
+  }
+
+  &[data-gender='female'] {
+    background: $female;
+  }
+
+  &[data-gender='unknown'] {
+    background: $unknown;
+  }
 }
 
+.person-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.person-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.person-year {
+  font-size: 0.72rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Expand / collapse toggle attached under the card ---- */
+.expand-toggle {
+  position: absolute;
+  bottom: -0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 1rem;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  font: inherit;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transition: background 0.15s ease, color 0.15s ease;
+
+  mat-icon {
+    font-size: 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .child-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: #eef1fb;
+    color: #3f51b5;
+    outline: none;
+  }
+
+  &.is-open {
+    background: #3f51b5;
+    color: #fff;
+    border-color: #3f51b5;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile: turn the horizontal org-chart into a vertical indented       */
+/* outline (no sideways scrolling, scales to any depth).                */
+/* ------------------------------------------------------------------ */
 @media (max-width: 600px) {
-  .tree-toolbar {
+  .tree-scroll {
+    overflow-x: hidden;
+    background: #fafbfc;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .org-tree {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    padding: 0.25rem;
+  }
+
+  /* stack every level vertically */
+  .tree-level {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .generation-select {
+  /* drop all the org-chart connector legs */
+  .tree-node::before,
+  .tree-node::after,
+  .tree-level .tree-level::before {
+    display: none !important;
+  }
+
+  .tree-node {
+    padding: 0.3rem 0;
+    text-align: left;
+  }
+
+  /* indentation rail for descendants */
+  .tree-node .tree-level {
+    margin-left: 0.6rem;
+    padding-left: 0.7rem;
+    border-left: 2px solid $leg-color;
+  }
+
+  /* card becomes a full-width row: couple on the left, toggle on the right */
+  .node-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+
+  /* stack the two spouses so each node is only one person wide */
+  .couple {
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+
+  .union {
+    display: none;
+  }
+
+  .person {
+    min-width: 0;
+    max-width: none;
     width: 100%;
   }
 
-  .toolbar-actions {
-    justify-content: stretch;
+  .person-name {
+    white-space: normal;
+  }
 
-    button {
-      flex: 1;
-    }
+  /* toggle sits inline at the right of the card, not on a leg */
+  .expand-toggle {
+    position: static;
+    transform: none;
+    flex: 0 0 auto;
+    align-self: center;
   }
 }

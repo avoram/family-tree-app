@@ -1,3 +1,8 @@
+/* Shared palette — kept in sync with the tree visualization component. */
+$male: #3f7cc4;
+$female: #c45c8a;
+$unknown: #7a8699;
+
 .member-detail-card {
   height: fit-content;
 }
@@ -35,14 +40,24 @@ mat-card-header {
 }
 
 .photo-frame {
+  --accent: #{$unknown};
   position: relative;
-  width: 12rem;
+  width: 11rem;
   max-width: 100%;
   aspect-ratio: 1;
-  border-radius: 0.75rem;
+  border-radius: 50%;
   overflow: hidden;
-  background: #eceff1;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--accent);
+  border: 3px solid var(--accent);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+  &[data-gender='male'] {
+    --accent: #{$male};
+  }
+
+  &[data-gender='female'] {
+    --accent: #{$female};
+  }
 
   &.has-photo {
     background: #fff;
@@ -56,13 +71,14 @@ mat-card-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(0, 0, 0, 0.35);
+  background: var(--accent);
+}
 
-  mat-icon {
-    width: 4rem;
-    height: 4rem;
-    font-size: 4rem;
-  }
+.placeholder-initial {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .member-photo {
@@ -81,10 +97,31 @@ mat-card-header {
 }
 
 .member-name {
-  margin: 0 0 1rem;
+  margin: 0 0 0.4rem;
   font-size: 1.25rem;
   font-weight: 600;
   text-align: center;
+}
+
+.gender-badge {
+  --accent: #{$unknown};
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1rem;
+  padding: 0.15rem 0.7rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+
+  &[data-gender='male'] {
+    --accent: #{$male};
+  }
+
+  &[data-gender='female'] {
+    --accent: #{$female};
+  }
 }
 
 .detail-list {
@@ -104,12 +141,17 @@ mat-card-header {
 
   dt {
     margin: 0;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: rgba(0, 0, 0, 0.5);
+    align-self: center;
   }
 
   dd {
     margin: 0;
+    font-size: 0.9rem;
     word-break: break-word;
   }
 }

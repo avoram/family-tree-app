@@ -1,4 +1,72 @@
+$accent: #3f51b5;
+$radius: 0.6rem;
+
+:host {
+  display: block;
+}
+
 .tree-select {
   width: 100%;
   max-width: 24rem;
+
+  /* Rounded, card-like field with a soft shadow to match the app cards. */
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    background: #fff;
+    border-radius: $radius;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Round the outline corners to follow the wrapper. */
+  ::ng-deep .mdc-notched-outline__leading {
+    border-radius: $radius 0 0 $radius;
+    min-width: $radius;
+  }
+
+  ::ng-deep .mdc-notched-outline__trailing {
+    border-radius: 0 $radius $radius 0;
+  }
+
+  ::ng-deep .mdc-notched-outline__leading,
+  ::ng-deep .mdc-notched-outline__notch,
+  ::ng-deep .mdc-notched-outline__trailing {
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  /* Hover: slightly stronger outline. */
+  &:hover ::ng-deep .mdc-notched-outline__leading,
+  &:hover ::ng-deep .mdc-notched-outline__notch,
+  &:hover ::ng-deep .mdc-notched-outline__trailing {
+    border-color: rgba(63, 81, 181, 0.4);
+  }
+
+  /* Focused: indigo accent to match the tree/detail interactive colour. */
+  &.mat-focused ::ng-deep .mdc-notched-outline__leading,
+  &.mat-focused ::ng-deep .mdc-notched-outline__notch,
+  &.mat-focused ::ng-deep .mdc-notched-outline__trailing {
+    border-color: $accent;
+    border-width: 2px;
+  }
+
+  /* Label + placeholder typography. */
+  ::ng-deep .mat-mdc-floating-label,
+  ::ng-deep .mat-mdc-select-placeholder {
+    color: rgba(0, 0, 0, 0.55);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  &.mat-focused ::ng-deep .mat-mdc-floating-label {
+    color: $accent;
+  }
+
+  /* Selected value: bolder, higher contrast. */
+  ::ng-deep .mat-mdc-select-value-text {
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  ::ng-deep .mat-mdc-select-arrow {
+    color: $accent;
+  }
 }

@@ -1,0 +1,115 @@
+{
+  "id": "ojha",
+  "name": "Ojha Family",
+  "description": "Three-generation Ojha family sample tree",
+  "members": [
+    {
+      "id": "g1",
+      "firstName": "Bhavesh",
+      "lastName": "Ojha",
+      "gender": "male",
+      "dateOfBirth": "1942-02-11",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "g2",
+      "notes": "Patriarch",
+      "photoUrl": "photos/ojha/g1.jpg"
+    },
+    {
+      "id": "g2",
+      "firstName": "Hansaben",
+      "lastName": "Ojha",
+      "gender": "female",
+      "dateOfBirth": "1946-08-19",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "g1",
+      "notes": "Matriarch",
+      "photoUrl": "photos/ojha/g2.jpg"
+    },
+    {
+      "id": "p1",
+      "firstName": "Nilesh",
+      "lastName": "Ojha",
+      "gender": "male",
+      "dateOfBirth": "1970-05-03",
+      "fatherId": "g1",
+      "motherId": "g2",
+      "spouseId": "p2",
+      "notes": null,
+      "photoUrl": "photos/ojha/p1.jpg"
+    },
+    {
+      "id": "p2",
+      "firstName": "Hetal",
+      "lastName": "Ojha",
+      "gender": "female",
+      "dateOfBirth": "1973-11-21",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "p1",
+      "notes": "Married into the Ojha family",
+      "photoUrl": "photos/ojha/p2.jpg"
+    },
+    {
+      "id": "p3",
+      "firstName": "Sejal",
+      "lastName": "Shah",
+      "gender": "female",
+      "dateOfBirth": "1975-04-14",
+      "fatherId": "g1",
+      "motherId": "g2",
+      "spouseId": "p4",
+      "notes": null,
+      "photoUrl": "photos/ojha/p3.jpg"
+    },
+    {
+      "id": "p4",
+      "firstName": "Ketan",
+      "lastName": "Shah",
+      "gender": "male",
+      "dateOfBirth": "1972-09-08",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "p3",
+      "notes": "Married into family",
+      "photoUrl": "photos/ojha/p4.jpg"
+    },
+    {
+      "id": "c1",
+      "firstName": "Aarav",
+      "lastName": "Ojha",
+      "gender": "male",
+      "dateOfBirth": "2001-06-17",
+      "fatherId": "p1",
+      "motherId": "p2",
+      "spouseId": null,
+      "notes": null,
+      "photoUrl": "photos/ojha/c1.jpg"
+    },
+    {
+      "id": "c2",
+      "firstName": "Diya",
+      "lastName": "Ojha",
+      "gender": "female",
+      "dateOfBirth": "2004-12-02",
+      "fatherId": "p1",
+      "motherId": "p2",
+      "spouseId": null,
+      "notes": null,
+      "photoUrl": "photos/ojha/c2.jpg"
+    },
+    {
+      "id": "c3",
+      "firstName": "Reyansh",
+      "lastName": "Shah",
+      "gender": "male",
+      "dateOfBirth": "2003-03-25",
+      "fatherId": "p4",
+      "motherId": "p3",
+      "spouseId": null,
+      "notes": null,
+      "photoUrl": "photos/ojha/c3.jpg"
+    }
+  ]
+}

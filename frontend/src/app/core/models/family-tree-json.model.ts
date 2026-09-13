@@ -15,6 +15,8 @@ export interface FamilyMemberJson {
   motherId: string | null;
   spouseId: string | null;
   notes: string | null;
+  /** Relative path under the app, e.g. `photos/vora/mayank.jpg`. Optional. */
+  photoUrl?: string | null;
 }
 
 export interface FamilyTreeManifest {

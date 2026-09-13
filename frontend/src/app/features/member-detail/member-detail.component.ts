@@ -19,10 +19,6 @@ import { FamilyMemberDetail } from '../../core/models/family-member-detail.model
 import { FamilyMemberSummary } from '../../core/models/family-member-summary.model';
 import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 import { getMemberDisplayName } from '../../core/services/family-tree-layout';
-import {
-  getMemberPhotoUrl,
-  MEMBER_PHOTO_EXTENSIONS,
-} from '../../core/utils/member-photo.util';
 
 interface MemberRelationships {
   father: string | null;
@@ -55,7 +51,6 @@ export class MemberDetailComponent {
   readonly loading = signal(false);
   readonly loadError = signal(false);
   readonly photoVisible = signal(false);
-  readonly photoExtensionIndex = signal(0);
 
   readonly displayName = computed(() => {
     const current = this.member();
@@ -67,13 +62,28 @@ export class MemberDetailComponent {
     return getMemberDisplayName(current);
   });
 
-  readonly photoUrl = computed(() => {
-    const treeId = this.treeId();
-    const memberId = this.memberId();
-    const extension = MEMBER_PHOTO_EXTENSIONS[this.photoExtensionIndex()] ?? MEMBER_PHOTO_EXTENSIONS[0];
+  readonly genderClass = computed<'male' | 'female' | 'unknown'>(() => {
+    const gender = this.member()?.gender?.toLowerCase();
 
-    return getMemberPhotoUrl(treeId, memberId, extension);
+    if (gender === 'male') {
+      return 'male';
+    }
+
+    if (gender === 'female') {
+      return 'female';
+    }
+
+    return 'unknown';
   });
+
+  readonly initial = computed(() => {
+    const firstName = this.member()?.firstName?.trim();
+
+    return (firstName?.[0] ?? '?').toUpperCase();
+  });
+
+  /** Photo path from JSON `photoUrl`. Null when not configured. */
+  readonly photoUrl = computed(() => this.member()?.photoUrl ?? null);
 
   constructor() {
     effect(
@@ -86,7 +96,6 @@ export class MemberDetailComponent {
         this.member.set(null);
         this.relationships.set({ father: null, mother: null, spouse: null });
         this.photoVisible.set(false);
-        this.photoExtensionIndex.set(0);
 
         const subscription = forkJoin({
           member: this.familyTreeService.getMember(treeId, memberId).pipe(
@@ -130,14 +139,6 @@ export class MemberDetailComponent {
   }
 
   onPhotoError(): void {
-    const nextIndex = this.photoExtensionIndex() + 1;
-
-    if (nextIndex < MEMBER_PHOTO_EXTENSIONS.length) {
-      this.photoVisible.set(false);
-      this.photoExtensionIndex.set(nextIndex);
-      return;
-    }
-
     this.photoVisible.set(false);
   }
 
@@ -152,7 +153,7 @@ export class MemberDetailComponent {
   private syncPhotoFromElement(): void {
     const img = this.memberPhoto()?.nativeElement;
 
-    if (!img || !this.member()) {
+    if (!img || !this.photoUrl()) {
       return;
     }
 

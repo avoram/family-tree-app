@@ -15,8 +15,8 @@ test('dropdown lists bundled family trees', async ({ page }) => {
   await expect(combobox).toBeEnabled();
   await combobox.click();
 
-  await expect(page.getByRole('option', { name: 'Family One' })).toBeVisible();
-  await expect(page.getByRole('option', { name: 'Patel Family' })).toBeVisible();
+  await expect(page.getByRole('option', { name: 'Ojha Family' })).toBeVisible();
+  await expect(page.getByRole('option', { name: 'Jani Family' })).toBeVisible();
   await expect(page.getByRole('option', { name: 'Vora Family' })).toBeVisible();
 });
 
@@ -24,25 +24,25 @@ test('selecting a tree updates the visible selection state', async ({ page }) =>
   await page.goto('/');
 
   await page.getByRole('combobox', { name: 'Family tree' }).click();
-  await page.getByRole('option', { name: 'Patel Family' }).click();
+  await page.getByRole('option', { name: 'Jani Family' }).click();
 
-  await expect(page.getByRole('combobox', { name: 'Family tree' })).toContainText('Patel Family');
-  await expect(page.getByRole('region', { name: 'Generation 1' })).toContainText('Ramesh Patel');
-  await expect(page.getByRole('region', { name: 'Generation 3' })).toContainText('Anika Patel');
-  await expect(page.getByLabel('Family tree branches')).toContainText('Ramesh Patel');
+  await expect(page.getByRole('combobox', { name: 'Family tree' })).toContainText('Jani Family');
+  await expect(page.getByRole('region', { name: 'Generation 1' })).toContainText('Pravin Jani');
+  await expect(page.getByRole('region', { name: 'Generation 3' })).toContainText('Vivaan Jani');
+  await expect(page.getByLabel('Family tree branches')).toContainText('Pravin Jani');
 });
 
 test('tree visualization supports expand and collapse', async ({ page }) => {
   await page.goto('/');
 
   await page.getByRole('combobox', { name: 'Family tree' }).click();
-  await page.getByRole('option', { name: 'Patel Family' }).click();
+  await page.getByRole('option', { name: 'Jani Family' }).click();
 
-  const collapseButton = page.getByRole('button', { name: 'Collapse branch for Ramesh Patel' });
+  const collapseButton = page.getByRole('button', { name: 'Collapse branch for Pravin Jani' });
   await expect(collapseButton).toBeVisible();
 
   await collapseButton.click();
-  await expect(page.getByRole('button', { name: 'Expand branch for Ramesh Patel' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Expand branch for Pravin Jani' })).toBeVisible();
 });
 
 test('Vora family tree renders all five generations', async ({ page }) => {

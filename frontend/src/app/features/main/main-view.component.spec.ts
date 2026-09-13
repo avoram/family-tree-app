@@ -6,11 +6,11 @@ import { FamilyTree } from '../../core/models/family-tree.model';
 import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 import { MainViewComponent } from './main-view.component';
 
-const patelMembers = [
+const janiMembers = [
   {
     id: 'g1',
     firstName: 'Ramesh',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'male',
     dateOfBirth: '1940-01-10',
     fatherId: null,
@@ -20,7 +20,7 @@ const patelMembers = [
   {
     id: 'g2',
     firstName: 'Lakshmi',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'female',
     dateOfBirth: '1945-06-22',
     fatherId: null,
@@ -30,7 +30,7 @@ const patelMembers = [
   {
     id: 'p1',
     firstName: 'Arun',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'male',
     dateOfBirth: '1970-04-05',
     fatherId: 'g1',
@@ -40,7 +40,7 @@ const patelMembers = [
   {
     id: 'p2',
     firstName: 'Priya',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'female',
     dateOfBirth: '1972-09-18',
     fatherId: null,
@@ -50,7 +50,7 @@ const patelMembers = [
   {
     id: 'c1',
     firstName: 'Anika',
-    lastName: 'Patel',
+    lastName: 'Jani',
     gender: 'female',
     dateOfBirth: '2000-12-01',
     fatherId: 'p1',
@@ -73,11 +73,11 @@ describe('MainViewComponent', () => {
           useValue: {
             listFamilyTrees: () =>
               of([
-                { id: 'family1', name: 'Family One', description: 'Example family tree' },
-                { id: 'family2', name: 'Patel Family', description: 'Three-generation example family tree' },
+                { id: 'ojha', name: 'Ojha Family', description: 'Example family tree' },
+                { id: 'jani', name: 'Jani Family', description: 'Three-generation example family tree' },
               ]),
-            getFamilyTree: () => of({ id: 'family1', name: 'Family One', description: null }),
-            getMembers: (_id: string) => of(patelMembers),
+            getFamilyTree: () => of({ id: 'ojha', name: 'Ojha Family', description: null }),
+            getMembers: (_id: string) => of(janiMembers),
             getMember: () => throwError(() => new Error('not used')),
           },
         },
@@ -110,8 +110,8 @@ describe('MainViewComponent', () => {
 
   it('should render tree visualization when a tree is selected', async () => {
     component.onTreeSelected({
-      id: 'family2',
-      name: 'Patel Family',
+      id: 'jani',
+      name: 'Jani Family',
       description: 'Three-generation example family tree',
     } satisfies FamilyTree);
     fixture.detectChanges();
@@ -121,8 +121,8 @@ describe('MainViewComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
     expect(compiled.querySelector('app-tree-visualization')).toBeTruthy();
-    expect(compiled.textContent).toContain('Ramesh Patel');
-    expect(compiled.textContent).toContain('Anika Patel');
+    expect(compiled.textContent).toContain('Pravin Jani');
+    expect(compiled.textContent).toContain('Vivaan Jani');
     expect(compiled.textContent).not.toContain('Sample Family 1');
   });
 

@@ -9,4 +9,6 @@ export interface FamilyMemberDetail {
   motherId: string | null;
   spouseId: string | null;
   notes: string | null;
+  /** Relative path from JSON, e.g. `photos/vora/mayank.jpg`. Null when no photo. */
+  photoUrl: string | null;
 }

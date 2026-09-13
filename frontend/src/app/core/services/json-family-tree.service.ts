@@ -161,6 +161,11 @@ function toMemberSummary(member: FamilyTreeJson['members'][number]): FamilyMembe
 }
 
 function toMemberDetail(treeId: string, member: FamilyTreeJson['members'][number]): FamilyMemberDetail {
+  const photoUrl =
+    typeof member.photoUrl === 'string' && member.photoUrl.trim() !== ''
+      ? member.photoUrl.trim()
+      : null;
+
   return {
     id: member.id,
     treeId,
@@ -172,5 +177,6 @@ function toMemberDetail(treeId: string, member: FamilyTreeJson['members'][number
     motherId: member.motherId,
     spouseId: member.spouseId,
     notes: member.notes,
+    photoUrl,
   };
 }

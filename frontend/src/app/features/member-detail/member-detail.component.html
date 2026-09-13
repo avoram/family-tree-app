@@ -21,26 +21,35 @@
       @if (member(); as current) {
         <div class="member-detail">
           <div class="photo-section">
-            <div class="photo-frame" [class.has-photo]="photoVisible()">
+            <div
+              class="photo-frame"
+              [class.has-photo]="photoVisible()"
+              [attr.data-gender]="genderClass()"
+            >
               @if (!photoVisible()) {
                 <div class="photo-placeholder" aria-hidden="true">
-                  <mat-icon>person</mat-icon>
+                  <span class="placeholder-initial">{{ initial() }}</span>
                 </div>
               }
-              <img
-                #memberPhoto
-                class="member-photo"
-                [class.is-visible]="photoVisible()"
-                [src]="photoUrl()"
-                [alt]="displayName()"
-                (load)="onPhotoLoad()"
-                (error)="onPhotoError()"
-              />
+              @if (photoUrl(); as url) {
+                <img
+                  #memberPhoto
+                  class="member-photo"
+                  [class.is-visible]="photoVisible()"
+                  [src]="url"
+                  [alt]="displayName()"
+                  (load)="onPhotoLoad()"
+                  (error)="onPhotoError()"
+                />
+              }
             </div>
           </div>
 
           <div class="detail-fields">
             <h2 class="member-name">{{ displayName() }}</h2>
+            <p class="gender-badge" [attr.data-gender]="genderClass()">
+              {{ formatGender(current.gender) }}
+            </p>
 
             <dl class="detail-list">
               <div class="detail-row">

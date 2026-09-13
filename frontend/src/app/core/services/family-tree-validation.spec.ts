@@ -203,9 +203,9 @@ describe('family-tree-validation', () => {
   });
 
   it('accepts the bundled Vora family tree file', async () => {
-    const response = await fetch('family-trees/vorafamiliy.tree.json');
+    const response = await fetch('family-trees/vora.tree.json');
     const tree = await response.json();
-    const result = validateFamilyTreeJson(tree, 'vorafamiliy.tree.json');
+    const result = validateFamilyTreeJson(tree, 'vora.tree.json');
 
     expect(result.valid).withContext(result.errors.join('; ')).toBeTrue();
     expect((tree as FamilyTreeJson).name).toBe('Vora Family');

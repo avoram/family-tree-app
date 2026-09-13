@@ -80,7 +80,15 @@ function validateMembers(members: unknown[], sourceLabel: string): string[] {
       errors.push(`${memberLabel}: lastName must be a string`);
     }
 
-    for (const field of ['gender', 'dateOfBirth', 'fatherId', 'motherId', 'spouseId', 'notes'] as const) {
+    for (const field of [
+      'gender',
+      'dateOfBirth',
+      'fatherId',
+      'motherId',
+      'spouseId',
+      'notes',
+      'photoUrl',
+    ] as const) {
       const value = record[field];
       if (value !== null && value !== undefined && typeof value !== 'string') {
         errors.push(`${memberLabel}: ${field} must be a string or null`);

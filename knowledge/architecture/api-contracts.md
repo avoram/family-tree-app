@@ -96,6 +96,7 @@ interface FamilyMemberDetail {
   motherId: string | null;
   spouseId: string | null;
   notes: string | null;
+  photoUrl: string | null; // e.g. "photos/vora/mayank.jpg"
 }
 ```
 
@@ -105,35 +106,37 @@ interface FamilyMemberDetail {
 
 Each file in `family-trees/` uses the `*.tree.json` naming convention and contains one complete tree.
 
-**Example:** `family-trees/family1.tree.json`
+**Example:** `family-trees/ojha.tree.json`
 
 ```json
 {
-  "id": "family1",
-  "name": "Family One",
-  "description": "Example family tree",
+  "id": "ojha",
+  "name": "Ojha Family",
+  "description": "Three-generation Ojha family sample tree",
   "members": [
     {
-      "id": "m1",
-      "firstName": "John",
-      "lastName": "Smith",
+      "id": "g1",
+      "firstName": "Bhavesh",
+      "lastName": "Ojha",
       "gender": "male",
-      "dateOfBirth": "1950-03-15",
+      "dateOfBirth": "1942-02-11",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "m2",
-      "notes": null
+      "spouseId": "g2",
+      "notes": "Patriarch",
+      "photoUrl": "photos/ojha/g1.jpg"
     },
     {
-      "id": "m2",
-      "firstName": "Jane",
-      "lastName": "Smith",
+      "id": "g2",
+      "firstName": "Hansaben",
+      "lastName": "Ojha",
       "gender": "female",
-      "dateOfBirth": "1952-07-20",
+      "dateOfBirth": "1946-08-19",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "m1",
-      "notes": null
+      "spouseId": "g1",
+      "notes": "Matriarch",
+      "photoUrl": "photos/ojha/g2.jpg"
     }
   ]
 }

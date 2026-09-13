@@ -7,8 +7,8 @@ import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 import { TreeSelectionComponent } from './tree-selection.component';
 
 const mockTrees = [
-  { id: 'family1', name: 'Family One', description: 'Example family tree' },
-  { id: 'family2', name: 'Patel Family', description: 'Three-generation example family tree' },
+  { id: 'ojha', name: 'Ojha Family', description: 'Example family tree' },
+  { id: 'jani', name: 'Jani Family', description: 'Three-generation example family tree' },
 ];
 
 function createMockService(overrides: Partial<Record<string, unknown>> = {}) {
@@ -17,8 +17,8 @@ function createMockService(overrides: Partial<Record<string, unknown>> = {}) {
     getFamilyTree: (id: string) =>
       of({
         id,
-        name: id === 'family1' ? 'Family One' : 'Patel Family',
-        description: id === 'family1' ? 'Example family tree' : null,
+        name: id === 'ojha' ? 'Ojha Family' : 'Jani Family',
+        description: id === 'ojha' ? 'Example family tree' : null,
       } satisfies FamilyTree),
     getMembers: () => of([]),
     getMember: () => throwError(() => new Error('not used')),
@@ -56,13 +56,13 @@ describe('TreeSelectionComponent', () => {
     const emitted: FamilyTree[] = [];
     component.treeSelected.subscribe((tree) => emitted.push(tree));
 
-    component.onSelectionChange('family2');
+    component.onSelectionChange('jani');
     fixture.detectChanges();
 
     expect(emitted).toEqual([
-      { id: 'family2', name: 'Patel Family', description: null },
+      { id: 'jani', name: 'Jani Family', description: null },
     ]);
-    expect(component.selectedTreeId()).toBe('family2');
+    expect(component.selectedTreeId()).toBe('jani');
   });
 
   it('should show an empty-state message when no trees are available', async () => {

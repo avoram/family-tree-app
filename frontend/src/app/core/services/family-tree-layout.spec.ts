@@ -139,7 +139,7 @@ describe('family-tree-layout', () => {
     });
 
     it('builds five generations for the bundled Vora family tree', async () => {
-      const response = await fetch('family-trees/vorafamiliy.tree.json');
+      const response = await fetch('family-trees/vora.tree.json');
       const tree = await response.json();
       const members = (tree.members as FamilyMemberSummary[]).map((member) => ({
         id: member.id,
