@@ -1,0 +1,115 @@
+{
+  "id": "jani",
+  "name": "Jani Family",
+  "description": "Three-generation Jani family sample tree",
+  "members": [
+    {
+      "id": "g1",
+      "firstName": "Pravin",
+      "lastName": "Jani",
+      "gender": "male",
+      "dateOfBirth": "1938-01-22",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "g2",
+      "notes": "Patriarch",
+      "photoUrl": "photos/jani/g1.jpg"
+    },
+    {
+      "id": "g2",
+      "firstName": "Induben",
+      "lastName": "Jani",
+      "gender": "female",
+      "dateOfBirth": "1943-07-09",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "g1",
+      "notes": "Matriarch",
+      "photoUrl": "photos/jani/g2.jpg"
+    },
+    {
+      "id": "p1",
+      "firstName": "Chirag",
+      "lastName": "Jani",
+      "gender": "male",
+      "dateOfBirth": "1968-03-15",
+      "fatherId": "g1",
+      "motherId": "g2",
+      "spouseId": "p2",
+      "notes": null,
+      "photoUrl": "photos/jani/p1.jpg"
+    },
+    {
+      "id": "p2",
+      "firstName": "Nayanaben",
+      "lastName": "Jani",
+      "gender": "female",
+      "dateOfBirth": "1971-10-28",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "p1",
+      "notes": "Married into the Jani family",
+      "photoUrl": "photos/jani/p2.jpg"
+    },
+    {
+      "id": "p3",
+      "firstName": "Minal",
+      "lastName": "Desai",
+      "gender": "female",
+      "dateOfBirth": "1972-05-06",
+      "fatherId": "g1",
+      "motherId": "g2",
+      "spouseId": "p4",
+      "notes": null,
+      "photoUrl": "photos/jani/p3.jpg"
+    },
+    {
+      "id": "p4",
+      "firstName": "Hardik",
+      "lastName": "Desai",
+      "gender": "male",
+      "dateOfBirth": "1969-12-18",
+      "fatherId": null,
+      "motherId": null,
+      "spouseId": "p3",
+      "notes": "Married into family",
+      "photoUrl": "photos/jani/p4.jpg"
+    },
+    {
+      "id": "c1",
+      "firstName": "Vivaan",
+      "lastName": "Jani",
+      "gender": "male",
+      "dateOfBirth": "1999-08-12",
+      "fatherId": "p1",
+      "motherId": "p2",
+      "spouseId": null,
+      "notes": null,
+      "photoUrl": "photos/jani/c1.jpg"
+    },
+    {
+      "id": "c2",
+      "firstName": "Kiara",
+      "lastName": "Jani",
+      "gender": "female",
+      "dateOfBirth": "2002-01-30",
+      "fatherId": "p1",
+      "motherId": "p2",
+      "spouseId": null,
+      "notes": null,
+      "photoUrl": "photos/jani/c2.jpg"
+    },
+    {
+      "id": "c3",
+      "firstName": "Aanya",
+      "lastName": "Desai",
+      "gender": "female",
+      "dateOfBirth": "2001-09-04",
+      "fatherId": "p4",
+      "motherId": "p3",
+      "spouseId": null,
+      "notes": null,
+      "photoUrl": "photos/jani/c3.jpg"
+    }
+  ]
+}
