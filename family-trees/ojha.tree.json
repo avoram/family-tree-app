@@ -11,9 +11,11 @@
       "dateOfBirth": "11-02-1942",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g2",
       "notes": "Patriarch",
-      "photoUrl": "photos/ojha/g1.jpg"
+      "photoUrl": "photos/ojha/g1.jpg",
+      "spouseIds": [
+        "g2"
+      ]
     },
     {
       "id": "g2",
@@ -23,9 +25,11 @@
       "dateOfBirth": "19-08-1946",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g1",
       "notes": "Matriarch",
-      "photoUrl": "photos/ojha/g2.jpg"
+      "photoUrl": "photos/ojha/g2.jpg",
+      "spouseIds": [
+        "g1"
+      ]
     },
     {
       "id": "p1",
@@ -35,9 +39,11 @@
       "dateOfBirth": "03-05-1970",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p2",
       "notes": null,
-      "photoUrl": "photos/ojha/p1.jpg"
+      "photoUrl": "photos/ojha/p1.jpg",
+      "spouseIds": [
+        "p2"
+      ]
     },
     {
       "id": "p2",
@@ -47,9 +53,11 @@
       "dateOfBirth": "21-11-1973",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p1",
       "notes": "Married into the Ojha family",
-      "photoUrl": "photos/ojha/p2.jpg"
+      "photoUrl": "photos/ojha/p2.jpg",
+      "spouseIds": [
+        "p1"
+      ]
     },
     {
       "id": "p3",
@@ -59,9 +67,11 @@
       "dateOfBirth": "14-04-1975",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p4",
       "notes": null,
-      "photoUrl": "photos/ojha/p3.jpg"
+      "photoUrl": "photos/ojha/p3.jpg",
+      "spouseIds": [
+        "p4"
+      ]
     },
     {
       "id": "p4",
@@ -71,9 +81,11 @@
       "dateOfBirth": "08-09-1972",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p3",
       "notes": "Married into family",
-      "photoUrl": "photos/ojha/p4.jpg"
+      "photoUrl": "photos/ojha/p4.jpg",
+      "spouseIds": [
+        "p3"
+      ]
     },
     {
       "id": "c1",
@@ -83,9 +95,9 @@
       "dateOfBirth": "17-06-2001",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/ojha/c1.jpg"
+      "photoUrl": "photos/ojha/c1.jpg",
+      "spouseIds": []
     },
     {
       "id": "c2",
@@ -95,9 +107,9 @@
       "dateOfBirth": "02-12-2004",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/ojha/c2.jpg"
+      "photoUrl": "photos/ojha/c2.jpg",
+      "spouseIds": []
     },
     {
       "id": "c3",
@@ -107,9 +119,9 @@
       "dateOfBirth": "25-03-2003",
       "fatherId": "p4",
       "motherId": "p3",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/ojha/c3.jpg"
+      "photoUrl": "photos/ojha/c3.jpg",
+      "spouseIds": []
     }
   ]
 }
