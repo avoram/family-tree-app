@@ -10,7 +10,7 @@ export interface FamilyMemberJson {
   firstName: string;
   lastName: string;
   gender: string | null;
-  dateOfBirth: string | null;
+  dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
   spouseId: string | null;

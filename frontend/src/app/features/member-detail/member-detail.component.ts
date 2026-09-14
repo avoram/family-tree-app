@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import {
   Component,
   computed,
@@ -19,6 +18,7 @@ import { FamilyMemberDetail } from '../../core/models/family-member-detail.model
 import { FamilyMemberSummary } from '../../core/models/family-member-summary.model';
 import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
 import { getMemberDisplayName } from '../../core/services/family-tree-layout';
+import { formatIndianDate } from '../../core/utils/indian-date.util';
 
 interface MemberRelationships {
   father: string | null;
@@ -29,7 +29,7 @@ interface MemberRelationships {
 @Component({
   selector: 'app-member-detail',
   standalone: true,
-  imports: [DatePipe, MatButtonModule, MatCardModule, MatIconModule],
+  imports: [MatButtonModule, MatCardModule, MatIconModule],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.scss',
 })
@@ -148,6 +148,10 @@ export class MemberDetailComponent {
     }
 
     return gender.charAt(0).toUpperCase() + gender.slice(1);
+  }
+
+  formatDateOfBirth(dateOfBirth: string | null): string {
+    return formatIndianDate(dateOfBirth) ?? 'Not specified';
   }
 
   private syncPhotoFromElement(): void {

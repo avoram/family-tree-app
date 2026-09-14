@@ -59,13 +59,7 @@
 
               <div class="detail-row">
                 <dt>Date of birth</dt>
-                <dd>
-                  @if (current.dateOfBirth) {
-                    {{ current.dateOfBirth | date: 'longDate' : 'UTC' }}
-                  } @else {
-                    Not specified
-                  }
-                </dd>
+                <dd>{{ formatDateOfBirth(current.dateOfBirth) }}</dd>
               </div>
 
               <div class="detail-row">

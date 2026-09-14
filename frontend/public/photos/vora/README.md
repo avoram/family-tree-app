@@ -6,7 +6,9 @@ Example already linked:
 
 | Member | File | JSON `photoUrl` |
 |--------|------|-----------------|
-| Mayank Vora | `mayank.jpg` | `photos/vora/mayank.jpg` |
+| Mayank Vora | `mayank_vora.jpg` | `photos/vora/mayank_vora.jpg` |
+| Maitri Vora | `maitri_vora.jpg` | `photos/vora/maitri_vora.jpg` |
+| Drishaan Vora | `drishaan_vora.png` | `photos/vora/drishaan_vora.png` |
 
 For any other member, use the same pattern:
 

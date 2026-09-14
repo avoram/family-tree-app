@@ -97,6 +97,8 @@ Flow:
 
 JSON is the **single place** to configure member data and photo links.
 
+**Date format:** all `dateOfBirth` values use Indian **DD-MM-YYYY** (day-month-year), for example `05-04-2019` for 5 April 2019 and `10-11-1990` for 10 November 1990.
+
 ### Member fields
 
 | Field | Purpose |
@@ -104,7 +106,7 @@ JSON is the **single place** to configure member data and photo links.
 | `id` | Unique id within the tree |
 | `firstName`, `lastName` | Display name (also used by search) |
 | `gender` | `"male"` / `"female"` or `null` |
-| `dateOfBirth` | `"YYYY-MM-DD"` or `null` |
+| `dateOfBirth` | `"DD-MM-YYYY"` (Indian format, e.g. `05-04-2019`) or `null` |
 | `fatherId`, `motherId`, `spouseId` | Other member `id`s, or `null` |
 | `notes` | Free text or `null` |
 | `photoUrl` | Relative path to photo, or `null` / omit if none |
@@ -134,7 +136,7 @@ JSON is the **single place** to configure member data and photo links.
   "firstName": "Dwarka",
   "lastName": "Vora",
   "gender": "male",
-  "dateOfBirth": "1920-03-14",
+  "dateOfBirth": "14-03-1920",
   "fatherId": null,
   "motherId": null,
   "spouseId": "g2",

@@ -73,7 +73,7 @@ interface FamilyMemberSummary {
   firstName: string;
   lastName: string;
   gender: string | null;
-  dateOfBirth: string | null; // YYYY-MM-DD
+  dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
   spouseId: string | null;
@@ -91,7 +91,7 @@ interface FamilyMemberDetail {
   firstName: string;
   lastName: string;
   gender: string | null;
-  dateOfBirth: string | null; // YYYY-MM-DD
+  dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
   spouseId: string | null;
@@ -119,7 +119,7 @@ Each file in `family-trees/` uses the `*.tree.json` naming convention and contai
       "firstName": "Bhavesh",
       "lastName": "Ojha",
       "gender": "male",
-      "dateOfBirth": "1942-02-11",
+      "dateOfBirth": "11-02-1942",
       "fatherId": null,
       "motherId": null,
       "spouseId": "g2",
@@ -131,7 +131,7 @@ Each file in `family-trees/` uses the `*.tree.json` naming convention and contai
       "firstName": "Hansaben",
       "lastName": "Ojha",
       "gender": "female",
-      "dateOfBirth": "1946-08-19",
+      "dateOfBirth": "19-08-1946",
       "fatherId": null,
       "motherId": null,
       "spouseId": "g1",

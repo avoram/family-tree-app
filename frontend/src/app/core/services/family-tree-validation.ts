@@ -1,4 +1,5 @@
 import { FamilyMemberJson, FamilyTreeJson } from '../models/family-tree-json.model';
+import { isIndianDate } from '../utils/indian-date.util';
 
 export interface FamilyTreeValidationResult {
   valid: boolean;
@@ -93,6 +94,11 @@ function validateMembers(members: unknown[], sourceLabel: string): string[] {
       if (value !== null && value !== undefined && typeof value !== 'string') {
         errors.push(`${memberLabel}: ${field} must be a string or null`);
       }
+    }
+
+    const dateOfBirth = record['dateOfBirth'];
+    if (typeof dateOfBirth === 'string' && dateOfBirth.trim() !== '' && !isIndianDate(dateOfBirth)) {
+      errors.push(`${memberLabel}: dateOfBirth must use DD-MM-YYYY (Indian format)`);
     }
   });
 

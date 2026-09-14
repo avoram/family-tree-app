@@ -26,6 +26,7 @@ import {
   memberMatchesQuery,
 } from '../../core/services/family-tree-layout';
 import { FAMILY_TREE_SERVICE } from '../../core/services/family-tree.service';
+import { birthYearFromIndianDate } from '../../core/utils/indian-date.util';
 
 @Component({
   selector: 'app-tree-visualization',
@@ -181,7 +182,7 @@ export class TreeVisualizationComponent {
   }
 
   birthYear(member: FamilyMemberSummary): string | null {
-    return member.dateOfBirth ? member.dateOfBirth.slice(0, 4) : null;
+    return birthYearFromIndianDate(member.dateOfBirth);
   }
 
   initial(member: FamilyMemberSummary): string {
