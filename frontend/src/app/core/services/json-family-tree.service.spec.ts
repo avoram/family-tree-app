@@ -18,7 +18,7 @@ const family1Tree: FamilyTreeJson = {
       dateOfBirth: '15-03-1950',
       fatherId: null,
       motherId: null,
-      spouseId: 'm2',
+      spouseIds: ['m2'],
       notes: null,
     },
     {
@@ -29,7 +29,7 @@ const family1Tree: FamilyTreeJson = {
       dateOfBirth: '20-07-1952',
       fatherId: null,
       motherId: null,
-      spouseId: 'm1',
+      spouseIds: ['m1'],
       notes: 'Spouse of John',
     },
   ],
@@ -48,7 +48,7 @@ const family2Tree: FamilyTreeJson = {
       dateOfBirth: '10-01-1940',
       fatherId: null,
       motherId: null,
-      spouseId: 'g2',
+      spouseIds: ['g2'],
       notes: null,
     },
     {
@@ -59,7 +59,7 @@ const family2Tree: FamilyTreeJson = {
       dateOfBirth: '22-06-1945',
       fatherId: null,
       motherId: null,
-      spouseId: 'g1',
+      spouseIds: ['g1'],
       notes: null,
     },
   ],
@@ -171,7 +171,7 @@ describe('JsonFamilyTreeService', () => {
         dateOfBirth: '15-03-1950',
         fatherId: null,
         motherId: null,
-        spouseId: 'm2',
+        spouseIds: ['m2'],
       },
       {
         id: 'm2',
@@ -181,7 +181,7 @@ describe('JsonFamilyTreeService', () => {
         dateOfBirth: '20-07-1952',
         fatherId: null,
         motherId: null,
-        spouseId: 'm1',
+        spouseIds: ['m1'],
       },
     ]);
   }));
@@ -206,8 +206,9 @@ describe('JsonFamilyTreeService', () => {
       dateOfBirth: '20-07-1952',
       fatherId: null,
       motherId: null,
-      spouseId: 'm1',
+      spouseIds: ['m1'],
       notes: 'Spouse of John',
+      photoUrl: null,
     });
   }));
 

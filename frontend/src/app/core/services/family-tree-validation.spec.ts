@@ -15,7 +15,7 @@ function createValidTree(overrides: Partial<FamilyTreeJson> = {}): FamilyTreeJso
         dateOfBirth: '15-03-1950',
         fatherId: null,
         motherId: null,
-        spouseId: 'm2',
+        spouseIds: ['m2'],
         notes: null,
       },
       {
@@ -26,7 +26,7 @@ function createValidTree(overrides: Partial<FamilyTreeJson> = {}): FamilyTreeJso
         dateOfBirth: '20-07-1952',
         fatherId: null,
         motherId: null,
-        spouseId: 'm1',
+        spouseIds: ['m1'],
         notes: null,
       },
     ],
@@ -53,7 +53,7 @@ describe('family-tree-validation', () => {
           dateOfBirth: null,
           fatherId: null,
           motherId: null,
-          spouseId: null,
+          spouseIds: [],
           notes: null,
         },
       ],
@@ -74,7 +74,7 @@ describe('family-tree-validation', () => {
       dateOfBirth: null,
       fatherId: null,
       motherId: null,
-      spouseId: null,
+      spouseIds: [],
       notes: null,
     };
 
@@ -100,7 +100,7 @@ describe('family-tree-validation', () => {
             dateOfBirth: null,
             fatherId: 'missing',
             motherId: null,
-            spouseId: null,
+            spouseIds: [],
             notes: null,
           },
         ],
@@ -123,7 +123,7 @@ describe('family-tree-validation', () => {
             dateOfBirth: null,
             fatherId: 'm1',
             motherId: null,
-            spouseId: null,
+            spouseIds: [],
             notes: null,
           },
         ],
@@ -146,7 +146,7 @@ describe('family-tree-validation', () => {
             dateOfBirth: null,
             fatherId: null,
             motherId: null,
-            spouseId: 'm2',
+            spouseIds: ['m2'],
             notes: null,
           },
           {
@@ -157,7 +157,7 @@ describe('family-tree-validation', () => {
             dateOfBirth: null,
             fatherId: null,
             motherId: null,
-            spouseId: null,
+            spouseIds: [],
             notes: null,
           },
         ],
@@ -166,6 +166,84 @@ describe('family-tree-validation', () => {
 
     expect(result.valid).toBeFalse();
     expect(result.errors.some((error) => error.includes('not bidirectional'))).toBeTrue();
+  });
+
+  it('accepts multiple bidirectional spouses', () => {
+    const result = validateFamilyTreeJson(
+      createValidTree({
+        members: [
+          {
+            id: 'h1',
+            firstName: 'Rohit',
+            lastName: 'Vora',
+            gender: 'male',
+            dateOfBirth: null,
+            fatherId: null,
+            motherId: null,
+            spouseIds: ['w1', 'w2'],
+            notes: null,
+          },
+          {
+            id: 'w1',
+            firstName: 'Nisha',
+            lastName: 'Vora',
+            gender: 'female',
+            dateOfBirth: null,
+            fatherId: null,
+            motherId: null,
+            spouseIds: ['h1'],
+            notes: null,
+          },
+          {
+            id: 'w2',
+            firstName: 'Kavita',
+            lastName: 'Vora',
+            gender: 'female',
+            dateOfBirth: null,
+            fatherId: null,
+            motherId: null,
+            spouseIds: ['h1'],
+            notes: null,
+          },
+        ],
+      }),
+    );
+
+    expect(result.valid).withContext(result.errors.join('; ')).toBeTrue();
+  });
+
+  it('still accepts legacy spouseId when bidirectional', () => {
+    const result = validateFamilyTreeJson({
+      id: 'legacy',
+      name: 'Legacy Tree',
+      description: null,
+      members: [
+        {
+          id: 'm1',
+          firstName: 'John',
+          lastName: 'Smith',
+          gender: 'male',
+          dateOfBirth: null,
+          fatherId: null,
+          motherId: null,
+          spouseId: 'm2',
+          notes: null,
+        },
+        {
+          id: 'm2',
+          firstName: 'Jane',
+          lastName: 'Smith',
+          gender: 'female',
+          dateOfBirth: null,
+          fatherId: null,
+          motherId: null,
+          spouseId: 'm1',
+          notes: null,
+        },
+      ],
+    });
+
+    expect(result.valid).withContext(result.errors.join('; ')).toBeTrue();
   });
 
   it('rejects circular parent-child relationships', () => {
@@ -180,7 +258,7 @@ describe('family-tree-validation', () => {
             dateOfBirth: null,
             fatherId: 'b',
             motherId: null,
-            spouseId: null,
+            spouseIds: [],
             notes: null,
           },
           {
@@ -191,7 +269,7 @@ describe('family-tree-validation', () => {
             dateOfBirth: null,
             fatherId: 'a',
             motherId: null,
-            spouseId: null,
+            spouseIds: [],
             notes: null,
           },
         ],

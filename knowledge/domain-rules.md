@@ -55,14 +55,16 @@ Examples of invalid relationships:
 
 ## Spouse Relationship Rules
 
-- A family member may have at most one spouse.
-- Spouse relationships are bidirectional.
+- A family member may have zero, one, or more spouses (`spouseIds` array in JSON).
+- Most members have zero or one spouse; multiple spouses are supported.
+- Each spouse link must be bidirectional: if A lists B in `spouseIds`, B must list A.
 - A family member cannot be their own spouse.
 - Spouse relationships must belong to the same family tree.
+- Children of different spouses are distinguished via `fatherId` / `motherId` (layout groups siblings by co-parent).
 
 Example:
 
-If A is spouse of B, then B must also be spouse of A.
+If A lists B as a spouse, then B must also list A as a spouse.
 
 ---
 

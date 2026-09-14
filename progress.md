@@ -77,6 +77,8 @@ Tracked in [features/member-search/progress.md](features/member-search/progress.
 - **Vora Family** — `family-trees/vora.tree.json` / `frontend/public/photos/vora/`
 - Old sample trees (Family One / Patel / typo `vorafamiliy`) removed
 - Asset serving fixed so `*.tree.json` files are included in the build
+- `spouseIds` array supports zero, one, or multiple spouses (legacy `spouseId` still loads)
+- Sample multi-spouse node: **Rohit Vora** with Nisha + Kavita and separate children per wife
 
 ---
 

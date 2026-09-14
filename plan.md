@@ -58,7 +58,7 @@ All family trees bundled in the application are publicly viewable. All data is r
 ### Family Tree Structure
 
 - One `FamilyTree` contains many `FamilyMember` records.
-- Each member may reference one father, one mother, and optionally one spouse.
+- Each member may reference one father, one mother, and zero or more spouses (`spouseIds`).
 - Parent-child links define generations.
 - Spouse links are peer-level relationships between members.
 - The UI renders this as an expandable, generation-based tree.

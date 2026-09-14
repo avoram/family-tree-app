@@ -73,8 +73,14 @@
               </div>
 
               <div class="detail-row">
-                <dt>Spouse</dt>
-                <dd>{{ relationships().spouse ?? 'Not specified' }}</dd>
+                <dt>{{ relationships().spouses.length > 1 ? 'Spouses' : 'Spouse' }}</dt>
+                <dd>
+                  @if (relationships().spouses.length === 0) {
+                    Not specified
+                  } @else {
+                    {{ relationships().spouses.join(', ') }}
+                  }
+                </dd>
               </div>
 
               @if (current.notes) {

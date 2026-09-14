@@ -16,7 +16,7 @@ const family1Members: FamilyMemberSummary[] = [
     dateOfBirth: '15-03-1950',
     fatherId: null,
     motherId: null,
-    spouseId: 'm2',
+    spouseIds: ['m2'],
   },
   {
     id: 'm2',
@@ -26,7 +26,7 @@ const family1Members: FamilyMemberSummary[] = [
     dateOfBirth: '20-07-1952',
     fatherId: null,
     motherId: null,
-    spouseId: 'm1',
+    spouseIds: ['m1'],
   },
 ];
 
@@ -39,7 +39,7 @@ const family2Members: FamilyMemberSummary[] = [
     dateOfBirth: '10-01-1940',
     fatherId: null,
     motherId: null,
-    spouseId: 'g2',
+    spouseIds: ['g2'],
   },
   {
     id: 'g2',
@@ -49,7 +49,7 @@ const family2Members: FamilyMemberSummary[] = [
     dateOfBirth: '22-06-1945',
     fatherId: null,
     motherId: null,
-    spouseId: 'g1',
+    spouseIds: ['g1'],
   },
   {
     id: 'p1',
@@ -59,7 +59,7 @@ const family2Members: FamilyMemberSummary[] = [
     dateOfBirth: '05-04-1970',
     fatherId: 'g1',
     motherId: 'g2',
-    spouseId: 'p2',
+    spouseIds: ['p2'],
   },
   {
     id: 'p2',
@@ -69,7 +69,7 @@ const family2Members: FamilyMemberSummary[] = [
     dateOfBirth: '18-09-1972',
     fatherId: null,
     motherId: null,
-    spouseId: 'p1',
+    spouseIds: ['p1'],
   },
   {
     id: 'c1',
@@ -79,7 +79,7 @@ const family2Members: FamilyMemberSummary[] = [
     dateOfBirth: '01-12-2000',
     fatherId: 'p1',
     motherId: 'p2',
-    spouseId: null,
+    spouseIds: [],
   },
 ];
 
@@ -125,7 +125,7 @@ describe('family-tree-layout', () => {
       expect(layout.generationCount).toBe(1);
       expect(layout.roots.length).toBe(1);
       expect(layout.roots[0].couple.primary.id).toBe('m1');
-      expect(layout.roots[0].couple.spouse?.id).toBe('m2');
+      expect(layout.roots[0].couple.spouses.map((s) => s.id)).toEqual(['m2']);
       expect(layout.roots[0].children.length).toBe(0);
       expect(layout.membersByGeneration[0].map((member) => member.id).sort()).toEqual(['m1', 'm2']);
     });
@@ -138,7 +138,7 @@ describe('family-tree-layout', () => {
       expect(layout.roots[0].couple.primary.id).toBe('g1');
       expect(layout.roots[0].children.length).toBe(1);
       expect(layout.roots[0].children[0].couple.primary.id).toBe('p1');
-      expect(layout.roots[0].children[0].couple.spouse?.id).toBe('p2');
+      expect(layout.roots[0].children[0].couple.spouses.map((s) => s.id)).toEqual(['p2']);
       expect(layout.roots[0].children[0].children.length).toBe(1);
       expect(layout.roots[0].children[0].children[0].couple.primary.id).toBe('c1');
       expect(layout.membersByGeneration[0].map((member) => member.id).sort()).toEqual(['g1', 'g2']);
@@ -160,19 +160,92 @@ describe('family-tree-layout', () => {
       expect(childNodes.length).toBe(1);
     });
 
+    it('groups children by co-parent when a member has two spouses', () => {
+      const multiSpouseMembers: FamilyMemberSummary[] = [
+        {
+          id: 'h1',
+          firstName: 'Rohit',
+          lastName: 'Vora',
+          gender: 'male',
+          dateOfBirth: '19-08-1980',
+          fatherId: null,
+          motherId: null,
+          spouseIds: ['w1', 'w2'],
+        },
+        {
+          id: 'w1',
+          firstName: 'Nisha',
+          lastName: 'Vora',
+          gender: 'female',
+          dateOfBirth: '12-03-1982',
+          fatherId: null,
+          motherId: null,
+          spouseIds: ['h1'],
+        },
+        {
+          id: 'w2',
+          firstName: 'Kavita',
+          lastName: 'Vora',
+          gender: 'female',
+          dateOfBirth: '08-09-1985',
+          fatherId: null,
+          motherId: null,
+          spouseIds: ['h1'],
+        },
+        {
+          id: 'c1',
+          firstName: 'Aryan',
+          lastName: 'Vora',
+          gender: 'male',
+          dateOfBirth: '21-06-2008',
+          fatherId: 'h1',
+          motherId: 'w1',
+          spouseIds: [],
+        },
+        {
+          id: 'c2',
+          firstName: 'Diya',
+          lastName: 'Vora',
+          gender: 'female',
+          dateOfBirth: '03-11-2014',
+          fatherId: 'h1',
+          motherId: 'w2',
+          spouseIds: [],
+        },
+      ];
+
+      const layout = buildFamilyTreeLayout(multiSpouseMembers);
+      const root = layout.roots[0];
+
+      expect(root.couple.primary.id).toBe('h1');
+      expect(root.couple.spouses.map((s) => s.id)).toEqual(['w1', 'w2']);
+      expect(root.familyUnits.length).toBe(2);
+      expect(root.familyUnits[0].coParent?.id).toBe('w1');
+      expect(root.familyUnits[0].children.map((c) => c.couple.primary.id)).toEqual(['c1']);
+      expect(root.familyUnits[1].coParent?.id).toBe('w2');
+      expect(root.familyUnits[1].children.map((c) => c.couple.primary.id)).toEqual(['c2']);
+      expect(root.children.map((c) => c.couple.primary.id)).toEqual(['c1', 'c2']);
+    });
+
     it('builds five generations for the bundled Vora family tree', async () => {
       const response = await fetch('family-trees/vora.tree.json');
       const tree = await response.json();
-      const members = (tree.members as FamilyMemberSummary[]).map((member) => ({
-        id: member.id,
-        firstName: member.firstName,
-        lastName: member.lastName,
-        gender: member.gender,
-        dateOfBirth: member.dateOfBirth,
-        fatherId: member.fatherId,
-        motherId: member.motherId,
-        spouseId: member.spouseId,
-      }));
+      const members = (tree.members as Array<FamilyMemberSummary & { spouseId?: string | null }>).map(
+        (member) => ({
+          id: member.id,
+          firstName: member.firstName,
+          lastName: member.lastName,
+          gender: member.gender,
+          dateOfBirth: member.dateOfBirth,
+          fatherId: member.fatherId,
+          motherId: member.motherId,
+          spouseIds: Array.isArray(member.spouseIds)
+            ? member.spouseIds
+            : member.spouseId
+              ? [member.spouseId]
+              : [],
+        }),
+      );
 
       const layout = buildFamilyTreeLayout(members);
 

@@ -6,5 +6,6 @@ export interface FamilyMemberSummary {
   dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
-  spouseId: string | null;
+  /** Zero or more spouse member ids (bidirectional in JSON). */
+  spouseIds: string[];
 }

@@ -7,7 +7,8 @@ export interface FamilyMemberDetail {
   dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
-  spouseId: string | null;
+  /** Zero or more spouse member ids (bidirectional in JSON). */
+  spouseIds: string[];
   notes: string | null;
   /** Relative path from JSON, e.g. `photos/vora/mayank.jpg`. Null when no photo. */
   photoUrl: string | null;

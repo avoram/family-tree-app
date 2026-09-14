@@ -2,11 +2,20 @@ import { FamilyMemberSummary } from '../models/family-member-summary.model';
 
 export interface FamilyTreeCouple {
   primary: FamilyMemberSummary;
-  spouse: FamilyMemberSummary | null;
+  spouses: FamilyMemberSummary[];
+}
+
+/** Children who share the same co-parent (typically one spouse). */
+export interface FamilyTreeFamilyUnit {
+  coParent: FamilyMemberSummary | null;
+  children: FamilyTreeLayoutNode[];
 }
 
 export interface FamilyTreeLayoutNode {
   couple: FamilyTreeCouple;
+  /** Child groups by co-parent; single-spouse trees usually have one unit. */
+  familyUnits: FamilyTreeFamilyUnit[];
+  /** Flattened children across all family units (stable order). */
   children: FamilyTreeLayoutNode[];
   generation: number;
 }
@@ -67,34 +76,108 @@ function buildNodesFromMembers(
 
     visited.add(member.id);
 
-    let spouse: FamilyMemberSummary | null = null;
+    const spouses: FamilyMemberSummary[] = [];
 
-    if (member.spouseId) {
-      const spouseMember = memberById.get(member.spouseId) ?? null;
+    for (const spouseId of member.spouseIds) {
+      const spouseMember = memberById.get(spouseId);
 
-      if (spouseMember) {
-        spouse = spouseMember;
-        visited.add(spouseMember.id);
+      if (!spouseMember || visited.has(spouseMember.id)) {
+        continue;
       }
+
+      spouses.push(spouseMember);
+      visited.add(spouseMember.id);
     }
 
-    const parentIds = new Set([member.id]);
-
-    if (spouse) {
-      parentIds.add(spouse.id);
-    }
-
+    const parentIds = new Set<string>([member.id, ...spouses.map((spouse) => spouse.id)]);
     const childMembers = findChildren(parentIds, allMembers);
-    const children = buildNodesFromMembers(childMembers, allMembers, memberById, visited, generation + 1);
+    const familyUnits = buildFamilyUnits(
+      member,
+      spouses,
+      childMembers,
+      allMembers,
+      memberById,
+      visited,
+      generation,
+    );
+    const children = familyUnits.flatMap((unit) => unit.children);
 
     nodes.push({
-      couple: { primary: member, spouse },
+      couple: { primary: member, spouses },
+      familyUnits,
       children,
       generation,
     });
   }
 
   return nodes;
+}
+
+function buildFamilyUnits(
+  primary: FamilyMemberSummary,
+  spouses: FamilyMemberSummary[],
+  childMembers: FamilyMemberSummary[],
+  allMembers: FamilyMemberSummary[],
+  memberById: Map<string, FamilyMemberSummary>,
+  visited: Set<string>,
+  generation: number,
+): FamilyTreeFamilyUnit[] {
+  const spouseById = new Map(spouses.map((spouse) => [spouse.id, spouse]));
+  const groups = new Map<string | null, FamilyMemberSummary[]>();
+
+  for (const spouse of spouses) {
+    groups.set(spouse.id, []);
+  }
+
+  groups.set(null, []);
+
+  for (const child of childMembers) {
+    const coParentId = resolveCoParentId(child, primary.id, spouseById);
+    const key = coParentId && spouseById.has(coParentId) ? coParentId : null;
+    const bucket = groups.get(key) ?? [];
+    bucket.push(child);
+    groups.set(key, bucket);
+  }
+
+  const units: FamilyTreeFamilyUnit[] = [];
+
+  for (const spouse of spouses) {
+    const unitChildren = groups.get(spouse.id) ?? [];
+
+    if (unitChildren.length === 0) {
+      continue;
+    }
+
+    units.push({
+      coParent: spouse,
+      children: buildNodesFromMembers(unitChildren, allMembers, memberById, visited, generation + 1),
+    });
+  }
+
+  const ungrouped = groups.get(null) ?? [];
+
+  if (ungrouped.length > 0) {
+    units.push({
+      coParent: null,
+      children: buildNodesFromMembers(ungrouped, allMembers, memberById, visited, generation + 1),
+    });
+  }
+
+  return units;
+}
+
+function resolveCoParentId(
+  child: FamilyMemberSummary,
+  primaryId: string,
+  spouseById: Map<string, FamilyMemberSummary>,
+): string | null {
+  const parents = [child.fatherId, child.motherId].filter((id): id is string => id !== null);
+
+  if (parents.includes(primaryId)) {
+    return parents.find((id) => id !== primaryId) ?? null;
+  }
+
+  return parents.find((id) => spouseById.has(id)) ?? null;
 }
 
 function findChildren(parentIds: Set<string>, members: FamilyMemberSummary[]): FamilyMemberSummary[] {
@@ -120,8 +203,8 @@ function groupMembersByGeneration(roots: FamilyTreeLayoutNode[]): FamilyMemberSu
 
     generationMembers.set(node.couple.primary.id, node.couple.primary);
 
-    if (node.couple.spouse) {
-      generationMembers.set(node.couple.spouse.id, node.couple.spouse);
+    for (const spouse of node.couple.spouses) {
+      generationMembers.set(spouse.id, spouse);
     }
 
     byGeneration.set(node.generation, generationMembers);
@@ -179,8 +262,8 @@ export function findExpandIdsForMember(
 
   const visit = (node: FamilyTreeLayoutNode, ancestors: string[]): boolean => {
     const primaryId = node.couple.primary.id;
-    const spouseId = node.couple.spouse?.id;
-    const matches = primaryId === memberId || spouseId === memberId;
+    const spouseMatch = node.couple.spouses.some((spouse) => spouse.id === memberId);
+    const matches = primaryId === memberId || spouseMatch;
 
     if (matches) {
       path.push(...ancestors);

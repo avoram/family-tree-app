@@ -11,9 +11,11 @@
       "dateOfBirth": "14-03-1920",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g2",
       "notes": "Patriarch",
-      "photoUrl": "photos/vora/g1.jpg"
+      "photoUrl": "photos/vora/g1.jpg",
+      "spouseIds": [
+        "g2"
+      ]
     },
     {
       "id": "g2",
@@ -23,9 +25,11 @@
       "dateOfBirth": "20-07-1925",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g1",
       "notes": "Matriarch",
-      "photoUrl": "photos/vora/g2.jpg"
+      "photoUrl": "photos/vora/g2.jpg",
+      "spouseIds": [
+        "g1"
+      ]
     },
     {
       "id": "p1",
@@ -35,9 +39,11 @@
       "dateOfBirth": "10-05-1948",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p2",
       "notes": null,
-      "photoUrl": "photos/vora/p1.jpg"
+      "photoUrl": "photos/vora/p1.jpg",
+      "spouseIds": [
+        "p2"
+      ]
     },
     {
       "id": "p2",
@@ -47,9 +53,11 @@
       "dateOfBirth": "03-11-1950",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p1",
       "notes": "Married into Vora family",
-      "photoUrl": "photos/vora/p2.jpg"
+      "photoUrl": "photos/vora/p2.jpg",
+      "spouseIds": [
+        "p1"
+      ]
     },
     {
       "id": "p3",
@@ -59,9 +67,11 @@
       "dateOfBirth": "17-02-1951",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p4",
       "notes": null,
-      "photoUrl": "photos/vora/p3.jpg"
+      "photoUrl": "photos/vora/p3.jpg",
+      "spouseIds": [
+        "p4"
+      ]
     },
     {
       "id": "p4",
@@ -71,9 +81,11 @@
       "dateOfBirth": "29-08-1953",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p3",
       "notes": "Married into Vora family",
-      "photoUrl": "photos/vora/p4.jpg"
+      "photoUrl": "photos/vora/p4.jpg",
+      "spouseIds": [
+        "p3"
+      ]
     },
     {
       "id": "p5",
@@ -83,9 +95,11 @@
       "dateOfBirth": "12-04-1955",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p6",
       "notes": "Married into Verma family",
-      "photoUrl": "photos/vora/p5.jpg"
+      "photoUrl": "photos/vora/p5.jpg",
+      "spouseIds": [
+        "p6"
+      ]
     },
     {
       "id": "p6",
@@ -95,9 +109,11 @@
       "dateOfBirth": "25-09-1952",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p5",
       "notes": "Married into family",
-      "photoUrl": "photos/vora/p6.jpg"
+      "photoUrl": "photos/vora/p6.jpg",
+      "spouseIds": [
+        "p5"
+      ]
     },
     {
       "id": "c1",
@@ -107,9 +123,11 @@
       "dateOfBirth": "15-06-1975",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": "c2",
       "notes": null,
-      "photoUrl": "photos/vora/c1.jpg"
+      "photoUrl": "photos/vora/c1.jpg",
+      "spouseIds": [
+        "c2"
+      ]
     },
     {
       "id": "c2",
@@ -119,9 +137,11 @@
       "dateOfBirth": "22-03-1977",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "c1",
       "notes": "Married into Vora family",
-      "photoUrl": "photos/vora/c2.jpg"
+      "photoUrl": "photos/vora/c2.jpg",
+      "spouseIds": [
+        "c1"
+      ]
     },
     {
       "id": "c3",
@@ -131,9 +151,11 @@
       "dateOfBirth": "08-11-1978",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": "c4",
       "notes": null,
-      "photoUrl": "photos/vora/c3.jpg"
+      "photoUrl": "photos/vora/c3.jpg",
+      "spouseIds": [
+        "c4"
+      ]
     },
     {
       "id": "c4",
@@ -143,9 +165,11 @@
       "dateOfBirth": "30-04-1975",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "c3",
       "notes": "Married into family",
-      "photoUrl": "photos/vora/c4.jpg"
+      "photoUrl": "photos/vora/c4.jpg",
+      "spouseIds": [
+        "c3"
+      ]
     },
     {
       "id": "c5",
@@ -155,9 +179,81 @@
       "dateOfBirth": "19-08-1980",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": null,
-      "notes": "Unmarried",
-      "photoUrl": "photos/vora/c5.jpg"
+      "notes": "Sample multi-spouse node: two wives with separate children",
+      "photoUrl": "photos/vora/c5.jpg",
+      "spouseIds": ["c5_w1", "c5_w2"]
+    },
+    {
+      "id": "c5_w1",
+      "firstName": "Nisha",
+      "lastName": "Vora",
+      "gender": "female",
+      "dateOfBirth": "12-03-1982",
+      "fatherId": null,
+      "motherId": null,
+      "notes": "First wife of Rohit (sample multi-spouse)",
+      "photoUrl": "photos/vora/c5_w1.jpg",
+      "spouseIds": ["c5"]
+    },
+    {
+      "id": "c5_w2",
+      "firstName": "Kavita",
+      "lastName": "Vora",
+      "gender": "female",
+      "dateOfBirth": "08-09-1985",
+      "fatherId": null,
+      "motherId": null,
+      "notes": "Second wife of Rohit (sample multi-spouse)",
+      "photoUrl": "photos/vora/c5_w2.jpg",
+      "spouseIds": ["c5"]
+    },
+    {
+      "id": "c5_w1_son",
+      "firstName": "Aryan",
+      "lastName": "Vora",
+      "gender": "male",
+      "dateOfBirth": "21-06-2008",
+      "fatherId": "c5",
+      "motherId": "c5_w1",
+      "notes": "Son of Rohit and Nisha",
+      "photoUrl": "photos/vora/c5_w1_son.jpg",
+      "spouseIds": []
+    },
+    {
+      "id": "c5_w1_daughter",
+      "firstName": "Meera",
+      "lastName": "Vora",
+      "gender": "female",
+      "dateOfBirth": "14-02-2011",
+      "fatherId": "c5",
+      "motherId": "c5_w1",
+      "notes": "Daughter of Rohit and Nisha",
+      "photoUrl": "photos/vora/c5_w1_daughter.jpg",
+      "spouseIds": []
+    },
+    {
+      "id": "c5_w2_daughter",
+      "firstName": "Diya",
+      "lastName": "Vora",
+      "gender": "female",
+      "dateOfBirth": "03-11-2014",
+      "fatherId": "c5",
+      "motherId": "c5_w2",
+      "notes": "Daughter of Rohit and Kavita",
+      "photoUrl": "photos/vora/c5_w2_daughter.jpg",
+      "spouseIds": []
+    },
+    {
+      "id": "c5_w2_son",
+      "firstName": "Kabir",
+      "lastName": "Vora",
+      "gender": "male",
+      "dateOfBirth": "19-07-2017",
+      "fatherId": "c5",
+      "motherId": "c5_w2",
+      "notes": "Son of Rohit and Kavita",
+      "photoUrl": "photos/vora/c5_w2_son.jpg",
+      "spouseIds": []
     },
     {
       "id": "mayank",
@@ -167,9 +263,11 @@
       "dateOfBirth": null,
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": "maitri",
       "notes": null,
-      "photoUrl": "photos/vora/mayank_vora.jpg"
+      "photoUrl": "photos/vora/mayank_vora.jpg",
+      "spouseIds": [
+        "maitri"
+      ]
     },
     {
       "id": "maitri",
@@ -179,9 +277,11 @@
       "dateOfBirth": "10-11-1990",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "mayank",
       "notes": "Married into Vora family",
-      "photoUrl": "photos/vora/maitri_vora.jpg"
+      "photoUrl": "photos/vora/maitri_vora.jpg",
+      "spouseIds": [
+        "mayank"
+      ]
     },
     {
       "id": "drishaan",
@@ -191,9 +291,9 @@
       "dateOfBirth": "05-04-2019",
       "fatherId": "mayank",
       "motherId": "maitri",
-      "spouseId": null,
       "notes": "Son of Mayank Vora",
-      "photoUrl": "photos/vora/drishaan_vora.png"
+      "photoUrl": "photos/vora/drishaan_vora.png",
+      "spouseIds": []
     },
     {
       "id": "c6",
@@ -203,9 +303,11 @@
       "dateOfBirth": "14-01-1976",
       "fatherId": "p3",
       "motherId": "p4",
-      "spouseId": "c7",
       "notes": null,
-      "photoUrl": "photos/vora/c6.jpg"
+      "photoUrl": "photos/vora/c6.jpg",
+      "spouseIds": [
+        "c7"
+      ]
     },
     {
       "id": "c7",
@@ -215,9 +317,11 @@
       "dateOfBirth": "27-07-1974",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "c6",
       "notes": "Married into family",
-      "photoUrl": "photos/vora/c7.jpg"
+      "photoUrl": "photos/vora/c7.jpg",
+      "spouseIds": [
+        "c6"
+      ]
     },
     {
       "id": "c8",
@@ -227,9 +331,11 @@
       "dateOfBirth": "03-05-1979",
       "fatherId": "p3",
       "motherId": "p4",
-      "spouseId": "c9",
       "notes": null,
-      "photoUrl": "photos/vora/c8.jpg"
+      "photoUrl": "photos/vora/c8.jpg",
+      "spouseIds": [
+        "c9"
+      ]
     },
     {
       "id": "c9",
@@ -239,9 +345,11 @@
       "dateOfBirth": "16-12-1981",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "c8",
       "notes": "Married into Vora family",
-      "photoUrl": "photos/vora/c9.jpg"
+      "photoUrl": "photos/vora/c9.jpg",
+      "spouseIds": [
+        "c8"
+      ]
     },
     {
       "id": "c10",
@@ -251,9 +359,11 @@
       "dateOfBirth": "11-09-1977",
       "fatherId": "p6",
       "motherId": "p5",
-      "spouseId": "c11",
       "notes": null,
-      "photoUrl": "photos/vora/c10.jpg"
+      "photoUrl": "photos/vora/c10.jpg",
+      "spouseIds": [
+        "c11"
+      ]
     },
     {
       "id": "c11",
@@ -263,9 +373,11 @@
       "dateOfBirth": "28-02-1979",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "c10",
       "notes": "Married into Verma family",
-      "photoUrl": "photos/vora/c11.jpg"
+      "photoUrl": "photos/vora/c11.jpg",
+      "spouseIds": [
+        "c10"
+      ]
     },
     {
       "id": "c12",
@@ -275,9 +387,9 @@
       "dateOfBirth": "04-06-1982",
       "fatherId": "p6",
       "motherId": "p5",
-      "spouseId": null,
       "notes": "Unmarried",
-      "photoUrl": "photos/vora/c12.jpg"
+      "photoUrl": "photos/vora/c12.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc1",
@@ -287,9 +399,11 @@
       "dateOfBirth": "10-03-2000",
       "fatherId": "c1",
       "motherId": "c2",
-      "spouseId": "ggc1_mom",
       "notes": null,
-      "photoUrl": "photos/vora/gc1.jpg"
+      "photoUrl": "photos/vora/gc1.jpg",
+      "spouseIds": [
+        "ggc1_mom"
+      ]
     },
     {
       "id": "gc2",
@@ -299,9 +413,9 @@
       "dateOfBirth": "25-07-2003",
       "fatherId": "c1",
       "motherId": "c2",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc2.jpg"
+      "photoUrl": "photos/vora/gc2.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc3",
@@ -311,9 +425,9 @@
       "dateOfBirth": "30-11-2006",
       "fatherId": "c1",
       "motherId": "c2",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc3.jpg"
+      "photoUrl": "photos/vora/gc3.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc4",
@@ -323,9 +437,11 @@
       "dateOfBirth": "18-05-2001",
       "fatherId": "c4",
       "motherId": "c3",
-      "spouseId": "gc4_husband",
       "notes": null,
-      "photoUrl": "photos/vora/gc4.jpg"
+      "photoUrl": "photos/vora/gc4.jpg",
+      "spouseIds": [
+        "gc4_husband"
+      ]
     },
     {
       "id": "gc5",
@@ -335,9 +451,9 @@
       "dateOfBirth": "22-08-2004",
       "fatherId": "c4",
       "motherId": "c3",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc5.jpg"
+      "photoUrl": "photos/vora/gc5.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc6",
@@ -347,9 +463,11 @@
       "dateOfBirth": "09-01-2002",
       "fatherId": "c7",
       "motherId": "c6",
-      "spouseId": "ggc4_mom",
       "notes": null,
-      "photoUrl": "photos/vora/gc6.jpg"
+      "photoUrl": "photos/vora/gc6.jpg",
+      "spouseIds": [
+        "ggc4_mom"
+      ]
     },
     {
       "id": "gc7",
@@ -359,9 +477,9 @@
       "dateOfBirth": "14-04-2005",
       "fatherId": "c7",
       "motherId": "c6",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc7.jpg"
+      "photoUrl": "photos/vora/gc7.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc8",
@@ -371,9 +489,9 @@
       "dateOfBirth": "01-10-2003",
       "fatherId": "c8",
       "motherId": "c9",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc8.jpg"
+      "photoUrl": "photos/vora/gc8.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc9",
@@ -383,9 +501,9 @@
       "dateOfBirth": "20-02-2007",
       "fatherId": "c8",
       "motherId": "c9",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc9.jpg"
+      "photoUrl": "photos/vora/gc9.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc10",
@@ -395,9 +513,9 @@
       "dateOfBirth": "13-09-2002",
       "fatherId": "c10",
       "motherId": "c11",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc10.jpg"
+      "photoUrl": "photos/vora/gc10.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc11",
@@ -407,9 +525,9 @@
       "dateOfBirth": "05-12-2005",
       "fatherId": "c10",
       "motherId": "c11",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/vora/gc11.jpg"
+      "photoUrl": "photos/vora/gc11.jpg",
+      "spouseIds": []
     },
     {
       "id": "ggc1",
@@ -419,9 +537,9 @@
       "dateOfBirth": "17-04-2022",
       "fatherId": "gc1",
       "motherId": "ggc1_mom",
-      "spouseId": null,
       "notes": "Generation 5",
-      "photoUrl": "photos/vora/ggc1.jpg"
+      "photoUrl": "photos/vora/ggc1.jpg",
+      "spouseIds": []
     },
     {
       "id": "ggc1_mom",
@@ -431,9 +549,11 @@
       "dateOfBirth": "11-08-2001",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "gc1",
       "notes": "Married into Vora family",
-      "photoUrl": "photos/vora/ggc1_mom.jpg"
+      "photoUrl": "photos/vora/ggc1_mom.jpg",
+      "spouseIds": [
+        "gc1"
+      ]
     },
     {
       "id": "ggc2",
@@ -443,9 +563,9 @@
       "dateOfBirth": "29-01-2024",
       "fatherId": "gc1",
       "motherId": "ggc1_mom",
-      "spouseId": null,
       "notes": "Generation 5",
-      "photoUrl": "photos/vora/ggc2.jpg"
+      "photoUrl": "photos/vora/ggc2.jpg",
+      "spouseIds": []
     },
     {
       "id": "ggc3",
@@ -455,9 +575,9 @@
       "dateOfBirth": "08-06-2023",
       "fatherId": "gc4_husband",
       "motherId": "gc4",
-      "spouseId": null,
       "notes": "Generation 5",
-      "photoUrl": "photos/vora/ggc3.jpg"
+      "photoUrl": "photos/vora/ggc3.jpg",
+      "spouseIds": []
     },
     {
       "id": "gc4_husband",
@@ -467,9 +587,11 @@
       "dateOfBirth": "25-03-2000",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "gc4",
       "notes": "Married into family",
-      "photoUrl": "photos/vora/gc4_husband.jpg"
+      "photoUrl": "photos/vora/gc4_husband.jpg",
+      "spouseIds": [
+        "gc4"
+      ]
     },
     {
       "id": "ggc4",
@@ -479,9 +601,9 @@
       "dateOfBirth": "12-09-2025",
       "fatherId": "gc6",
       "motherId": "ggc4_mom",
-      "spouseId": null,
-      "notes": "Generation 5 \u2014 youngest",
-      "photoUrl": "photos/vora/ggc4.jpg"
+      "notes": "Generation 5 — youngest",
+      "photoUrl": "photos/vora/ggc4.jpg",
+      "spouseIds": []
     },
     {
       "id": "ggc4_mom",
@@ -491,9 +613,11 @@
       "dateOfBirth": "19-11-2002",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "gc6",
       "notes": "Married into Joshi family",
-      "photoUrl": "photos/vora/ggc4_mom.jpg"
+      "photoUrl": "photos/vora/ggc4_mom.jpg",
+      "spouseIds": [
+        "gc6"
+      ]
     }
   ]
 }

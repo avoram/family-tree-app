@@ -19,6 +19,7 @@ import { FamilyTree } from '../../core/models/family-tree.model';
 import {
   buildFamilyTreeLayout,
   collectNodeIds,
+  FamilyTreeFamilyUnit,
   FamilyTreeLayout,
   FamilyTreeLayoutNode,
   findExpandIdsForMember,
@@ -205,6 +206,10 @@ export class TreeVisualizationComponent {
 
   trackNode(_index: number, node: FamilyTreeLayoutNode): string {
     return node.couple.primary.id;
+  }
+
+  trackFamilyUnit(_index: number, unit: FamilyTreeFamilyUnit): string {
+    return unit.coParent?.id ?? `ungrouped-${_index}`;
   }
 
   trackMember(_index: number, member: FamilyMemberSummary): string {

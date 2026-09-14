@@ -107,7 +107,8 @@ JSON is the **single place** to configure member data and photo links.
 | `firstName`, `lastName` | Display name (also used by search) |
 | `gender` | `"male"` / `"female"` or `null` |
 | `dateOfBirth` | `"DD-MM-YYYY"` (Indian format, e.g. `05-04-2019`) or `null` |
-| `fatherId`, `motherId`, `spouseId` | Other member `id`s, or `null` |
+| `fatherId`, `motherId` | Other member `id`s, or `null` |
+| `spouseIds` | Array of spouse member `id`s (`[]` if none; usually one id, multiple allowed) |
 | `notes` | Free text or `null` |
 | `photoUrl` | Relative path to photo, or `null` / omit if none |
 
@@ -122,9 +123,9 @@ JSON is the **single place** to configure member data and photo links.
   "dateOfBirth": null,
   "fatherId": "p1",
   "motherId": "p2",
-  "spouseId": null,
+  "spouseIds": ["maitri"],
   "notes": null,
-  "photoUrl": "photos/vora/mayank.jpg"
+  "photoUrl": "photos/vora/mayank_vora.jpg"
 }
 ```
 
@@ -139,9 +140,26 @@ JSON is the **single place** to configure member data and photo links.
   "dateOfBirth": "14-03-1920",
   "fatherId": null,
   "motherId": null,
-  "spouseId": "g2",
+  "spouseIds": ["g2"],
   "notes": "Patriarch",
   "photoUrl": null
+}
+```
+
+### Example with two spouses
+
+```json
+{
+  "id": "c5",
+  "firstName": "Rohit",
+  "lastName": "Vora",
+  "gender": "male",
+  "dateOfBirth": "19-08-1980",
+  "fatherId": "p1",
+  "motherId": "p2",
+  "spouseIds": ["c5_w1", "c5_w2"],
+  "notes": "Two wives; children linked via motherId",
+  "photoUrl": "photos/vora/c5.jpg"
 }
 ```
 

@@ -11,9 +11,11 @@
       "dateOfBirth": "22-01-1938",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g2",
       "notes": "Patriarch",
-      "photoUrl": "photos/jani/g1.jpg"
+      "photoUrl": "photos/jani/g1.jpg",
+      "spouseIds": [
+        "g2"
+      ]
     },
     {
       "id": "g2",
@@ -23,9 +25,11 @@
       "dateOfBirth": "09-07-1943",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g1",
       "notes": "Matriarch",
-      "photoUrl": "photos/jani/g2.jpg"
+      "photoUrl": "photos/jani/g2.jpg",
+      "spouseIds": [
+        "g1"
+      ]
     },
     {
       "id": "p1",
@@ -35,9 +39,11 @@
       "dateOfBirth": "15-03-1968",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p2",
       "notes": null,
-      "photoUrl": "photos/jani/p1.jpg"
+      "photoUrl": "photos/jani/p1.jpg",
+      "spouseIds": [
+        "p2"
+      ]
     },
     {
       "id": "p2",
@@ -47,9 +53,11 @@
       "dateOfBirth": "28-10-1971",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p1",
       "notes": "Married into the Jani family",
-      "photoUrl": "photos/jani/p2.jpg"
+      "photoUrl": "photos/jani/p2.jpg",
+      "spouseIds": [
+        "p1"
+      ]
     },
     {
       "id": "p3",
@@ -59,9 +67,11 @@
       "dateOfBirth": "06-05-1972",
       "fatherId": "g1",
       "motherId": "g2",
-      "spouseId": "p4",
       "notes": null,
-      "photoUrl": "photos/jani/p3.jpg"
+      "photoUrl": "photos/jani/p3.jpg",
+      "spouseIds": [
+        "p4"
+      ]
     },
     {
       "id": "p4",
@@ -71,9 +81,11 @@
       "dateOfBirth": "18-12-1969",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "p3",
       "notes": "Married into family",
-      "photoUrl": "photos/jani/p4.jpg"
+      "photoUrl": "photos/jani/p4.jpg",
+      "spouseIds": [
+        "p3"
+      ]
     },
     {
       "id": "c1",
@@ -83,9 +95,9 @@
       "dateOfBirth": "12-08-1999",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/jani/c1.jpg"
+      "photoUrl": "photos/jani/c1.jpg",
+      "spouseIds": []
     },
     {
       "id": "c2",
@@ -95,9 +107,9 @@
       "dateOfBirth": "30-01-2002",
       "fatherId": "p1",
       "motherId": "p2",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/jani/c2.jpg"
+      "photoUrl": "photos/jani/c2.jpg",
+      "spouseIds": []
     },
     {
       "id": "c3",
@@ -107,9 +119,9 @@
       "dateOfBirth": "04-09-2001",
       "fatherId": "p4",
       "motherId": "p3",
-      "spouseId": null,
       "notes": null,
-      "photoUrl": "photos/jani/c3.jpg"
+      "photoUrl": "photos/jani/c3.jpg",
+      "spouseIds": []
     }
   ]
 }

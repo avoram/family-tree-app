@@ -15,7 +15,7 @@ const janiMembers = [
     dateOfBirth: '10-01-1940',
     fatherId: null,
     motherId: null,
-    spouseId: 'g2',
+    spouseIds: ['g2'],
   },
   {
     id: 'g2',
@@ -25,7 +25,7 @@ const janiMembers = [
     dateOfBirth: '22-06-1945',
     fatherId: null,
     motherId: null,
-    spouseId: 'g1',
+    spouseIds: ['g1'],
   },
   {
     id: 'p1',
@@ -35,7 +35,7 @@ const janiMembers = [
     dateOfBirth: '05-04-1970',
     fatherId: 'g1',
     motherId: 'g2',
-    spouseId: 'p2',
+    spouseIds: ['p2'],
   },
   {
     id: 'p2',
@@ -45,7 +45,7 @@ const janiMembers = [
     dateOfBirth: '18-09-1972',
     fatherId: null,
     motherId: null,
-    spouseId: 'p1',
+    spouseIds: ['p1'],
   },
   {
     id: 'c1',
@@ -55,7 +55,7 @@ const janiMembers = [
     dateOfBirth: '01-12-2000',
     fatherId: 'p1',
     motherId: 'p2',
-    spouseId: null,
+    spouseIds: [],
   },
 ];
 
@@ -119,10 +119,15 @@ describe('MainViewComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
+    const expandAllButton = Array.from(compiled.querySelectorAll('button')).find((button) =>
+      button.textContent?.includes('Expand all'),
+    );
+    expandAllButton?.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
 
     expect(compiled.querySelector('app-tree-visualization')).toBeTruthy();
-    expect(compiled.textContent).toContain('Pravin Jani');
-    expect(compiled.textContent).toContain('Vivaan Jani');
+    expect(compiled.textContent).toContain('Arun Jani');
+    expect(compiled.textContent).toContain('Anika Jani');
     expect(compiled.textContent).not.toContain('Sample Family 1');
   });
 

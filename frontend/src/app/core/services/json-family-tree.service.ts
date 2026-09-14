@@ -10,6 +10,7 @@ import { FamilyTreeSummary } from '../models/family-tree-summary.model';
 import { FamilyTreeJson, FamilyTreeManifest } from '../models/family-tree-json.model';
 import { IFamilyTreeService } from './family-tree.service';
 import { validateFamilyTreeJson } from './family-tree-validation';
+import { normalizeSpouseIds } from '../utils/spouse-ids.util';
 
 @Injectable()
 export class JsonFamilyTreeService implements IFamilyTreeService {
@@ -156,7 +157,7 @@ function toMemberSummary(member: FamilyTreeJson['members'][number]): FamilyMembe
     dateOfBirth: member.dateOfBirth,
     fatherId: member.fatherId,
     motherId: member.motherId,
-    spouseId: member.spouseId,
+    spouseIds: normalizeSpouseIds(member),
   };
 }
 
@@ -175,7 +176,7 @@ function toMemberDetail(treeId: string, member: FamilyTreeJson['members'][number
     dateOfBirth: member.dateOfBirth,
     fatherId: member.fatherId,
     motherId: member.motherId,
-    spouseId: member.spouseId,
+    spouseIds: normalizeSpouseIds(member),
     notes: member.notes,
     photoUrl,
   };

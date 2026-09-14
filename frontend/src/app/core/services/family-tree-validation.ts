@@ -1,5 +1,6 @@
 import { FamilyMemberJson, FamilyTreeJson } from '../models/family-tree-json.model';
 import { isIndianDate } from '../utils/indian-date.util';
+import { normalizeSpouseIds } from '../utils/spouse-ids.util';
 
 export interface FamilyTreeValidationResult {
   valid: boolean;
@@ -96,6 +97,18 @@ function validateMembers(members: unknown[], sourceLabel: string): string[] {
       }
     }
 
+    if (record['spouseIds'] !== null && record['spouseIds'] !== undefined) {
+      if (!Array.isArray(record['spouseIds'])) {
+        errors.push(`${memberLabel}: spouseIds must be an array or null`);
+      } else {
+        record['spouseIds'].forEach((spouseId, spouseIndex) => {
+          if (typeof spouseId !== 'string' || spouseId.trim() === '') {
+            errors.push(`${memberLabel}: spouseIds[${spouseIndex}] must be a non-empty string`);
+          }
+        });
+      }
+    }
+
     const dateOfBirth = record['dateOfBirth'];
     if (typeof dateOfBirth === 'string' && dateOfBirth.trim() !== '' && !isIndianDate(dateOfBirth)) {
       errors.push(`${memberLabel}: dateOfBirth must use DD-MM-YYYY (Indian format)`);
@@ -108,21 +121,28 @@ function validateMembers(members: unknown[], sourceLabel: string): string[] {
 function validateRelationships(members: FamilyMemberJson[], sourceLabel: string): string[] {
   const errors: string[] = [];
   const byId = new Map(members.map((member) => [member.id, member]));
+  const spouseIdsByMember = new Map(members.map((member) => [member.id, normalizeSpouseIds(member)]));
 
   for (const member of members) {
     const memberLabel = `${sourceLabel}: member "${member.id}"`;
+    const spouseIds = spouseIdsByMember.get(member.id) ?? [];
 
     for (const [field, refId] of [
       ['fatherId', member.fatherId],
       ['motherId', member.motherId],
-      ['spouseId', member.spouseId],
     ] as const) {
-      if (refId === null) {
+      if (refId === null || refId === undefined) {
         continue;
       }
 
       if (!byId.has(refId)) {
         errors.push(`${memberLabel}: ${field} references missing member "${refId}"`);
+      }
+    }
+
+    for (const spouseId of spouseIds) {
+      if (!byId.has(spouseId)) {
+        errors.push(`${memberLabel}: spouseIds references missing member "${spouseId}"`);
       }
     }
 
@@ -134,25 +154,37 @@ function validateRelationships(members: FamilyMemberJson[], sourceLabel: string)
       errors.push(`${memberLabel}: a member cannot be their own parent`);
     }
 
-    if (member.spouseId === member.id) {
+    if (spouseIds.includes(member.id)) {
       errors.push(`${memberLabel}: a member cannot be their own spouse`);
     }
   }
 
+  const checkedPairs = new Set<string>();
+
   for (const member of members) {
-    if (member.spouseId === null) {
-      continue;
-    }
+    const spouseIds = spouseIdsByMember.get(member.id) ?? [];
 
-    const spouse = byId.get(member.spouseId);
-    if (!spouse) {
-      continue;
-    }
+    for (const spouseId of spouseIds) {
+      const pairKey = [member.id, spouseId].sort().join('|');
 
-    if (spouse.spouseId !== member.id) {
-      errors.push(
-        `${sourceLabel}: spouse relationship between "${member.id}" and "${member.spouseId}" is not bidirectional`,
-      );
+      if (checkedPairs.has(pairKey)) {
+        continue;
+      }
+
+      checkedPairs.add(pairKey);
+
+      const spouse = byId.get(spouseId);
+      if (!spouse) {
+        continue;
+      }
+
+      const reverseIds = spouseIdsByMember.get(spouseId) ?? [];
+
+      if (!reverseIds.includes(member.id)) {
+        errors.push(
+          `${sourceLabel}: spouse relationship between "${member.id}" and "${spouseId}" is not bidirectional`,
+        );
+      }
     }
   }
 

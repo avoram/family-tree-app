@@ -23,7 +23,7 @@ import { formatIndianDate } from '../../core/utils/indian-date.util';
 interface MemberRelationships {
   father: string | null;
   mother: string | null;
-  spouse: string | null;
+  spouses: string[];
 }
 
 @Component({
@@ -46,7 +46,7 @@ export class MemberDetailComponent {
   readonly relationships = signal<MemberRelationships>({
     father: null,
     mother: null,
-    spouse: null,
+    spouses: [],
   });
   readonly loading = signal(false);
   readonly loadError = signal(false);
@@ -94,7 +94,7 @@ export class MemberDetailComponent {
         this.loading.set(true);
         this.loadError.set(false);
         this.member.set(null);
-        this.relationships.set({ father: null, mother: null, spouse: null });
+        this.relationships.set({ father: null, mother: null, spouses: [] });
         this.photoVisible.set(false);
 
         const subscription = forkJoin({
@@ -176,7 +176,9 @@ function resolveRelationships(
   return {
     father: resolveMemberName(memberById, member.fatherId),
     mother: resolveMemberName(memberById, member.motherId),
-    spouse: resolveMemberName(memberById, member.spouseId),
+    spouses: member.spouseIds
+      .map((spouseId) => resolveMemberName(memberById, spouseId))
+      .filter((name): name is string => name !== null),
   };
 }
 

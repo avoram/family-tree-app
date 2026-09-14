@@ -94,12 +94,12 @@
     [attr.aria-expanded]="hasChildren(node) ? isExpanded(node.couple.primary.id) : null"
   >
     <div class="node-card">
-      <div class="couple">
+      <div class="couple" [class.multi-spouse]="node.couple.spouses.length > 1">
         <ng-container
           *ngTemplateOutlet="person; context: { $implicit: node.couple.primary }"
         />
 
-        @if (node.couple.spouse; as spouse) {
+        @for (spouse of node.couple.spouses; track spouse.id) {
           <span class="union" aria-hidden="true">
             <mat-icon>favorite</mat-icon>
           </span>
@@ -128,11 +128,32 @@
     </div>
 
     @if (hasChildren(node) && isExpanded(node.couple.primary.id)) {
-      <ul class="tree-level" role="group">
-        @for (child of node.children; track trackNode($index, child)) {
-          <ng-container *ngTemplateOutlet="branchNode; context: { $implicit: child }" />
-        }
-      </ul>
+      @if (node.familyUnits.length > 1) {
+        <div class="family-units" role="group">
+          @for (unit of node.familyUnits; track trackFamilyUnit($index, unit)) {
+            <div class="family-unit">
+              <p class="unit-label">
+                @if (unit.coParent; as coParent) {
+                  with {{ getMemberDisplayName(coParent) }}
+                } @else {
+                  Children
+                }
+              </p>
+              <ul class="tree-level">
+                @for (child of unit.children; track trackNode($index, child)) {
+                  <ng-container *ngTemplateOutlet="branchNode; context: { $implicit: child }" />
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      } @else {
+        <ul class="tree-level" role="group">
+          @for (child of node.children; track trackNode($index, child)) {
+            <ng-container *ngTemplateOutlet="branchNode; context: { $implicit: child }" />
+          }
+        </ul>
+      }
     }
   </li>
 </ng-template>

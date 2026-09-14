@@ -76,7 +76,7 @@ interface FamilyMemberSummary {
   dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
-  spouseId: string | null;
+  spouseIds: string[];
 }
 ```
 
@@ -94,7 +94,7 @@ interface FamilyMemberDetail {
   dateOfBirth: string | null; // DD-MM-YYYY (Indian format)
   fatherId: string | null;
   motherId: string | null;
-  spouseId: string | null;
+  spouseIds: string[];
   notes: string | null;
   photoUrl: string | null; // e.g. "photos/vora/mayank.jpg"
 }
@@ -122,7 +122,7 @@ Each file in `family-trees/` uses the `*.tree.json` naming convention and contai
       "dateOfBirth": "11-02-1942",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g2",
+      "spouseIds": ["g2"],
       "notes": "Patriarch",
       "photoUrl": "photos/ojha/g1.jpg"
     },
@@ -134,7 +134,7 @@ Each file in `family-trees/` uses the `*.tree.json` naming convention and contai
       "dateOfBirth": "19-08-1946",
       "fatherId": null,
       "motherId": null,
-      "spouseId": "g1",
+      "spouseIds": ["g1"],
       "notes": "Matriarch",
       "photoUrl": "photos/ojha/g2.jpg"
     }
@@ -146,7 +146,7 @@ Each file in `family-trees/` uses the `*.tree.json` naming convention and contai
 
 - `id` must be unique within the file and stable across deployments.
 - `members[].id` must be unique within the tree.
-- Relationship references (`fatherId`, `motherId`, `spouseId`) must point to member ids in the same file.
+- Relationship references (`fatherId`, `motherId`, `spouseIds[]`) must point to member ids in the same file.
 - Must comply with [domain-rules.md](../domain-rules.md).
 - `treeId` on members is derived from the file's root `id` (members in JSON omit `treeId`; the service adds it when mapping to DTOs).
 

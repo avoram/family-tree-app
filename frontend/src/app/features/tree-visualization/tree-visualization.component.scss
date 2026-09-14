@@ -240,6 +240,12 @@ $unknown: #7a8699;
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &.multi-spouse {
+    max-width: 28rem;
+  }
 }
 
 .union {
@@ -253,6 +259,34 @@ $unknown: #7a8699;
     width: 1rem;
     height: 1rem;
   }
+}
+
+.family-units {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.family-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.unit-label {
+  margin: 0;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 999px;
 }
 
 /* ---- Person chip ---- */
@@ -466,17 +500,31 @@ $unknown: #7a8699;
     gap: 0.5rem;
   }
 
-  /* stack the two spouses so each node is only one person wide */
+  /* stack spouses so each node is only one person wide */
   .couple {
     flex: 1 1 auto;
     flex-direction: column;
     align-items: stretch;
     gap: 0.3rem;
     min-width: 0;
+
+    &.multi-spouse {
+      max-width: none;
+    }
   }
 
   .union {
     display: none;
+  }
+
+  .family-units {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .family-unit {
+    align-items: stretch;
   }
 
   .person {

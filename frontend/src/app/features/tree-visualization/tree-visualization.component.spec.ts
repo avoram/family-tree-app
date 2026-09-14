@@ -22,7 +22,7 @@ const janiMembers = [
     dateOfBirth: '10-01-1940',
     fatherId: null,
     motherId: null,
-    spouseId: 'g2',
+    spouseIds: ['g2'],
   },
   {
     id: 'g2',
@@ -32,7 +32,7 @@ const janiMembers = [
     dateOfBirth: '22-06-1945',
     fatherId: null,
     motherId: null,
-    spouseId: 'g1',
+    spouseIds: ['g1'],
   },
   {
     id: 'p1',
@@ -42,7 +42,7 @@ const janiMembers = [
     dateOfBirth: '05-04-1970',
     fatherId: 'g1',
     motherId: 'g2',
-    spouseId: 'p2',
+    spouseIds: ['p2'],
   },
   {
     id: 'p2',
@@ -52,7 +52,7 @@ const janiMembers = [
     dateOfBirth: '18-09-1972',
     fatherId: null,
     motherId: null,
-    spouseId: 'p1',
+    spouseIds: ['p1'],
   },
   {
     id: 'c1',
@@ -62,7 +62,7 @@ const janiMembers = [
     dateOfBirth: '01-12-2000',
     fatherId: 'p1',
     motherId: 'p2',
-    spouseId: null,
+    spouseIds: [],
   },
 ];
 
@@ -103,22 +103,23 @@ describe('TreeVisualizationComponent', () => {
     await fixture.whenStable();
     fixture.detectChanges();
 
+    component.expandAll();
+    fixture.detectChanges();
+
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.textContent).toContain('Pravin Jani');
-    expect(compiled.textContent).toContain('Vivaan Jani');
+    expect(compiled.textContent).toContain('Arun Jani');
+    expect(compiled.textContent).toContain('Anika Jani');
     // Spouses render as their own cards, and birth years appear on each person.
-    expect(compiled.textContent).toContain('Nayanaben Jani');
+    expect(compiled.textContent).toContain('Priya Jani');
     expect(compiled.textContent).toContain('b. 2000');
   });
 
-  it('should collapse and expand branches', () => {
-    const rootId = 'g1';
-
-    expect(component.isExpanded(rootId)).toBeTrue();
-
-    component.toggleExpanded(rootId);
+  it('should collapse and expand branches', async () => {
+    await fixture.whenStable();
     fixture.detectChanges();
+
+    const rootId = 'g1';
 
     expect(component.isExpanded(rootId)).toBeFalse();
 
@@ -126,6 +127,11 @@ describe('TreeVisualizationComponent', () => {
     fixture.detectChanges();
 
     expect(component.isExpanded(rootId)).toBeTrue();
+
+    component.toggleExpanded(rootId);
+    fixture.detectChanges();
+
+    expect(component.isExpanded(rootId)).toBeFalse();
   });
 
   it('should collapse all and expand all branches', () => {
